@@ -1,0 +1,29 @@
+{
+    "name": "cecom/smarttr-address",
+    "description": "SmartTR Address — Turkish address auto-fill for WooCommerce checkout",
+    "type": "wordpress-plugin",
+    "license": "GPL-2.0-or-later",
+    "require": {
+        "php": ">=8.1"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.6",
+        "wp-coding-standards/wpcs": "^3.0",
+        "yoast/phpunit-polyfills": "^2.0",
+        "dealerdirect/phpcodesniffer-composer-installer": "^1.0"
+    },
+    "config": {
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit --testsuite unit",
+        "test:all": "vendor/bin/phpunit",
+        "phpcs": "vendor/bin/phpcs --standard=phpcs.xml.dist .",
+        "phpcbf": "vendor/bin/phpcbf --standard=phpcs.xml.dist ."
+    },
+    "autoload-dev": {
+        "psr-4": {}
+    }
+}

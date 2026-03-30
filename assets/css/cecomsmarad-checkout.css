@@ -1,0 +1,118 @@
+/**
+ * SmartTRAddress — Checkout field styles.
+ *
+ * Minimal overrides for cascade dropdowns, loading state,
+ * and noscript fallback. Uses WooCommerce's existing layout classes.
+ *
+ * @package SmartTRAddress
+ */
+
+/* ---------------------------------------------------------------------------
+ * Loading indicator — shown while AJAX data is in-flight.
+ * ------------------------------------------------------------------------- */
+
+/* Classic checkout — WooCommerce-style loading overlay. */
+.cecomsmarad-loading {
+	position: relative;
+}
+
+.cecomsmarad-loading .select2-container {
+	opacity: 0.5;
+	pointer-events: none;
+}
+
+.cecomsmarad-loading::after {
+	content: "";
+	position: absolute;
+	right: 12px;
+	top: 50%;
+	width: 18px;
+	height: 18px;
+	margin-top: -9px;
+	border: 2px solid #7e8993;
+	border-top-color: transparent;
+	border-radius: 50%;
+	animation: cecomsmarad-spin 0.6s linear infinite;
+}
+
+@keyframes cecomsmarad-spin {
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+/* ---------------------------------------------------------------------------
+ * selectWoo dropdown tweaks inside checkout.
+ * ------------------------------------------------------------------------- */
+
+.cecomsmarad-dropdown .select2-results__option--highlighted {
+	background-color: #2271b1;
+	color: #fff;
+}
+
+/* Ensure select fields match WooCommerce default widths. */
+.cecomsmarad-field .select2-container {
+	width: 100%;
+}
+
+/* ---------------------------------------------------------------------------
+ * Noscript / JS-not-ready fallback.
+ *
+ * Before JS loads, cascade selects may render as empty <select> elements.
+ * Hide them until JS marks the form as ready.
+ * ------------------------------------------------------------------------- */
+
+.cecomsmarad-field .cecomsmarad-select {
+	/* Visible by default so noscript users can still see the field. */
+	display: block;
+}
+
+/* When JS has initialised, selectWoo handles rendering. */
+.cecomsmarad-js-ready .cecomsmarad-field .cecomsmarad-select {
+	/* selectWoo hides the native select automatically. */
+}
+
+/* ---------------------------------------------------------------------------
+ * Screen-reader-only utility (aria-live regions, skip links).
+ * ------------------------------------------------------------------------- */
+
+.cecomsmarad-sr-only {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	white-space: nowrap;
+	border: 0;
+}
+
+/* ---------------------------------------------------------------------------
+ * Float layout fix — prevent row shift when a form-row-first field has
+ * extra height (e.g. a validation error message below the input).
+ *
+ * In WooCommerce's float-based checkout layout, if the left column
+ * (form-row-first) is taller than the right column (form-row-last), the
+ * next pair can misalign because the right float clears before the left.
+ * Adding clear:both to every form-row-first ensures each new pair always
+ * starts below ALL previous floats, keeping pairs properly aligned.
+ * This rule is harmless on flex/grid themes where clear has no effect.
+ * ------------------------------------------------------------------------- */
+
+.woocommerce-checkout .form-row.form-row-first {
+	clear: both;
+}
+
+/* ---------------------------------------------------------------------------
+ * Hidden field — admin set visibility to "hidden".
+ * Field stays in DOM (can hold default value) but is invisible.
+ * ------------------------------------------------------------------------- */
+
+.cecomsmarad-field-hidden {
+	display: none !important;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__clear {
+	padding-right:19px!important;
+}

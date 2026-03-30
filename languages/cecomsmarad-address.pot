@@ -1,0 +1,657 @@
+# Copyright (C) 2026 cecom
+# This file is distributed under the GPL-2.0+.
+msgid ""
+msgstr ""
+"Project-Id-Version: SmartTRAddress 1.1.0\n"
+"Report-Msgid-Bugs-To: https://cecom.in/smarttr-address-turkish-address\n"
+"POT-Creation-Date: 2026-02-27 12:00:00+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+
+#. Plugin Name of the plugin
+msgid "SmartTR Address"
+msgstr ""
+
+#: includes/class-smarttr-activator.php
+#. translators: %1$s: required PHP version, %2$s: current PHP version
+msgid "SmartTR Address requires PHP %1$s or higher. You are running PHP %2$s."
+msgstr ""
+
+#: includes/class-smarttr-activator.php
+#. translators: %1$s: required WP version, %2$s: current WP version
+msgid "SmartTR Address requires WordPress %1$s or higher. You are running WordPress %2$s."
+msgstr ""
+
+#: includes/class-smarttr-activator.php
+msgid "SmartTR Address requires WooCommerce to be installed and active."
+msgstr ""
+
+#: includes/class-smarttr-activator.php
+#. translators: %1$s: required WC version, %2$s: current WC version
+msgid "SmartTR Address requires WooCommerce %1$s or higher. You are running WooCommerce %2$s."
+msgstr ""
+
+#: includes/class-smarttr-activator.php
+msgid "SmartTR Address Activation Error"
+msgstr ""
+
+#: includes/models/class-smarttr-settings.php
+msgid "Province"
+msgstr ""
+
+#: includes/models/class-smarttr-settings.php
+msgid "Select province"
+msgstr ""
+
+#: includes/models/class-smarttr-settings.php
+msgid "District"
+msgstr ""
+
+#: includes/models/class-smarttr-settings.php
+msgid "Select district"
+msgstr ""
+
+#: includes/models/class-smarttr-settings.php
+msgid "Neighborhood"
+msgstr ""
+
+#: includes/models/class-smarttr-settings.php
+msgid "Select neighborhood"
+msgstr ""
+
+#: includes/models/class-smarttr-settings.php
+msgid "Postal Code"
+msgstr ""
+
+#: includes/controllers/class-smarttr-checkout-controller.php
+#: includes/views/admin/settings.php
+msgid "No results found"
+msgstr ""
+
+#: includes/controllers/class-smarttr-order-controller.php
+#. translators: %s: address type label (Billing/Shipping)
+msgid "%s province is required."
+msgstr ""
+
+#: includes/controllers/class-smarttr-order-controller.php
+#. translators: %s: address type label (Billing/Shipping)
+msgid "%s district is required."
+msgstr ""
+
+#: includes/controllers/class-smarttr-order-controller.php
+#. translators: %s: address type label (Billing/Shipping)
+msgid "%s neighborhood is required."
+msgstr ""
+
+#: includes/controllers/class-smarttr-order-controller.php
+msgid "Shipping"
+msgstr ""
+
+#: includes/controllers/class-smarttr-order-controller.php
+msgid "Billing"
+msgstr ""
+
+#: includes/controllers/class-smarttr-admin-controller.php
+msgid "This will delete existing address data and reload it from the remote server. Do you want to continue?"
+msgstr ""
+
+#: includes/controllers/class-smarttr-admin-controller.php
+msgid "All field settings will be reset to defaults. Do you want to continue?"
+msgstr ""
+
+#: includes/controllers/class-smarttr-admin-controller.php
+msgid "Settings saved."
+msgstr ""
+
+#: includes/controllers/class-smarttr-admin-controller.php
+msgid "You do not have permission to access this page."
+msgstr ""
+
+#: includes/controllers/class-smarttr-admin-controller.php
+msgid "Security verification failed."
+msgstr ""
+
+#: includes/controllers/class-smarttr-admin-controller.php
+msgid "General settings saved."
+msgstr ""
+
+#: includes/controllers/class-smarttr-admin-controller.php
+#. translators: %d: number of fields saved
+msgid "%d field(s) successfully saved."
+msgstr ""
+
+#: includes/controllers/class-smarttr-admin-controller.php
+msgid "All fields reset to default values."
+msgstr ""
+
+#: includes/controllers/class-smarttr-admin-controller.php
+msgid "Address data successfully updated."
+msgstr ""
+
+#: includes/controllers/class-smarttr-admin-controller.php
+msgid "Saving…"
+msgstr ""
+
+#: includes/controllers/class-smarttr-admin-controller.php
+msgid "An error occurred. Please try again."
+msgstr ""
+
+#: includes/controllers/class-smarttr-admin-controller.php
+msgid "Updating data…"
+msgstr ""
+
+#: includes/controllers/class-smarttr-admin-controller.php
+msgid "Cancel"
+msgstr ""
+
+#: includes/controllers/class-smarttr-admin-controller.php
+msgid "Confirm"
+msgstr ""
+
+#: includes/controllers/class-smarttr-admin-controller.php
+msgid "Reload Data"
+msgstr ""
+
+#: includes/controllers/class-smarttr-admin-controller.php
+msgid "Reset to Defaults"
+msgstr ""
+
+#: includes/controllers/class-smarttr-admin-controller.php
+msgid "You have unsaved changes. Do you want to leave the page?"
+msgstr ""
+
+#: includes/controllers/class-smarttr-admin-controller.php
+msgid "All"
+msgstr ""
+
+#: includes/controllers/class-smarttr-admin-controller.php
+msgid "Billing"
+msgstr ""
+
+#: includes/controllers/class-smarttr-admin-controller.php
+msgid "Shipping"
+msgstr ""
+
+#: includes/controllers/class-smarttr-admin-controller.php
+msgid "Export date"
+msgstr ""
+
+#: includes/controllers/class-smarttr-admin-controller.php
+msgid "Unauthorized access."
+msgstr ""
+
+#: includes/controllers/class-smarttr-admin-controller.php
+msgid "Invalid field data."
+msgstr ""
+
+#: includes/views/admin/settings.php
+msgid "General"
+msgstr ""
+
+#: includes/views/admin/settings.php
+msgid "Field Editor"
+msgstr ""
+
+#: includes/views/admin/settings.php
+msgid "Data Management"
+msgstr ""
+
+#: includes/views/admin/settings.php
+msgid "Billing — First Name"
+msgstr ""
+
+#: includes/views/admin/settings.php
+msgid "Billing — Last Name"
+msgstr ""
+
+#: includes/views/admin/settings.php
+msgid "Billing — Company"
+msgstr ""
+
+#: includes/views/admin/settings.php
+msgid "Billing — Country"
+msgstr ""
+
+#: includes/views/admin/settings.php
+msgid "Billing — Address 1"
+msgstr ""
+
+#: includes/views/admin/settings.php
+msgid "Billing — Neighborhood"
+msgstr ""
+
+#: includes/views/admin/settings.php
+msgid "Billing — District"
+msgstr ""
+
+#: includes/views/admin/settings.php
+msgid "Billing — Province"
+msgstr ""
+
+#: includes/views/admin/settings.php
+msgid "Billing — Postal Code"
+msgstr ""
+
+#: includes/views/admin/settings.php
+msgid "Billing — Email"
+msgstr ""
+
+#: includes/views/admin/settings.php
+msgid "Billing — Phone"
+msgstr ""
+
+#: includes/views/admin/settings.php
+msgid "Shipping — First Name"
+msgstr ""
+
+#: includes/views/admin/settings.php
+msgid "Shipping — Last Name"
+msgstr ""
+
+#: includes/views/admin/settings.php
+msgid "Shipping — Company"
+msgstr ""
+
+#: includes/views/admin/settings.php
+msgid "Shipping — Address 1"
+msgstr ""
+
+#: includes/views/admin/settings.php
+msgid "Shipping — Neighborhood"
+msgstr ""
+
+#: includes/views/admin/settings.php
+msgid "Shipping — District"
+msgstr ""
+
+#: includes/views/admin/settings.php
+msgid "Shipping — Province"
+msgstr ""
+
+#: includes/views/admin/settings.php
+msgid "Shipping — Postal Code"
+msgstr ""
+
+#: includes/views/admin/settings.php
+msgid "Documentation"
+msgstr ""
+
+#: includes/views/admin/settings.php
+msgid "Version"
+msgstr ""
+
+#: includes/views/admin/settings.php
+msgid "WooCommerce"
+msgstr ""
+
+#: includes/views/admin/settings.php
+msgid "Not installed"
+msgstr ""
+
+#: includes/views/admin/settings.php
+msgid "Active"
+msgstr ""
+
+#: includes/views/admin/settings.php
+msgid "Inactive"
+msgstr ""
+
+#: includes/views/admin/settings.php
+msgid "HPOS"
+msgstr ""
+
+#: includes/views/admin/settings.php
+msgid "PHP"
+msgstr ""
+
+#: includes/views/admin/settings.php
+msgid "WordPress"
+msgstr ""
+
+#: includes/views/admin/settings.php
+msgid "Block"
+msgstr ""
+
+#: includes/views/admin/settings.php
+msgid "Classic"
+msgstr ""
+
+#: includes/views/admin/settings.php
+msgid "Checkout Type"
+msgstr ""
+
+#: includes/views/admin/settings.php
+msgid "Enable Plugin"
+msgstr ""
+
+#: includes/views/admin/settings.php
+msgid "Enable Turkish address auto-fill feature"
+msgstr ""
+
+#: includes/views/admin/settings.php
+msgid "View Checkout Page"
+msgstr ""
+
+#: includes/views/admin/settings.php
+msgid "WooCommerce Settings"
+msgstr ""
+
+#: includes/views/admin/settings.php
+msgid "Save"
+msgstr ""
+
+#: includes/views/admin/settings.php
+msgid "Search fields…"
+msgstr ""
+
+#: includes/views/admin/settings.php
+msgid "Filter"
+msgstr ""
+
+#: includes/views/admin/settings.php
+msgid "Expand All"
+msgstr ""
+
+#: includes/views/admin/settings.php
+msgid "Collapse All"
+msgstr ""
+
+#: includes/views/admin/settings.php
+msgid "Unsaved changes"
+msgstr ""
+
+#: includes/views/admin/settings.php
+msgid "Save All Fields"
+msgstr ""
+
+#: includes/views/admin/settings.php
+msgid "Billing Fields"
+msgstr ""
+
+#: includes/views/admin/settings.php
+msgid "Shipping Fields"
+msgstr ""
+
+#: includes/views/admin/settings.php
+#. translators: %d: number of fields
+msgid "%d field(s)"
+msgstr ""
+
+#: includes/views/admin/settings.php
+msgid "Drag cards to reorder"
+msgstr ""
+
+#: includes/views/admin/settings.php
+msgid "Drag"
+msgstr ""
+
+#: includes/views/admin/settings.php
+msgid "Required"
+msgstr ""
+
+#: includes/views/admin/settings.php
+msgid "Type"
+msgstr ""
+
+#: includes/views/admin/settings.php
+msgid "Label"
+msgstr ""
+
+#: includes/views/admin/settings.php
+msgid "Placeholder"
+msgstr ""
+
+#: includes/views/admin/settings.php
+msgid "Clear"
+msgstr ""
+
+#: includes/views/admin/settings.php
+msgid "CSS Class"
+msgstr ""
+
+#: includes/views/admin/settings.php
+msgid "+ Add class"
+msgstr ""
+
+#: includes/views/admin/settings.php
+msgid "Label Class"
+msgstr ""
+
+#: includes/views/admin/settings.php
+msgid "Options"
+msgstr ""
+
+#: includes/views/admin/settings.php
+msgid "Data Version"
+msgstr ""
+
+#: includes/views/admin/settings.php
+msgid "Last Import"
+msgstr ""
+
+#: includes/views/admin/settings.php
+msgid "Not yet"
+msgstr ""
+
+#: includes/views/admin/settings.php
+msgid "DB Prefix"
+msgstr ""
+
+#: includes/views/admin/settings.php
+msgid "Toplam Boyut"
+msgstr ""
+
+#: includes/views/admin/settings.php
+msgid "JSON Kaynak"
+msgstr ""
+
+#: includes/views/admin/settings.php
+msgid "Character Set"
+msgstr ""
+
+#: includes/views/admin/settings.php
+msgid "Tablo Durumu"
+msgstr ""
+
+#: includes/views/admin/settings.php
+msgid "Download Summary"
+msgstr ""
+
+#: includes/models/class-smarttr-settings.php
+msgid "First Name"
+msgstr ""
+
+#: includes/models/class-smarttr-settings.php
+msgid "Last Name"
+msgstr ""
+
+#: includes/models/class-smarttr-settings.php
+msgid "Şirket Adı"
+msgstr ""
+
+#: includes/models/class-smarttr-settings.php
+msgid "Country / Region"
+msgstr ""
+
+#: includes/models/class-smarttr-settings.php
+msgid "Street Address"
+msgstr ""
+
+#: includes/models/class-smarttr-settings.php
+msgid "House number and street name"
+msgstr ""
+
+#: includes/models/class-smarttr-settings.php
+msgid "Email Address"
+msgstr ""
+
+#: includes/models/class-smarttr-settings.php
+msgid "Phone"
+msgstr ""
+
+#: includes/views/admin/settings.php
+msgid "Description"
+msgstr ""
+
+#: includes/views/admin/settings.php
+msgid "Displayed below the field"
+msgstr ""
+
+#. --- Custom Fields Feature ---
+
+#: includes/controllers/class-smarttr-admin-controller.php
+msgid "Add Custom Field"
+msgstr ""
+
+#: includes/controllers/class-smarttr-admin-controller.php
+msgid "Delete Field"
+msgstr ""
+
+#: includes/controllers/class-smarttr-admin-controller.php
+msgid "This custom field will be permanently deleted. Do you want to continue?"
+msgstr ""
+
+#: includes/controllers/class-smarttr-admin-controller.php
+msgid "Field Key"
+msgstr ""
+
+#: includes/controllers/class-smarttr-admin-controller.php
+msgid "Field Label"
+msgstr ""
+
+#: includes/controllers/class-smarttr-admin-controller.php
+msgid "Field Type"
+msgstr ""
+
+#: includes/controllers/class-smarttr-admin-controller.php
+msgid "Address Type"
+msgstr ""
+
+#: includes/controllers/class-smarttr-admin-controller.php
+msgid "This key is already in use."
+msgstr ""
+
+#: includes/controllers/class-smarttr-admin-controller.php
+msgid "Key may only contain lowercase letters, digits, and underscores (max. 30 characters)."
+msgstr ""
+
+#: includes/controllers/class-smarttr-admin-controller.php
+msgid "Custom field successfully created."
+msgstr ""
+
+#: includes/controllers/class-smarttr-admin-controller.php
+msgid "Custom field deleted."
+msgstr ""
+
+#: includes/controllers/class-smarttr-admin-controller.php
+msgid "Custom"
+msgstr ""
+
+#: includes/controllers/class-smarttr-admin-controller.php
+msgid "Show on Order Page"
+msgstr ""
+
+#: includes/controllers/class-smarttr-admin-controller.php
+msgid "Show in Email"
+msgstr ""
+
+#: includes/controllers/class-smarttr-admin-controller.php
+msgid "Create Field"
+msgstr ""
+
+#: includes/controllers/class-smarttr-admin-controller.php
+msgid "All fields are required."
+msgstr ""
+
+#: includes/controllers/class-smarttr-admin-controller.php
+msgid "Field could not be created. Key is invalid or already exists."
+msgstr ""
+
+#: includes/controllers/class-smarttr-admin-controller.php
+msgid "Invalid field key."
+msgstr ""
+
+#: includes/controllers/class-smarttr-admin-controller.php
+msgid "Field not found."
+msgstr ""
+
+#: includes/views/admin/settings.php
+msgid "ornek_alan"
+msgstr ""
+
+#: includes/views/admin/settings.php
+msgid "TC Kimlik No"
+msgstr ""
+
+#: includes/controllers/class-smarttr-order-controller.php
+#. translators: %1$s: address type label, %2$s: field label
+msgid "%1$s %2$s field is required."
+msgstr ""
+
+#: includes/views/admin/settings.php
+msgid "Feature Comparison"
+msgstr ""
+
+#: includes/views/admin/settings.php
+msgid "Feature"
+msgstr ""
+
+#: includes/views/admin/settings.php
+msgid "Ücretsiz"
+msgstr ""
+
+#: includes/views/admin/settings.php
+msgid "Premium"
+msgstr ""
+
+#: includes/views/admin/settings.php
+msgid "Province → District cascade"
+msgstr ""
+
+#: includes/views/admin/settings.php
+msgid "Neighborhood dropdown &amp; data"
+msgstr ""
+
+#: includes/views/admin/settings.php
+msgid "Neighborhood auto-select"
+msgstr ""
+
+#: includes/views/admin/settings.php
+msgid "Drag-and-drop field ordering"
+msgstr ""
+
+#: includes/views/admin/settings.php
+msgid "Postal code auto-fill"
+msgstr ""
+
+#: includes/views/admin/settings.php
+msgid "Field editing (label, placeholder, description)"
+msgstr ""
+
+#: includes/views/admin/settings.php
+msgid "Required / Clear / Visibility settings"
+msgstr ""
+
+#: includes/views/admin/settings.php
+msgid "CSS class editing"
+msgstr ""
+
+#: includes/views/admin/settings.php
+msgid "Custom fields (create/delete/edit)"
+msgstr ""
+
+#: includes/views/admin/settings.php
+msgid "Data management (reload)"
+msgstr ""
+
+#: includes/views/admin/settings.php
+msgid "Reset to defaults"
+msgstr ""
+
+#: includes/controllers/class-smarttr-checkout-controller.php
+msgid "required"
+msgstr ""
