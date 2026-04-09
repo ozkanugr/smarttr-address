@@ -23,7 +23,7 @@ defined( 'ABSPATH' ) || exit;
 class Cecomsmarad_Remote_Sync {
 
 	/**
-	 * wp_option key for the pending-sync flag.
+	 * Option key for the pending-sync flag.
 	 * Set to '1' when a sync is needed; cleared after a successful sync.
 	 *
 	 * @var string
@@ -67,19 +67,19 @@ class Cecomsmarad_Remote_Sync {
 	public static function sync(): array {
 		// ── Advisory lock — prevent concurrent syncs ──────────────────────────
 		// Two PHP processes can enter sync() simultaneously when:
-		//   a) spawn_cron() fires the WP-Cron HTTP request at the same time a
-		//      server-side cron also runs wp-cron.php, or
-		//   b) cecomsmarad_do_address_sync and cecomsmarad_do_auto_update both become
-		//      due at the same moment.
+		// a) spawn_cron() fires the WP-Cron HTTP request at the same time a
+		// server-side cron also runs wp-cron.php, or
+		// b) cecomsmarad_do_address_sync and cecomsmarad_do_auto_update both become
+		// due at the same moment.
 		// Without a lock the provinces/districts tables end up with duplicate rows
 		// because Process B calls TRUNCATE while Process A is still inserting,
 		// then both processes complete their remaining INSERT batches
 		// independently into the same tables.
 		if ( false !== get_transient( self::SYNC_LOCK ) ) {
-			return [
+			return array(
 				'success' => false,
 				'message' => __( 'A sync is already in progress. Please try again shortly.', 'smarttr-address' ),
-			];
+			);
 		}
 		set_transient( self::SYNC_LOCK, '1', self::SYNC_LOCK_TTL );
 
@@ -100,22 +100,22 @@ class Cecomsmarad_Remote_Sync {
 		$source_url = self::get_source_url();
 
 		if ( '' === $source_url ) {
-			return [
+			return array(
 				'success' => false,
 				'message' => __( 'Source URL is not configured.', 'smarttr-address' ),
-			];
+			);
 		}
 
-		$headers = [ 'Accept' => 'application/json' ];
+		$headers = array( 'Accept' => 'application/json' );
 
 		// Append WooCommerce REST API credentials as query parameters.
 		// This is more reliable than the Authorization header, which many
 		// Apache/hosting configurations strip before reaching PHP.
 		$auth_query = http_build_query(
-			[
+			array(
 				'consumer_key'    => CECOMSMARAD_API_CONSUMER_KEY,
 				'consumer_secret' => CECOMSMARAD_API_CONSUMER_SECRET,
-			]
+			)
 		);
 
 		$base = rtrim( $source_url, '/' ) . '/wp-json/cecom-address-tr/v1/address-data';
@@ -125,14 +125,14 @@ class Cecomsmarad_Remote_Sync {
 		if ( ! $result['success'] ) {
 			return $result;
 		}
-		Cecomsmarad_Data_Importer::import_provinces_data( $result['body']['data'] ?? [] );
+		Cecomsmarad_Data_Importer::import_provinces_data( $result['body']['data'] ?? array() );
 
 		// ── 2. Districts ──────────────────────────────────────────────────────
 		$result = self::fetch( $base . '/districts?' . $auth_query, $headers );
 		if ( ! $result['success'] ) {
 			return $result;
 		}
-		Cecomsmarad_Data_Importer::import_districts_data( $result['body']['data'] ?? [] );
+		Cecomsmarad_Data_Importer::import_districts_data( $result['body']['data'] ?? array() );
 
 		// ── 3. Metadata & version ─────────────────────────────────────────────
 		$version_result = self::fetch( $base . '/version?' . $auth_query, $headers );
@@ -147,10 +147,10 @@ class Cecomsmarad_Remote_Sync {
 		// Clear the pending-sync flag.
 		delete_option( self::OPT_SYNC_NEEDED );
 
-		return [
+		return array(
 			'success' => true,
 			'message' => __( 'Address data successfully updated.', 'smarttr-address' ),
-		];
+		);
 	}
 
 	/**
@@ -219,22 +219,22 @@ class Cecomsmarad_Remote_Sync {
 	private static function fetch( string $url, array $headers ): array {
 		$response = wp_remote_get(
 			$url,
-			[
+			array(
 				'timeout' => self::REQUEST_TIMEOUT,
 				'headers' => $headers,
-			]
+			)
 		);
 
 		if ( is_wp_error( $response ) ) {
-			return [
+			return array(
 				'success' => false,
 				'message' => sprintf(
 					/* translators: %s: error message */
 					__( 'API connection error: %s', 'smarttr-address' ),
 					$response->get_error_message()
 				),
-				'body'    => [],
-			];
+				'body'    => array(),
+			);
 		}
 
 		$code     = (int) wp_remote_retrieve_response_code( $response );
@@ -242,41 +242,41 @@ class Cecomsmarad_Remote_Sync {
 		$body     = json_decode( $raw_body, true );
 
 		if ( JSON_ERROR_NONE !== json_last_error() ) {
-			return [
+			return array(
 				'success' => false,
 				'message' => __( 'Unexpected response from the data server (invalid JSON). Please try again.', 'smarttr-address' ),
-				'body'    => [],
-			];
+				'body'    => array(),
+			);
 		}
 
 		if ( 401 === $code || 403 === $code ) {
-			return [
+			return array(
 				'success' => false,
 				'message' => sprintf(
 					/* translators: %d: HTTP status code */
 					__( 'Access to the data API was denied (HTTP %d). Please check your source server configuration.', 'smarttr-address' ),
 					$code
 				),
-				'body'    => [],
-			];
+				'body'    => array(),
+			);
 		}
 
 		if ( $code < 200 || $code >= 300 ) {
-			return [
+			return array(
 				'success' => false,
 				'message' => sprintf(
 					/* translators: %d: HTTP status code */
 					__( 'Server error: HTTP %d', 'smarttr-address' ),
 					$code
 				),
-				'body'    => [],
-			];
+				'body'    => array(),
+			);
 		}
 
-		return [
+		return array(
 			'success' => true,
 			'message' => '',
-			'body'    => is_array( $body ) ? $body : [],
-		];
+			'body'    => is_array( $body ) ? $body : array(),
+		);
 	}
 }

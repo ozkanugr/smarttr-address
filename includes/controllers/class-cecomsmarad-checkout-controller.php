@@ -34,8 +34,8 @@ class Cecomsmarad_Checkout_Controller {
 
 		// Custom renderers: fix required mark on radio/checkbox option labels,
 		// and add multi-select checkbox support.
-		add_filter( 'woocommerce_form_field_file',     array( $this, 'render_file_form_field' ),     10, 4 );
-		add_filter( 'woocommerce_form_field_radio',    array( $this, 'render_radio_form_field' ),    10, 4 );
+		add_filter( 'woocommerce_form_field_file', array( $this, 'render_file_form_field' ), 10, 4 );
+		add_filter( 'woocommerce_form_field_radio', array( $this, 'render_radio_form_field' ), 10, 4 );
 		add_filter( 'woocommerce_form_field_checkbox', array( $this, 'render_checkbox_form_field' ), 10, 4 );
 	}
 
@@ -141,9 +141,9 @@ class Cecomsmarad_Checkout_Controller {
 
 		// District — override the existing city field.
 		if ( isset( $settings[ $city_key ] ) && 'unset' !== ( $settings[ $city_key ]['visibility'] ?? 'visible' ) ) {
-			$s          = $settings[ $city_key ];
-			$is_hidden  = 'hidden' === ( $s['visibility'] ?? 'visible' );
-			$classes    = array( $this->strip_wc_behaviour_classes( $s['class'] ?? 'form-row-wide' ), 'cecomsmarad-field', 'cecomsmarad-district' );
+			$s         = $settings[ $city_key ];
+			$is_hidden = 'hidden' === ( $s['visibility'] ?? 'visible' );
+			$classes   = array( $this->strip_wc_behaviour_classes( $s['class'] ?? 'form-row-wide' ), 'cecomsmarad-field', 'cecomsmarad-district' );
 			if ( $is_hidden ) {
 				$classes[] = 'cecomsmarad-field-hidden';
 			}
@@ -168,9 +168,9 @@ class Cecomsmarad_Checkout_Controller {
 
 		// Postal code — keep as text, add cascade class.
 		if ( isset( $settings[ $postcode_key ] ) && 'unset' !== ( $settings[ $postcode_key ]['visibility'] ?? 'visible' ) ) {
-			$s          = $settings[ $postcode_key ];
-			$is_hidden  = 'hidden' === ( $s['visibility'] ?? 'visible' );
-			$classes    = array( $this->strip_wc_behaviour_classes( $s['class'] ?? 'form-row-wide' ), 'cecomsmarad-field', 'cecomsmarad-postcode' );
+			$s         = $settings[ $postcode_key ];
+			$is_hidden = 'hidden' === ( $s['visibility'] ?? 'visible' );
+			$classes   = array( $this->strip_wc_behaviour_classes( $s['class'] ?? 'form-row-wide' ), 'cecomsmarad-field', 'cecomsmarad-postcode' );
 			if ( $is_hidden ) {
 				$classes[] = 'cecomsmarad-field-hidden';
 			}
@@ -346,12 +346,15 @@ class Cecomsmarad_Checkout_Controller {
 		$hidden_fields      = array();
 		$clear_fields       = array();
 		$file_fields        = array();
-		$turkey_only_fields = array( 'billing' => array(), 'shipping' => array() );
+		$turkey_only_fields = array(
+			'billing'  => array(),
+			'shipping' => array(),
+		);
 
 		// Pre-saved cascade field values so JS can restore selections on page load
 		// (e.g. after a validation error or browser back-navigation).
-		$saved_values  = array();
-		$checkout      = WC()->checkout();
+		$saved_values = array();
+		$checkout     = WC()->checkout();
 		foreach ( array( 'billing', 'shipping' ) as $addr_type ) {
 			foreach ( array( 'city', 'address_2', 'postcode' ) as $field ) {
 				$fk  = $addr_type . '_' . $field;
@@ -379,9 +382,9 @@ class Cecomsmarad_Checkout_Controller {
 				'fileFields'       => $file_fields,
 				'ajaxUrl'          => admin_url( 'admin-ajax.php' ),
 				'i18n'             => array(
-					'selectProvince'       => __( 'Select province', 'smarttr-address' ),
-					'selectDistrict'       => __( 'Select district', 'smarttr-address' ),
-					'noResults'            => __( 'No results found', 'smarttr-address' ),
+					'selectProvince' => __( 'Select province', 'smarttr-address' ),
+					'selectDistrict' => __( 'Select district', 'smarttr-address' ),
+					'noResults'      => __( 'No results found', 'smarttr-address' ),
 				),
 			)
 		);
@@ -480,14 +483,14 @@ class Cecomsmarad_Checkout_Controller {
 	 * @param mixed  $value Current field value (unused for file inputs).
 	 * @return string Rendered HTML.
 	 */
-	public function render_file_form_field( string $field, string $key, array $args, $value ): string {
+	public function render_file_form_field( string $field, string $key, array $args, $value ): string { // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter.FoundAfterLastUsed
 		$label              = $args['label'] ?? '';
 		$required           = ! empty( $args['required'] );
 		$description        = $args['description'] ?? '';
 		$allowed_extensions = $args['allowed_extensions'] ?? '';
-		$class_arr   = is_array( $args['class'] ?? null ) ? $args['class'] : array_filter( explode( ' ', $args['class'] ?? '' ) );
-		$label_class = is_array( $args['label_class'] ?? null ) ? $args['label_class'] : array_filter( explode( ' ', $args['label_class'] ?? '' ) );
-		$priority    = $args['priority'] ?? '';
+		$class_arr          = is_array( $args['class'] ?? null ) ? $args['class'] : array_filter( explode( ' ', $args['class'] ?? '' ) );
+		$label_class        = is_array( $args['label_class'] ?? null ) ? $args['label_class'] : array_filter( explode( ' ', $args['label_class'] ?? '' ) );
+		$priority           = $args['priority'] ?? '';
 
 		$wrapper_classes   = array_merge( array( 'form-row' ), $class_arr );
 		$wrapper_classes[] = 'cecomsmarad-file-field';
@@ -524,7 +527,15 @@ class Cecomsmarad_Checkout_Controller {
 		}
 		if ( $allowed_extensions ) {
 			$ext_arr = array_filter( array_map( 'trim', explode( ',', $allowed_extensions ) ) );
-			$accept  = implode( ',', array_map( static function ( $e ) { return '.' . $e; }, $ext_arr ) );
+			$accept  = implode(
+				',',
+				array_map(
+					static function ( $e ) {
+						return '.' . $e;
+					},
+					$ext_arr
+				)
+			);
 			$html   .= ' accept="' . esc_attr( $accept ) . '"';
 		}
 		$html .= ' />';

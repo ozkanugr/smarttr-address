@@ -3,7 +3,7 @@
  * Plugin Name:       SmartTR Address
  * Plugin URI:        https://cecom.in/smarttr-address-turkish-address
  * Description:       Turkish address auto-fill for WooCommerce checkout — cascading Province & District dropdowns.
- * Version:           1.3.0
+ * Version:           1.3.2
  * Requires at least: 6.4
  * Requires PHP:      8.1
  * Author:            ugurozkan
@@ -23,7 +23,7 @@ defined( 'ABSPATH' ) || exit;
 /**
  * Plugin constants.
  */
-define( 'CECOMSMARAD_VERSION', '1.3.0' );
+define( 'CECOMSMARAD_VERSION', '1.3.2' );
 define( 'CECOMSMARAD_PLUGIN_FILE', __FILE__ );
 define( 'CECOMSMARAD_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'CECOMSMARAD_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
@@ -49,14 +49,13 @@ if ( ! defined( 'CECOMSMARAD_API_CONSUMER_SECRET' ) ) {
 }
 
 /**
- * Autoloader — prefer Composer, fall back to manual.
+ * Autoloader — load Composer when available, always register manual autoloader for plugin classes.
  */
 if ( file_exists( CECOMSMARAD_PLUGIN_DIR . 'vendor/autoload.php' ) ) {
 	require_once CECOMSMARAD_PLUGIN_DIR . 'vendor/autoload.php';
-} else {
-	require_once CECOMSMARAD_PLUGIN_DIR . 'includes/class-cecomsmarad-autoloader.php';
-	Cecomsmarad_Autoloader::register();
 }
+require_once CECOMSMARAD_PLUGIN_DIR . 'includes/class-cecomsmarad-autoloader.php';
+Cecomsmarad_Autoloader::register();
 
 /**
  * Declare HPOS (High-Performance Order Storage) compatibility.
@@ -124,7 +123,7 @@ add_action(
 /**
  * WP-Cron: run the background address data sync scheduled on activation.
  */
-add_action( 'cecomsmarad_do_address_sync', [ 'Cecomsmarad_Remote_Sync', 'sync' ] );
+add_action( 'cecomsmarad_do_address_sync', array( 'Cecomsmarad_Remote_Sync', 'sync' ) );
 
 /**
  * Plugin action links — adds Settings, Docs, and (free-tier only) Upgrade
@@ -165,8 +164,10 @@ add_filter(
 if ( is_admin() ) {
 
 	/**
-	 * Plugin row meta — appends a "View details" thickbox link so the standard
-	 * WordPress plugin-information popup is accessible from the Plugins list.
+	 * Plugin row meta — fetches the WordPress.org rating (cached 12 h) and
+	 * appends star icons inline to the plugin-version-author-uri row.
+	 * WordPress core already supplies the "View details" link for .org-hosted
+	 * plugins, so no duplicate is added here.
 	 */
 	add_filter(
 		'plugin_row_meta',
@@ -175,43 +176,6 @@ if ( is_admin() ) {
 				return $links;
 			}
 
-			$url = add_query_arg(
-				array(
-					'tab'       => 'plugin-information',
-					'plugin'    => 'smarttr-address',
-					'TB_iframe' => 'true',
-					'width'     => 600,
-					'height'    => 550,
-				),
-				admin_url( 'plugin-install.php' )
-			);
-
-			$links[] = sprintf(
-				'<a href="%s" class="thickbox open-plugin-details-modal" aria-label="%s" data-title="%s">%s</a>',
-				esc_url( $url ),
-				esc_attr__( 'More information about SmartTR Address', 'smarttr-address' ),
-				esc_attr__( 'SmartTR Address', 'smarttr-address' ),
-				esc_html__( 'View details', 'smarttr-address' )
-			);
-
-			return $links;
-		},
-		10,
-		2
-	);
-
-	/**
-	 * After plugin row — fetches the WordPress.org rating for cecomsmarad-address
-	 * (cached for 12 hours) and renders star rating directly below the plugin
-	 * description on the Plugins admin page.
-	 *
-	 * @param string $plugin_file Plugin basename.
-	 * @param array  $plugin_data Plugin header data.
-	 * @param string $status      Plugin status string.
-	 */
-	add_action(
-		'after_plugin_row_' . CECOMSMARAD_PLUGIN_BASENAME,
-		static function ( string $plugin_file, array $plugin_data, string $status ): void {
 			$transient_key = 'cecomsmarad_wporg_rating';
 			$data          = get_transient( $transient_key );
 
@@ -247,55 +211,38 @@ if ( is_admin() ) {
 				set_transient( $transient_key, $data, 12 * HOUR_IN_SECONDS );
 			}
 
-			if ( ! is_array( $data ) || empty( $data ) ) {
-				return;
+			if ( is_array( $data ) && ! empty( $data ) ) {
+				$rating      = (float) $data['rating'];
+				$full_stars  = (int) floor( $rating / 20 );
+				$half_star   = ( ( $rating / 20 ) - $full_stars ) >= 0.5 ? 1 : 0;
+				$empty_stars = 5 - $full_stars - $half_star;
+				$stars_html  = '';
+				for ( $i = 0; $i < $full_stars; $i++ ) {
+					$stars_html .= '<span class="dashicons dashicons-star-filled" style="color:#ffb900;font-size:16px;width:16px;height:16px;" aria-hidden="true"></span>';
+				}
+				if ( $half_star ) {
+					$stars_html .= '<span class="dashicons dashicons-star-half" style="color:#ffb900;font-size:16px;width:16px;height:16px;" aria-hidden="true"></span>';
+				}
+				for ( $i = 0; $i < $empty_stars; $i++ ) {
+					$stars_html .= '<span class="dashicons dashicons-star-empty" style="color:#ffb900;font-size:16px;width:16px;height:16px;" aria-hidden="true"></span>';
+				}
+
+				$links[] = wp_kses(
+					$stars_html,
+					array(
+						'span' => array(
+							'class'       => true,
+							'style'       => true,
+							'aria-hidden' => true,
+						),
+					)
+				);
 			}
 
-			$rating      = (float) $data['rating'];
-			$num_ratings = (int) $data['num_ratings'];
-
-			// Build star markup using dashicons (always available in wp-admin).
-			$full_stars  = (int) floor( $rating / 20 );
-			$half_star   = ( ( $rating / 20 ) - $full_stars ) >= 0.5 ? 1 : 0;
-			$empty_stars = 5 - $full_stars - $half_star;
-			$stars_html  = '';
-			for ( $i = 0; $i < $full_stars; $i++ ) {
-				$stars_html .= '<span class="dashicons dashicons-star-filled" style="color:#ffb900;font-size:16px;width:16px;height:16px;" aria-hidden="true"></span>';
-			}
-			if ( $half_star ) {
-				$stars_html .= '<span class="dashicons dashicons-star-half" style="color:#ffb900;font-size:16px;width:16px;height:16px;" aria-hidden="true"></span>';
-			}
-			for ( $i = 0; $i < $empty_stars; $i++ ) {
-				$stars_html .= '<span class="dashicons dashicons-star-empty" style="color:#ffb900;font-size:16px;width:16px;height:16px;" aria-hidden="true"></span>';
-			}
-
-			?>
-			<tr class="plugin-update-tr active" id="cecomsmarad-address-rating-row">
-				<td colspan="4" class="plugin-update colspanchange">
-					<div class="update-message notice inline notice-info notice-alt" style="padding:8px 12px;display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
-						<strong><?php esc_html_e( 'WordPress.org Rating:', 'smarttr-address' ); ?></strong>
-						<?php echo wp_kses( $stars_html, array( 'span' => array( 'class' => true, 'style' => true, 'aria-hidden' => true ) ) ); ?>
-						<span style="color:#646970;font-size:13px;">
-							<?php
-							printf(
-								/* translators: %s: number of ratings */
-								esc_html__( '(%s ratings)', 'smarttr-address' ),
-								esc_html( number_format_i18n( $num_ratings ) )
-							);
-							?>
-						</span>
-						<a
-							href="<?php echo esc_url( 'https://wordpress.org/support/plugin/smarttr-address/reviews/' ); ?>"
-							target="_blank"
-							rel="noopener noreferrer"
-						><?php esc_html_e( 'Read reviews', 'smarttr-address' ); ?></a>
-					</div>
-				</td>
-			</tr>
-			<?php
+			return $links;
 		},
 		10,
-		3
+		2
 	);
 
 } // end is_admin()

@@ -98,9 +98,8 @@ class Cecomsmarad_Admin_Controller {
 		if ( ! $cecom_registered ) {
 			$icon_path = CECOMSMARAD_PLUGIN_DIR . 'assets/img/cecomplgns-menu-icon.svg';
 			$icon_data = file_exists( $icon_path )
-				? 'data:image/svg+xml;base64,' . base64_encode(
-					file_get_contents( $icon_path )
-				  )
+				// phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.obfuscation_base64_encode,WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents
+				? 'data:image/svg+xml;base64,' . base64_encode( file_get_contents( $icon_path ) )
 				: 'dashicons-admin-plugins';
 
 			add_menu_page(
@@ -147,67 +146,77 @@ class Cecomsmarad_Admin_Controller {
 			return;
 		}
 
-		// Bootstrap v5 — bundled locally (CDN not allowed per WordPress.org guidelines).
+		// 1. Bootstrap CSS — bundled locally (CDN not allowed per WordPress.org guidelines).
 		wp_enqueue_style(
-			'cecomsmarad-bootstrap',
-			CECOMSMARAD_PLUGIN_URL . 'assets/vendor/bootstrap/css/bootstrap.min.css',
+			'bootstrap',
+			CECOMSMARAD_PLUGIN_URL . 'assets/dist/css/bootstrap.min.css',
 			array(),
 			'5.3.8'
 		);
+
+		// 2. Bootstrap Icons.
+		wp_enqueue_style(
+			'bootstrap-icons',
+			CECOMSMARAD_PLUGIN_URL . 'assets/icons/font/bootstrap-icons.css',
+			array(),
+			'1.13.1'
+		);
+
+		// 3. CECOM Framework CSS (brand color overrides — shared across all CECOM plugins).
+		wp_enqueue_style(
+			'cecom-framework',
+			CECOMSMARAD_PLUGIN_URL . 'assets/css/cecom-plugin-admin-ui-framework.css',
+			array( 'bootstrap' ),
+			CECOMSMARAD_VERSION
+		);
+
+		// 4. Plugin-specific CSS.
+		$css_file = CECOMSMARAD_PLUGIN_DIR . 'assets/css/cecomsmarad-admin.css';
+		wp_enqueue_style(
+			'cecomsmarad-admin',
+			CECOMSMARAD_PLUGIN_URL . 'assets/css/cecomsmarad-admin.css',
+			array( 'cecom-framework' ),
+			file_exists( $css_file ) ? (string) filemtime( $css_file ) : CECOMSMARAD_VERSION
+		);
+
+		// 5. Bootstrap JS (includes Popper).
 		wp_enqueue_script(
-			'cecomsmarad-bootstrap',
-			CECOMSMARAD_PLUGIN_URL . 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js',
+			'bootstrap',
+			CECOMSMARAD_PLUGIN_URL . 'assets/dist/js/bootstrap.bundle.min.js',
 			array(),
 			'5.3.8',
 			true
 		);
-		wp_enqueue_style(
-			'cecomsmarad-bootstrap-icons',
-			CECOMSMARAD_PLUGIN_URL . 'assets/vendor/bootstrap-icons/font/bootstrap-icons.min.css',
-			array(),
-			'1.11.3'
-		);
 
-		$suffix = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
-
-		$css_file = CECOMSMARAD_PLUGIN_DIR . 'assets/css/cecomsmarad-admin' . $suffix . '.css';
-		$js_file  = CECOMSMARAD_PLUGIN_DIR . 'assets/js/cecomsmarad-admin' . $suffix . '.js';
-
-		wp_enqueue_style(
-			'cecomsmarad-admin',
-			CECOMSMARAD_PLUGIN_URL . 'assets/css/cecomsmarad-admin' . $suffix . '.css',
-			array(),
-			(string) filemtime( $css_file )
-		);
-
+		// 6. Plugin JS.
+		$js_file = CECOMSMARAD_PLUGIN_DIR . 'assets/js/cecomsmarad-admin.js';
 		wp_enqueue_script(
 			'cecomsmarad-admin',
-			CECOMSMARAD_PLUGIN_URL . 'assets/js/cecomsmarad-admin' . $suffix . '.js',
-			array( 'jquery', 'jquery-ui-sortable' ),
-			(string) filemtime( $js_file ),
+			CECOMSMARAD_PLUGIN_URL . 'assets/js/cecomsmarad-admin.js',
+			array( 'jquery', 'bootstrap' ),
+			file_exists( $js_file ) ? (string) filemtime( $js_file ) : CECOMSMARAD_VERSION,
 			true
 		);
 
+		// 7. Localized data for AJAX and i18n.
 		wp_localize_script(
 			'cecomsmarad-admin',
 			'cecomsmaradAdmin',
 			array(
-				'ajaxUrl'            => admin_url( 'admin-ajax.php' ),
-				'nonce'              => wp_create_nonce( self::NONCE_ACTION ),
-				'layoutChips'        => array( 'form-row-wide', 'form-row-first', 'form-row-last' ),
-				'noUnsetFields'      => Cecomsmarad_Settings::get_no_unset_fields(),
-				'i18n'               => array(
-					'confirmReimport'    => __( 'This will delete existing address data and reload it from the remote server. Do you want to continue?', 'smarttr-address' ),
-					'saved'              => __( 'Settings saved.', 'smarttr-address' ),
-					'saving'             => __( 'Saving…', 'smarttr-address' ),
-					'error'              => __( 'An error occurred. Please try again.', 'smarttr-address' ),
-					'reimportSuccess'    => __( 'Address data successfully updated.', 'smarttr-address' ),
-					'reimporting'        => __( 'Updating data…', 'smarttr-address' ),
-					'cancel'             => __( 'Cancel', 'smarttr-address' ),
-					'confirm'            => __( 'Confirm', 'smarttr-address' ),
-					'reimportTitle'      => __( 'Reload Data', 'smarttr-address' ),
-					'unsavedChanges'     => __( 'You have unsaved changes. Do you want to leave the page?', 'smarttr-address' ),
-					'shortcodeCopied'    => __( 'Shortcode copied!', 'smarttr-address' ),
+				'ajaxUrl' => admin_url( 'admin-ajax.php' ),
+				'nonce'   => wp_create_nonce( self::NONCE_ACTION ),
+				'i18n'    => array(
+					'confirmReimport' => __( 'This will delete existing address data and reload it from the remote server. Do you want to continue?', 'smarttr-address' ),
+					'saved'           => __( 'Settings saved.', 'smarttr-address' ),
+					'saving'          => __( 'Saving…', 'smarttr-address' ),
+					'error'           => __( 'An error occurred. Please try again.', 'smarttr-address' ),
+					'reimportSuccess' => __( 'Address data successfully updated.', 'smarttr-address' ),
+					'reimporting'     => __( 'Updating data…', 'smarttr-address' ),
+					'cancel'          => __( 'Cancel', 'smarttr-address' ),
+					'confirm'         => __( 'Confirm', 'smarttr-address' ),
+					'reimportTitle'   => __( 'Reload Data', 'smarttr-address' ),
+					'unsavedChanges'  => __( 'You have unsaved changes. Do you want to leave the page?', 'smarttr-address' ),
+					'shortcodeCopied' => __( 'Shortcode copied!', 'smarttr-address' ),
 				),
 			)
 		);
@@ -389,8 +398,8 @@ class Cecomsmarad_Admin_Controller {
 					break;
 				}
 			}
-			$type_val        = isset( $props['type'] ) ? self::valid_field_type( sanitize_text_field( $props['type'] ) ) : 'text';
-			$visibility_val  = isset( $props['visibility'] ) ? self::valid_visibility( sanitize_text_field( $props['visibility'] ) ) : 'visible';
+			$type_val       = isset( $props['type'] ) ? self::valid_field_type( sanitize_text_field( $props['type'] ) ) : 'text';
+			$visibility_val = isset( $props['visibility'] ) ? self::valid_visibility( sanitize_text_field( $props['visibility'] ) ) : 'visible';
 
 			$bulk[ $field_key ] = array(
 				'type'               => $type_val,
@@ -481,13 +490,15 @@ class Cecomsmarad_Admin_Controller {
 					gmdate( 'Y-m-d H:i:s', $next_ts ),
 					get_option( 'date_format' )
 				);
-				wp_send_json_error( array(
-					'message' => sprintf(
+				wp_send_json_error(
+					array(
+						'message' => sprintf(
 						/* translators: %s: date the next manual sync becomes available */
-						__( 'Address data can be updated once per month. Next update available: %s.', 'smarttr-address' ),
-						$next_fmt
-					),
-				) );
+							__( 'Address data can be updated once per month. Next update available: %s.', 'smarttr-address' ),
+							$next_fmt
+						),
+					)
+				);
 			}
 		}
 
@@ -572,6 +583,7 @@ class Cecomsmarad_Admin_Controller {
 			$tables[ $key ] = null !== $row;
 
 			if ( $row ) {
+				// phpcs:ignore WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase -- INFORMATION_SCHEMA column names are UPPERCASE by MySQL convention.
 				$total_size += (int) $row->DATA_LENGTH + (int) $row->INDEX_LENGTH;
 			}
 		}
@@ -584,9 +596,11 @@ class Cecomsmarad_Admin_Controller {
 		);
 	}
 
-	/* ======================================================================
+	/*
+	 * ====================================================================
 	 * Deactivation Feedback
-	 * ==================================================================== */
+	 * ====================================================================
+	 */
 
 	/**
 	 * Enqueue the deactivation-feedback modal assets on the Plugins list page.

@@ -4,10 +4,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: SmartTR Address 1.1.0\n"
-"Report-Msgid-Bugs-To: https://cecom.in/smarttr-address-turkish-address\n"
-"POT-Creation-Date: 2026-03-09 12:00:00+0000\n"
-"PO-Revision-Date: 2026-03-09 12:00:00+0000\n"
+"Project-Id-Version: SmartTR Address 1.3.1\n"
+"Report-Msgid-Bugs-To: support@cecom.in\n"
+"POT-Creation-Date: 2026-04-01 15:49:43+0000\n"
+"PO-Revision-Date: 2026-04-01 15:52+0000\n"
 "Last-Translator: cecom\n"
 "Language-Team: Turkish\n"
 "Language: tr_TR\n"
@@ -17,757 +17,954 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Generator: SmartTR Address\n"
 
-#. Plugin Name of the plugin
-msgid "SmartTR Address"
-msgstr "SmartTR Address"
-
-#: includes/class-smarttr-activator.php
+#. translators: 1: Required PHP version, 2: Current PHP version.
+#: includes/class-cecomsmarad-activator.php:69
+#, php-format
 msgid "SmartTR Address requires PHP %1$s or higher. You are running PHP %2$s."
-msgstr "SmartTR Address PHP %1$s veya üstünü gerektirir. Mevcut PHP sürümünüz %2$s."
+msgstr "SmartTR Address, PHP %1$s veya daha yüksek bir sürüm gerektirmektedir. Mevcut PHP sürümünüz: %2$s."
+"SmartTR Address PHP %1$s veya üstünü gerektirir. Mevcut PHP sürümünüz %2$s."
 
-#: includes/class-smarttr-activator.php
-msgid "SmartTR Address requires WordPress %1$s or higher. You are running WordPress %2$s."
-msgstr "SmartTR Address WordPress %1$s veya üstünü gerektirir. Mevcut WordPress sürümünüz %2$s."
+#. translators: 1: Required WordPress version, 2: Current WordPress version.
+#: includes/class-cecomsmarad-activator.php:78
+#, php-format
+msgid ""
+"SmartTR Address requires WordPress %1$s or higher. You are running WordPress "
+"%2$s."
+msgstr ""
+"SmartTR Address WordPress %1$s veya üstünü gerektirir. Mevcut WordPress "
+"sürümünüz %2$s."
 
-#: includes/class-smarttr-activator.php
+#: includes/class-cecomsmarad-activator.php:85
 msgid "SmartTR Address requires WooCommerce to be installed and active."
 msgstr "SmartTR Address, WooCommerce'in kurulu ve etkin olmasını gerektirir."
 
-#: includes/class-smarttr-activator.php
-msgid "SmartTR Address requires WooCommerce %1$s or higher. You are running WooCommerce %2$s."
-msgstr "SmartTR Address WooCommerce %1$s veya üstünü gerektirir. Mevcut WooCommerce sürümünüz %2$s."
+#. translators: 1: Required WooCommerce version, 2: Current WooCommerce version.
+#: includes/class-cecomsmarad-activator.php:89
+#, php-format
+msgid ""
+"SmartTR Address requires WooCommerce %1$s or higher. You are running "
+"WooCommerce %2$s."
+msgstr ""
+"SmartTR Address WooCommerce %1$s veya üstünü gerektirir. Mevcut WooCommerce "
+"sürümünüz %2$s."
 
-#: includes/class-smarttr-activator.php
+#: includes/class-cecomsmarad-activator.php:100
 msgid "SmartTR Address Activation Error"
 msgstr "SmartTR Address Etkinleştirme Hatası"
 
-#: includes/models/class-smarttr-settings.php
-#: includes/views/admin/settings.php
-msgid "Province"
-msgstr "İl"
+#: includes/class-cecomsmarad-privacy.php:53
+msgid ""
+"This plugin collects and stores Turkish address information (province, "
+"district) entered during the WooCommerce checkout process. This data is "
+"saved in WooCommerce order records and is used solely to process and fulfil "
+"orders."
+msgstr ""
 
-#: includes/models/class-smarttr-settings.php
-msgid "Select province"
-msgstr "İl seçin"
+#: includes/class-cecomsmarad-privacy.php:55
+msgid ""
+"All collected address data can be exported or permanently erased via the "
+"WordPress Tools → Export Personal Data and Erase Personal Data screens."
+msgstr ""
 
-#: includes/models/class-smarttr-settings.php
-#: includes/views/admin/settings.php
-msgid "District"
-msgstr "İlçe"
+#: includes/class-cecomsmarad-privacy.php:70
+#: includes/class-cecomsmarad-privacy.php:85
+msgid "SmartTR Address Data"
+msgstr "SmartTR Address Verileri"
 
-#: includes/models/class-smarttr-settings.php
-msgid "Select district"
-msgstr "İlçe seçin"
+#. translators: %s: address type (Billing or Shipping)
+#: includes/class-cecomsmarad-privacy.php:127
+#, php-format
+msgid "%s Province"
+msgstr "%s İli"
 
-#: includes/models/class-smarttr-settings.php
-#: includes/views/admin/settings.php
-msgid "Neighborhood"
-msgstr "Mahalle"
+#. translators: %s: address type (Billing or Shipping)
+#: includes/class-cecomsmarad-privacy.php:134
+#, php-format
+msgid "%s District"
+msgstr "%s İlçesi"
 
-#: includes/models/class-smarttr-settings.php
-msgid "Select neighborhood"
-msgstr "Mahalle seçin"
+#. translators: %s: WooCommerce order number
+#: includes/class-cecomsmarad-privacy.php:145
+#, php-format
+msgid "SmartTR Address — Order #%s"
+msgstr "SmartTR Address — Sipariş #%s"
 
-#: includes/models/class-smarttr-settings.php
-msgid "Postal Code"
-msgstr "Posta Kodu"
+#: includes/controllers/class-cecomsmarad-admin-controller.php:106
+#: includes/controllers/class-cecomsmarad-admin-controller.php:107
+msgid "CECOM"
+msgstr "CECOM"
 
-#: includes/models/class-smarttr-settings.php
-msgid "First Name"
-msgstr "Ad"
+#: includes/controllers/class-cecomsmarad-admin-controller.php:123
+msgid "SmartTR Address Settings"
+msgstr "SmartTR Address Ayarları"
 
-#: includes/models/class-smarttr-settings.php
-msgid "Last Name"
-msgstr "Soyad"
+#: includes/controllers/class-cecomsmarad-admin-controller.php:124
+#: includes/views/admin/settings.php:101 smarttr-address.php:192
+msgid "SmartTR Address"
+msgstr "SmartTR Address"
 
-#: includes/models/class-smarttr-settings.php
-msgid "Company Name"
-msgstr "Şirket Adı"
+#: includes/controllers/class-cecomsmarad-admin-controller.php:199
+msgid ""
+"This will delete existing address data and reload it from the remote server. "
+"Do you want to continue?"
+msgstr ""
+"Bu işlem mevcut adres verilerini silip uzak sunucudan yeniden yükleyecektir. "
+"Devam etmek istiyor musunuz?"
 
-#: includes/models/class-smarttr-settings.php
-msgid "Country / Region"
-msgstr "Ülke / Bölge"
-
-#: includes/models/class-smarttr-settings.php
-msgid "Street Address"
-msgstr "Sokak Adresi"
-
-#: includes/models/class-smarttr-settings.php
-msgid "House number and street name"
-msgstr "Ev numarası ve sokak adı"
-
-#: includes/models/class-smarttr-settings.php
-msgid "Email Address"
-msgstr "E-posta Adresi"
-
-#: includes/models/class-smarttr-settings.php
-msgid "Phone"
-msgstr "Telefon"
-
-#: includes/controllers/class-smarttr-checkout-controller.php
-msgid "Loading..."
-msgstr "Yükleniyor..."
-
-#: includes/controllers/class-smarttr-checkout-controller.php
-#: includes/controllers/class-smarttr-admin-controller.php
-#: includes/views/admin/settings.php
-msgid "No results found"
-msgstr "Sonuç bulunamadı"
-
-#. translators: %s: comma-separated list of allowed file types
-#: includes/controllers/class-smarttr-checkout-controller.php
-msgid "Allowed file types: %s"
-msgstr "İzin verilen dosya türleri: %s"
-
-#: includes/controllers/class-smarttr-order-controller.php
-msgid "%s province is required."
-msgstr "%s il alanı zorunludur."
-
-#: includes/controllers/class-smarttr-order-controller.php
-msgid "%s district is required."
-msgstr "%s ilçe alanı zorunludur."
-
-#: includes/controllers/class-smarttr-order-controller.php
-msgid "%s neighborhood is required."
-msgstr "%s mahalle alanı zorunludur."
-
-#: includes/controllers/class-smarttr-order-controller.php
-#: includes/controllers/class-smarttr-admin-controller.php
-#: includes/views/admin/settings.php
-#: includes/views/admin/field-card-helpers.php
-msgid "Shipping"
-msgstr "Kargo"
-
-#: includes/controllers/class-smarttr-order-controller.php
-#: includes/controllers/class-smarttr-admin-controller.php
-#: includes/views/admin/settings.php
-#: includes/views/admin/field-card-helpers.php
-msgid "Billing"
-msgstr "Fatura"
-
-#. translators: %1$s: address type label, %2$s: field label
-#: includes/controllers/class-smarttr-order-controller.php
-msgid "%1$s %2$s field is required."
-msgstr "%1$s %2$s alanı zorunludur."
-
-#: includes/controllers/class-smarttr-order-controller.php
-msgid "View in Media"
-msgstr "Medyada Görüntüle"
-
-#: includes/controllers/class-smarttr-admin-controller.php
-msgid "Invalid field key."
-msgstr "Geçersiz alan anahtarı."
-
-#: cecomsmarad-address.php
-msgid "Address data sync is pending. Data is being loaded in the background. If not completed, you can start it manually from the Data Management tab:"
-msgstr "Adres verileri senkronizasyonu bekleniyor. Veriler arka planda yükleniyor. Tamamlanmadıysa, Veri Yönetimi sekmesinden manuel olarak başlatabilirsiniz:"
-
-#: cecomsmarad-address.php
-#: includes/views/admin/settings.php
-msgid "Data Management"
-msgstr "Veri Yönetimi"
-
-#: includes/controllers/class-smarttr-admin-controller.php
-msgid "This will delete existing address data and reload it from the remote server. Do you want to continue?"
-msgstr "Bu işlem mevcut adres verilerini silip uzak sunucudan yeniden yükleyecektir. Devam etmek istiyor musunuz?"
-
-#: includes/controllers/class-smarttr-admin-controller.php
-msgid "All field settings will be reset to defaults. Do you want to continue?"
-msgstr "Tüm alan ayarları varsayılana döndürülecektir. Devam etmek istiyor musunuz?"
-
-#: includes/controllers/class-smarttr-admin-controller.php
+#: includes/controllers/class-cecomsmarad-admin-controller.php:200
 msgid "Settings saved."
 msgstr "Ayarlar kaydedildi."
 
-#: includes/controllers/class-smarttr-admin-controller.php
+#: includes/controllers/class-cecomsmarad-admin-controller.php:201
 msgid "Saving…"
 msgstr "Kaydediliyor…"
 
-#: includes/controllers/class-smarttr-admin-controller.php
+#: includes/controllers/class-cecomsmarad-admin-controller.php:202
 msgid "An error occurred. Please try again."
 msgstr "Bir hata oluştu. Lütfen tekrar deneyin."
 
-#: includes/controllers/class-smarttr-admin-controller.php
-msgid "All fields reset to default values."
-msgstr "Tüm alanlar varsayılan değerlere sıfırlandı."
-
-#: includes/controllers/class-smarttr-admin-controller.php
-#: includes/models/class-smarttr-remote-sync.php
+#: includes/controllers/class-cecomsmarad-admin-controller.php:203
+#: includes/models/class-cecomsmarad-remote-sync.php:152
 msgid "Address data successfully updated."
 msgstr "Adres verileri başarıyla güncellendi."
 
-#: includes/controllers/class-smarttr-admin-controller.php
+#: includes/controllers/class-cecomsmarad-admin-controller.php:204
 msgid "Updating data…"
 msgstr "Veriler güncelleniyor…"
 
-#: includes/controllers/class-smarttr-admin-controller.php
-#: includes/views/admin/settings.php
+#: includes/controllers/class-cecomsmarad-admin-controller.php:205
+#: includes/views/admin/settings.php:473
 msgid "Cancel"
 msgstr "İptal"
 
-#: includes/controllers/class-smarttr-admin-controller.php
-#: includes/views/admin/settings.php
+#: includes/controllers/class-cecomsmarad-admin-controller.php:206
+#: includes/views/admin/settings.php:474
 msgid "Confirm"
 msgstr "Onayla"
 
-#: includes/controllers/class-smarttr-admin-controller.php
+#: includes/controllers/class-cecomsmarad-admin-controller.php:207
 msgid "Reload Data"
 msgstr "Verileri Yeniden Yükle"
 
-#: includes/controllers/class-smarttr-admin-controller.php
-#: includes/views/admin/settings.php
-msgid "Reset to Defaults"
-msgstr "Varsayılana Sıfırla"
-
-#: includes/controllers/class-smarttr-admin-controller.php
+#: includes/controllers/class-cecomsmarad-admin-controller.php:208
 msgid "You have unsaved changes. Do you want to leave the page?"
 msgstr "Kaydedilmemiş değişiklikler var. Sayfadan ayrılmak istiyor musunuz?"
 
-#: includes/controllers/class-smarttr-admin-controller.php
-#: includes/views/admin/settings.php
-msgid "All"
-msgstr "Tümü"
+#: includes/controllers/class-cecomsmarad-admin-controller.php:209
+msgid "Shortcode copied!"
+msgstr "Kısa kod kopyalandı!"
 
-#: includes/controllers/class-smarttr-admin-controller.php
-msgid "Export date"
-msgstr "Dışa aktarma tarihi"
-
-#: includes/controllers/class-smarttr-admin-controller.php
-msgid "Unauthorized access."
-msgstr "Yetkisiz erişim."
-
-#: includes/controllers/class-smarttr-admin-controller.php
-msgid "Invalid field data."
-msgstr "Geçersiz alan verisi."
-
-#: includes/controllers/class-smarttr-admin-controller.php
-msgid "General settings saved."
-msgstr "Genel ayarlar kaydedildi."
-
-#. translators: %d: number of fields saved
-#: includes/controllers/class-smarttr-admin-controller.php
-msgid "%d field(s) successfully saved."
-msgstr "%d alan başarıyla kaydedildi."
-
-#: includes/controllers/class-smarttr-admin-controller.php
+#: includes/controllers/class-cecomsmarad-admin-controller.php:222
+#: includes/controllers/class-cecomsmarad-admin-controller.php:242
 msgid "You do not have permission to access this page."
 msgstr "Bu sayfaya erişim yetkiniz yok."
 
-#: includes/controllers/class-smarttr-admin-controller.php
+#: includes/controllers/class-cecomsmarad-admin-controller.php:246
 msgid "Security verification failed."
 msgstr "Güvenlik doğrulaması başarısız."
 
-#: includes/controllers/class-smarttr-admin-controller.php
-#: includes/views/admin/settings.php
-msgid "Add Custom Field"
-msgstr "Özel Alan Ekle"
-
-#: includes/controllers/class-smarttr-admin-controller.php
-#: includes/views/admin/field-card-helpers.php
-msgid "Delete Field"
-msgstr "Alanı Sil"
-
-#: includes/controllers/class-smarttr-admin-controller.php
-msgid "This custom field will be permanently deleted. Do you want to continue?"
-msgstr "Bu özel alan kalıcı olarak silinecektir. Devam etmek istiyor musunuz?"
-
-#: includes/controllers/class-smarttr-admin-controller.php
-#: includes/views/admin/settings.php
-msgid "Field Key"
-msgstr "Alan Anahtarı"
-
-#: includes/controllers/class-smarttr-admin-controller.php
-#: includes/views/admin/settings.php
-msgid "Field Label"
-msgstr "Alan Etiketi"
-
-#: includes/controllers/class-smarttr-admin-controller.php
-#: includes/views/admin/settings.php
-msgid "Field Type"
-msgstr "Alan Türü"
-
-#: includes/controllers/class-smarttr-admin-controller.php
-#: includes/views/admin/settings.php
-msgid "Address Type"
-msgstr "Adres Türü"
-
-#: includes/controllers/class-smarttr-admin-controller.php
-msgid "This key is already in use."
-msgstr "Bu anahtar zaten kullanılıyor."
-
-#: includes/controllers/class-smarttr-admin-controller.php
-msgid "Key may only contain lowercase letters, digits, and underscores (max. 30 characters)."
-msgstr "Anahtar yalnızca küçük harf, rakam ve alt çizgi içerebilir (maks. 30 karakter)."
-
-#: includes/controllers/class-smarttr-admin-controller.php
-msgid "Custom field successfully created."
-msgstr "Özel alan başarıyla oluşturuldu."
-
-#: includes/controllers/class-smarttr-admin-controller.php
-msgid "Custom field deleted."
-msgstr "Özel alan silindi."
-
-#: includes/controllers/class-smarttr-admin-controller.php
-#: includes/views/admin/field-card-helpers.php
-msgid "Custom"
-msgstr "Özel"
-
-#: includes/controllers/class-smarttr-admin-controller.php
-#: includes/views/admin/field-card-helpers.php
-msgid "Show on Order Page"
-msgstr "Sipariş Sayfasında Göster"
-
-#: includes/controllers/class-smarttr-admin-controller.php
-#: includes/views/admin/field-card-helpers.php
-msgid "Show in Email"
-msgstr "E-postada Göster"
-
-#: includes/controllers/class-smarttr-admin-controller.php
-#: includes/views/admin/settings.php
-msgid "Create Field"
-msgstr "Alan Oluştur"
-
-#: includes/controllers/class-smarttr-admin-controller.php
-msgid "All fields are required."
-msgstr "Tüm alanlar zorunludur."
-
-#: includes/controllers/class-smarttr-admin-controller.php
-msgid "Field could not be created. Key is invalid or already exists."
-msgstr "Alan oluşturulamadı. Anahtar geçersiz veya zaten mevcut."
-
-#: includes/controllers/class-smarttr-admin-controller.php
-msgid "Field not found."
-msgstr "Alan bulunamadı."
-
-#: includes/views/admin/settings.php
-msgid "General"
-msgstr "Genel"
-
-#: includes/views/admin/settings.php
-msgid "Field Editor"
-msgstr "Alan Düzenleyici"
-
-#: includes/views/admin/settings.php
-msgid "Billing — First Name"
-msgstr "Fatura — Ad"
-
-#: includes/views/admin/settings.php
-msgid "Billing — Last Name"
-msgstr "Fatura — Soyad"
-
-#: includes/views/admin/settings.php
-msgid "Billing — Company"
-msgstr "Fatura — Şirket"
-
-#: includes/views/admin/settings.php
-msgid "Billing — Country"
-msgstr "Fatura — Ülke"
-
-#: includes/views/admin/settings.php
-msgid "Billing — Address 1"
-msgstr "Fatura — Adres 1"
-
-#: includes/views/admin/settings.php
-msgid "Billing — Neighborhood"
-msgstr "Fatura — Mahalle"
-
-#: includes/views/admin/settings.php
-msgid "Billing — District"
-msgstr "Fatura — İlçe"
-
-#: includes/views/admin/settings.php
-msgid "Billing — Province"
-msgstr "Fatura — İl"
-
-#: includes/views/admin/settings.php
-msgid "Billing — Postal Code"
-msgstr "Fatura — Posta Kodu"
-
-#: includes/views/admin/settings.php
-msgid "Billing — Email"
-msgstr "Fatura — E-posta"
-
-#: includes/views/admin/settings.php
-msgid "Billing — Phone"
-msgstr "Fatura — Telefon"
-
-#: includes/views/admin/settings.php
-msgid "Shipping — First Name"
-msgstr "Kargo — Ad"
-
-#: includes/views/admin/settings.php
-msgid "Shipping — Last Name"
-msgstr "Kargo — Soyad"
-
-#: includes/views/admin/settings.php
-msgid "Shipping — Company"
-msgstr "Kargo — Şirket"
-
-#: includes/views/admin/settings.php
-msgid "Shipping — Country"
-msgstr "Kargo — Ülke"
-
-#: includes/views/admin/settings.php
-msgid "Shipping — Address 1"
-msgstr "Kargo — Adres 1"
-
-#: includes/views/admin/settings.php
-msgid "Shipping — Neighborhood"
-msgstr "Kargo — Mahalle"
-
-#: includes/views/admin/settings.php
-msgid "Shipping — District"
-msgstr "Kargo — İlçe"
-
-#: includes/views/admin/settings.php
-msgid "Shipping — Province"
-msgstr "Kargo — İl"
-
-#: includes/views/admin/settings.php
-msgid "Shipping — Postal Code"
-msgstr "Kargo — Posta Kodu"
-
-#: includes/views/admin/settings.php
-msgid "Documentation"
-msgstr "Dokümantasyon"
-
-#: includes/views/admin/settings.php
-msgid "Version"
-msgstr "Sürüm"
-
-#: includes/views/admin/settings.php
-msgid "Not installed"
-msgstr "Yüklü değil"
-
-#: includes/views/admin/settings.php
-msgid "Active"
-msgstr "Aktif"
-
-#: includes/views/admin/settings.php
-msgid "Inactive"
-msgstr "Pasif"
-
-#: includes/views/admin/settings.php
-msgid "Block"
-msgstr "Blok"
-
-#: includes/views/admin/settings.php
-msgid "Classic"
-msgstr "Klasik"
-
-#: includes/views/admin/settings.php
-msgid "Checkout Type"
-msgstr "Ödeme Türü"
-
-#: includes/views/admin/settings.php
-msgid "Enable Plugin"
-msgstr "Eklentiyi Etkinleştir"
-
-#: includes/views/admin/settings.php
-msgid "Enable Turkish address auto-fill feature"
-msgstr "Türkiye adresi otomatik doldurma özelliğini etkinleştir"
-
-#: includes/views/admin/settings.php
-msgid "View Checkout Page"
-msgstr "Ödeme Sayfasını Görüntüle"
-
-#: includes/views/admin/settings.php
-msgid "WooCommerce Settings"
-msgstr "WooCommerce Ayarları"
-
-#: includes/views/admin/settings.php
-msgid "Save"
-msgstr "Kaydet"
-
-#: includes/views/admin/settings.php
-msgid "Buy Premium"
-msgstr "Premium Satın Al"
-
-#: includes/views/admin/settings.php
-msgid "Upgrade to Premium"
-msgstr "Premium'e yükseltin"
-
-#: includes/views/admin/settings.php
-#: includes/views/admin/field-card-helpers.php
-msgid "Buy"
-msgstr "Satın Al"
-
-#: includes/views/admin/settings.php
-msgid "Search fields…"
-msgstr "Alan ara…"
-
-#: includes/views/admin/settings.php
-msgid "Filter"
-msgstr "Filtre"
-
-#: includes/views/admin/settings.php
-msgid "Expand All"
-msgstr "Tümünü Aç"
-
-#: includes/views/admin/settings.php
-msgid "Collapse All"
-msgstr "Tümünü Kapat"
-
-#: includes/views/admin/settings.php
-msgid "Save All Fields"
-msgstr "Tüm Alanları Kaydet"
-
-#: includes/views/admin/settings.php
-msgid "Unsaved changes"
-msgstr "Kaydedilmemiş değişiklikler"
-
-#: includes/views/admin/settings.php
-msgid "Data Version"
-msgstr "Veri Sürümü"
-
-#: includes/views/admin/settings.php
-msgid "Last Import"
-msgstr "Son Yükleme"
-
-#: includes/views/admin/settings.php
-msgid "Not yet"
-msgstr "Henüz yok"
-
-#: includes/views/admin/settings.php
-msgid "Update Addresses"
-msgstr "Adresleri Güncelle"
-
-#: includes/views/admin/settings.php
-msgid "Auto-Update"
-msgstr "Otomatik Güncelleme"
-
-#: includes/views/admin/settings.php
-msgid "Automatically update address data at the selected interval."
-msgstr "Adres verilerini seçilen aralıkta otomatik olarak güncelleyin."
-
-#: includes/views/admin/settings.php
-msgid "Weekly"
-msgstr "Haftalık"
-
-#: includes/views/admin/settings.php
-msgid "Monthly (Recomended)"
-msgstr "Aylık (Önerilen)"
-
-#: includes/views/admin/settings.php
-msgid "Every 2 Months"
-msgstr "2 Ayda Bir"
-
-#: includes/views/admin/settings.php
-msgid "Save Schedule"
-msgstr "Zamanlamayı Kaydet"
-
-#: includes/views/admin/settings.php
-msgid "Feature Comparison"
-msgstr "Özellik Karşılaştırması"
-
-#: includes/views/admin/settings.php
-msgid "Feature"
-msgstr "Özellik"
-
-#: includes/views/admin/settings.php
-msgid "Free"
-msgstr "Ücretsiz"
-
-#: includes/views/admin/settings.php
-msgid "Province → District cascade"
-msgstr "İl → İlçe kademesi"
-
-#: includes/views/admin/settings.php
-msgid "Neighborhood dropdown &amp; data"
-msgstr "Mahalle açılır menüsü &amp; verileri"
-
-#: includes/views/admin/settings.php
-msgid "Neighborhood auto-select"
-msgstr "Mahalle otomatik seçimi"
-
-#: includes/views/admin/settings.php
-msgid "Postal code auto-fill"
-msgstr "Posta kodu otomatik doldurma"
-
-#: includes/views/admin/settings.php
-msgid "Field editing (label, placeholder, description)"
-msgstr "Alan düzenleme (etiket, placeholder, açıklama)"
-
-#: includes/views/admin/settings.php
-msgid "Custom fields (create/delete/edit)"
-msgstr "Özel alanlar (oluştur/sil/düzenle)"
-
-#: includes/views/admin/settings.php
-msgid "Required / Clear / Visibility settings"
-msgstr "Zorunlu / Temizle / Görünürlük ayarları"
-
-#: includes/views/admin/settings.php
-msgid "Drag-and-drop field ordering"
-msgstr "Sürükle-bırak alan sıralaması"
-
-#: includes/views/admin/settings.php
-msgid "Auto-update (weekly / monthly / every 2 months)"
-msgstr "Otomatik güncelleme (haftalık / aylık / 2 ayda bir)"
-
-#: includes/views/admin/settings.php
-msgid "Data management (reload)"
-msgstr "Veri yönetimi (yeniden yükle)"
-
-#: includes/views/admin/settings.php
-msgid "CSS class editing"
-msgstr "CSS sınıfı düzenleme"
-
-#: includes/views/admin/field-card-helpers.php
-msgid "Billing Fields"
-msgstr "Fatura Alanları"
-
-#: includes/views/admin/field-card-helpers.php
-msgid "Shipping Fields"
-msgstr "Kargo Alanları"
-
-#. translators: %d: number of fields
-#: includes/views/admin/field-card-helpers.php
-msgid "%d field(s)"
-msgstr "%d alan"
-
-#: includes/views/admin/field-card-helpers.php
-msgid "Drag cards to reorder"
-msgstr "Sıralamak için kartları sürükleyin"
-
-#: includes/views/admin/field-card-helpers.php
-msgid "Drag"
-msgstr "Sürükle"
-
-#: includes/views/admin/field-card-helpers.php
-msgid "Required"
-msgstr "Zorunlu"
-
-#: includes/views/admin/field-card-helpers.php
-msgid "Type"
-msgstr "Tür"
-
-#: includes/views/admin/field-card-helpers.php
-msgid "Label"
-msgstr "Etiket"
-
-#: includes/views/admin/field-card-helpers.php
-msgid "Clear"
-msgstr "Temizle"
-
-#: includes/views/admin/field-card-helpers.php
-msgid "Visibility"
-msgstr "Görünürlük"
-
-#: includes/views/admin/field-card-helpers.php
-msgid "Visible"
-msgstr "Görünür"
-
-#: includes/views/admin/field-card-helpers.php
-msgid "Hidden"
-msgstr "Gizli"
-
-#: includes/views/admin/field-card-helpers.php
-msgid "Removed"
-msgstr "Kaldırıldı"
-
-#: includes/views/admin/field-card-helpers.php
-msgid "Description"
-msgstr "Açıklama"
-
-#: includes/views/admin/field-card-helpers.php
-msgid "Displayed below the field"
-msgstr "Alanın altında görüntülenir"
-
-#: includes/views/admin/field-card-helpers.php
-msgid "CSS Class"
-msgstr "CSS Sınıfı"
-
-#: includes/views/admin/field-card-helpers.php
-msgid "+ Add class"
-msgstr "+ Sınıf ekle"
-
-#: includes/views/admin/field-card-helpers.php
-msgid "Label Class"
-msgstr "Etiket Sınıfı"
-
-#: includes/views/admin/field-card-helpers.php
-msgid "Options"
-msgstr "Seçenekler"
-
-#: includes/views/admin/field-card-helpers.php
-msgid "Allowed Extensions"
-msgstr "İzin Verilen Uzantılar"
-
-#: includes/views/admin/field-card-helpers.php
-msgid "Separate with commas. If left empty, all extensions are allowed."
-msgstr "Virgülle ayırın. Boş bırakılırsa tüm uzantılara izin verilir."
-
-#: includes/views/admin/settings.php
-msgid "WooCommerce"
-msgstr "WooCommerce"
-
-#: includes/views/admin/settings.php
-msgid "HPOS"
-msgstr "HPOS"
-
-#: includes/views/admin/settings.php
-msgid "PHP"
-msgstr "PHP"
-
-#: includes/views/admin/settings.php
-msgid "WordPress"
-msgstr "WordPress"
-
-#: includes/views/admin/settings.php
-msgid "Premium"
-msgstr "Premium"
-
-#: includes/views/admin/settings.php
-msgid "example_field"
-msgstr "ornek_alan"
-
-#: includes/views/admin/settings.php
-msgid "National ID No"
-msgstr "TC Kimlik No"
-
-#: includes/views/admin/field-card-helpers.php
-msgid "Placeholder"
-msgstr "Yer Tutucu"
-
-#: includes/views/admin/field-card-helpers.php
-msgid "jpg,png,pdf"
-msgstr "jpg,png,pdf"
-
-#: includes/controllers/class-smarttr-admin-controller.php
-#: includes/views/admin/settings.php
-msgid "Free plan allows manual address updates once per month."
-msgstr "Ücretsiz planda adres verileri ayda bir kez manuel olarak güncellenebilir."
-
-#: includes/controllers/class-smarttr-admin-controller.php
-#: includes/views/admin/settings.php
-msgid "Free plan allows manual address updates once per month. Next update available on: %s"
-msgstr "Ücretsiz planda adres verileri ayda bir kez manuel olarak güncellenebilir. Bir sonraki güncelleme: %s"
-
-#: includes/views/admin/settings.php
-msgid "Free plan allows manual address updates once per month. Next update available on: <strong>%s</strong>"
-msgstr "Ücretsiz planda adres verileri ayda bir kez manuel olarak güncellenebilir. Bir sonraki güncelleme: <strong>%s</strong>"
-
-#: includes/models/class-smarttr-remote-sync.php
+#: includes/controllers/class-cecomsmarad-admin-controller.php:274
+#: includes/controllers/class-cecomsmarad-admin-controller.php:437
+msgid "General settings saved."
+msgstr "Genel ayarlar kaydedildi."
+
+#: includes/controllers/class-cecomsmarad-admin-controller.php:426
+#: includes/controllers/class-cecomsmarad-admin-controller.php:447
+#: includes/controllers/class-cecomsmarad-admin-controller.php:468
+msgid "Unauthorized access."
+msgstr "Yetkisiz erişim."
+
+#: includes/controllers/class-cecomsmarad-admin-controller.php:455
+msgid "All fields reset to default values."
+msgstr "Tüm alanlar varsayılan değerlere sıfırlandı."
+
+#. translators: %s: date the next manual sync becomes available
+#. translators: %s: date when next manual sync is available
+#: includes/controllers/class-cecomsmarad-admin-controller.php:487
+#: includes/views/admin/settings.php:381
+#, php-format
+msgid "Address data can be updated once per month. Next update available: %s."
+msgstr "Adres verileri ayda bir kez güncellenebilir. Sonraki güncelleme tarihi: %s."
+
+#: includes/controllers/class-cecomsmarad-admin-controller.php:637
+msgid "Quick Feedback"
+msgstr "Hızlı Geri Bildirim"
+
+#: includes/controllers/class-cecomsmarad-admin-controller.php:638
+msgid "Close"
+msgstr "Kapat"
+
+#: includes/controllers/class-cecomsmarad-admin-controller.php:639
+msgid ""
+"If you have a moment, please share why you are deactivating SmartTR Address:"
+msgstr ""
+
+#: includes/controllers/class-cecomsmarad-admin-controller.php:640
+msgid "This is a temporary deactivation for testing."
+msgstr "Bu geçici bir devre dışı bırakma işlemidir (test amaçlı)."
+
+#: includes/controllers/class-cecomsmarad-admin-controller.php:641
+msgid "The plugin isn't working properly."
+msgstr "Eklenti düzgün çalışmıyor."
+
+#: includes/controllers/class-cecomsmarad-admin-controller.php:642
+msgid "I found a better alternative plugin."
+msgstr "Daha iyi bir alternatif eklenti buldum."
+
+#: includes/controllers/class-cecomsmarad-admin-controller.php:643
+msgid "It's missing a specific feature."
+msgstr "Belirli bir özellik eksik."
+
+#: includes/controllers/class-cecomsmarad-admin-controller.php:644
+msgid "Other"
+msgstr "Diğer"
+
+#: includes/controllers/class-cecomsmarad-admin-controller.php:645
+msgid "Please tell us more details."
+msgstr "Lütfen daha fazla ayrıntı paylaşın."
+
+#: includes/controllers/class-cecomsmarad-admin-controller.php:646
+msgid "Submit & Deactivate"
+msgstr "Gönder ve Devre Dışı Bırak"
+
+#: includes/controllers/class-cecomsmarad-admin-controller.php:647
+msgid "Skip & Deactivate"
+msgstr "Atla ve Devre Dışı Bırak"
+
+#: includes/controllers/class-cecomsmarad-admin-controller.php:648
+msgid "Sending\\u2026"
+msgstr "Gönderiliyor\\u2026"
+
+#: includes/controllers/class-cecomsmarad-checkout-controller.php:385
+#: includes/models/class-cecomsmarad-settings.php:383
+#: includes/models/class-cecomsmarad-settings.php:539
+msgid "Select province"
+msgstr "İl seçin"
+
+#: includes/controllers/class-cecomsmarad-checkout-controller.php:386
+#: includes/models/class-cecomsmarad-settings.php:370
+#: includes/models/class-cecomsmarad-settings.php:513
+msgid "Select district"
+msgstr "İlçe seçin"
+
+#: includes/controllers/class-cecomsmarad-checkout-controller.php:387
+msgid "No results found"
+msgstr "Sonuç bulunamadı"
+
+#: includes/controllers/class-cecomsmarad-checkout-controller.php:441
+#: includes/models/class-cecomsmarad-settings.php:368
+#: includes/models/class-cecomsmarad-settings.php:511
+#: includes/views/admin/settings.php:321
+msgid "District"
+msgstr "İlçe"
+
+#: includes/controllers/class-cecomsmarad-checkout-controller.php:442
+#: includes/models/class-cecomsmarad-settings.php:355
+#: includes/models/class-cecomsmarad-settings.php:498
+#: includes/views/admin/settings.php:327
+msgid "Neighborhood"
+msgstr "Mahalle"
+
+#: includes/controllers/class-cecomsmarad-checkout-controller.php:502
+#: includes/controllers/class-cecomsmarad-checkout-controller.php:655
+msgid "required"
+msgstr "zorunlu"
+
+#. translators: %s: comma-separated list of allowed file extensions
+#: includes/controllers/class-cecomsmarad-checkout-controller.php:561
+#, php-format
+msgid "Allowed file types: %s"
+msgstr "İzin verilen dosya türleri: %s"
+
+#. translators: %s: address type label (Billing or Shipping).
+#: includes/controllers/class-cecomsmarad-order-controller.php:74
+#, php-format
+msgid "%s province is required."
+msgstr "%s il alanı zorunludur."
+
+#. translators: %s: address type label.
+#: includes/controllers/class-cecomsmarad-order-controller.php:95
+#, php-format
+msgid "%s province is not valid."
+msgstr "%s ili geçerli değil."
+
+#. translators: %s: address type label.
+#: includes/controllers/class-cecomsmarad-order-controller.php:106
+#, php-format
+msgid "%s district is required."
+msgstr "%s ilçe alanı zorunludur."
+
+#. translators: %s: address type label.
+#: includes/controllers/class-cecomsmarad-order-controller.php:116
+#, php-format
+msgid "%s neighborhood is required."
+msgstr "%s mahalle alanı zorunludur."
+
+#: includes/controllers/class-cecomsmarad-order-controller.php:248
+msgid "Shipping"
+msgstr "Kargo"
+
+#: includes/controllers/class-cecomsmarad-order-controller.php:249
+msgid "Billing"
+msgstr "Fatura"
+
+#: includes/models/class-cecomsmarad-remote-sync.php:81
+msgid "A sync is already in progress. Please try again shortly."
+msgstr "Bir senkronizasyon zaten devam ediyor. Lütfen kısa süre sonra tekrar deneyin."
+
+#: includes/models/class-cecomsmarad-remote-sync.php:105
 msgid "Source URL is not configured."
 msgstr "Kaynak URL tanımlanmamış."
 
-#: includes/models/class-smarttr-remote-sync.php
+#. translators: %s: error message
+#: includes/models/class-cecomsmarad-remote-sync.php:233
+#, php-format
 msgid "API connection error: %s"
 msgstr "API bağlantı hatası: %s"
 
-#: includes/models/class-smarttr-remote-sync.php
-msgid "Access to the data API was denied (HTTP %d). Please check your source server configuration."
-msgstr "Veri API'sine erişim reddedildi (HTTP %d). Kaynak sunucu yapılandırmasını kontrol edin."
+#: includes/models/class-cecomsmarad-remote-sync.php:247
+msgid ""
+"Unexpected response from the data server (invalid JSON). Please try again."
+msgstr ""
 
-#: includes/models/class-smarttr-remote-sync.php
+#. translators: %d: HTTP status code
+#: includes/models/class-cecomsmarad-remote-sync.php:257
+#, php-format
+msgid ""
+"Access to the data API was denied (HTTP %d). Please check your source server "
+"configuration."
+msgstr ""
+"Veri API'sine erişim reddedildi (HTTP %d). Kaynak sunucu yapılandırmasını "
+"kontrol edin."
+
+#. translators: %d: HTTP status code
+#: includes/models/class-cecomsmarad-remote-sync.php:269
+#, php-format
 msgid "Server error: HTTP %d"
 msgstr "Sunucu hatası: HTTP %d"
 
-#: includes/views/admin/settings.php
-msgid "Manual address data update"
-msgstr "Manuel adres verisi güncelleme"
+#: includes/models/class-cecomsmarad-settings.php:290
+#: includes/models/class-cecomsmarad-settings.php:433
+msgid "First Name"
+msgstr "Ad"
 
-#: includes/views/admin/settings.php
-msgid "Once/month"
-msgstr "Ayda 1 kez"
+#: includes/models/class-cecomsmarad-settings.php:303
+#: includes/models/class-cecomsmarad-settings.php:446
+msgid "Last Name"
+msgstr "Soyad"
 
+#: includes/models/class-cecomsmarad-settings.php:316
+#: includes/models/class-cecomsmarad-settings.php:459
+msgid "Company Name"
+msgstr "Şirket Adı"
+
+#: includes/models/class-cecomsmarad-settings.php:329
+#: includes/models/class-cecomsmarad-settings.php:472
+msgid "Country / Region"
+msgstr "Ülke / Bölge"
+
+#: includes/models/class-cecomsmarad-settings.php:342
+#: includes/models/class-cecomsmarad-settings.php:485
+msgid "Street Address"
+msgstr "Sokak Adresi"
+
+#: includes/models/class-cecomsmarad-settings.php:344
+#: includes/models/class-cecomsmarad-settings.php:487
+msgid "House number and street name"
+msgstr "Ev numarası ve sokak adı"
+
+#: includes/models/class-cecomsmarad-settings.php:357
+#: includes/models/class-cecomsmarad-settings.php:500
+msgid "Select neighborhood"
+msgstr "Mahalle seçin"
+
+#: includes/models/class-cecomsmarad-settings.php:381
+#: includes/models/class-cecomsmarad-settings.php:537
+#: includes/views/admin/settings.php:317
+msgid "Province"
+msgstr "İl"
+
+#: includes/models/class-cecomsmarad-settings.php:394
+#: includes/models/class-cecomsmarad-settings.php:524
+msgid "Postal Code"
+msgstr "Posta Kodu"
+
+#: includes/models/class-cecomsmarad-settings.php:407
+msgid "Email Address"
+msgstr "E-posta Adresi"
+
+#: includes/models/class-cecomsmarad-settings.php:420
+msgid "Phone"
+msgstr "Telefon"
+
+#: includes/views/admin/settings.php:18
+msgid "General"
+msgstr "Genel"
+
+#: includes/views/admin/settings.php:22 smarttr-address.php:332
+msgid "Data Management"
+msgstr "Veri Yönetimi"
+
+#: includes/views/admin/settings.php:26
+msgid "Field Editor"
+msgstr "Alan Düzenleyici"
+
+#: includes/views/admin/settings.php:31 smarttr-address.php:154
+msgid "Upgrade"
+msgstr "Yükselt"
+
+#: includes/views/admin/settings.php:38
+msgid "Billing — First Name"
+msgstr "Fatura — Ad"
+
+#: includes/views/admin/settings.php:39
+msgid "Billing — Last Name"
+msgstr "Fatura — Soyad"
+
+#: includes/views/admin/settings.php:40
+msgid "Billing — Company"
+msgstr "Fatura — Şirket"
+
+#: includes/views/admin/settings.php:41
+msgid "Billing — Country"
+msgstr "Fatura — Ülke"
+
+#: includes/views/admin/settings.php:42
+msgid "Billing — Address 1"
+msgstr "Fatura — Adres 1"
+
+#: includes/views/admin/settings.php:43
+msgid "Billing — Neighborhood"
+msgstr "Fatura — Mahalle"
+
+#: includes/views/admin/settings.php:44
+msgid "Billing — District"
+msgstr "Fatura — İlçe"
+
+#: includes/views/admin/settings.php:45
+msgid "Billing — Province"
+msgstr "Fatura — İl"
+
+#: includes/views/admin/settings.php:46
+msgid "Billing — Postal Code"
+msgstr "Fatura — Posta Kodu"
+
+#: includes/views/admin/settings.php:47
+msgid "Billing — Email"
+msgstr "Fatura — E-posta"
+
+#: includes/views/admin/settings.php:48
+msgid "Billing — Phone"
+msgstr "Fatura — Telefon"
+
+#: includes/views/admin/settings.php:49
+msgid "Shipping — First Name"
+msgstr "Kargo — Ad"
+
+#: includes/views/admin/settings.php:50
+msgid "Shipping — Last Name"
+msgstr "Kargo — Soyad"
+
+#: includes/views/admin/settings.php:51
+msgid "Shipping — Company"
+msgstr "Kargo — Şirket"
+
+#: includes/views/admin/settings.php:52
+msgid "Shipping — Country"
+msgstr "Kargo — Ülke"
+
+#: includes/views/admin/settings.php:53
+msgid "Shipping — Address 1"
+msgstr "Kargo — Adres 1"
+
+#: includes/views/admin/settings.php:54
+msgid "Shipping — Neighborhood"
+msgstr "Kargo — Mahalle"
+
+#: includes/views/admin/settings.php:55
+msgid "Shipping — District"
+msgstr "Kargo — İlçe"
+
+#: includes/views/admin/settings.php:56
+msgid "Shipping — Province"
+msgstr "Kargo — İl"
+
+#: includes/views/admin/settings.php:57
+msgid "Shipping — Postal Code"
+msgstr "Kargo — Posta Kodu"
+
+#: includes/views/admin/settings.php:107
+msgid "Documentation"
+msgstr "Dokümantasyon"
+
+#: includes/views/admin/settings.php:111 includes/views/admin/settings.php:415
+msgid "Upgrade to Premium"
+msgstr "Premium'e yükseltin"
+
+#: includes/views/admin/settings.php:201
+msgid "Version"
+msgstr "Sürüm"
+
+#: includes/views/admin/settings.php:210
+msgid "Not installed"
+msgstr "Yüklü değil"
+
+#: includes/views/admin/settings.php:213
+msgid "WooCommerce"
+msgstr "WooCommerce"
+
+#: includes/views/admin/settings.php:219
+msgid "Active"
+msgstr "Aktif"
+
+#: includes/views/admin/settings.php:222
+msgid "Inactive"
+msgstr "Pasif"
+
+#: includes/views/admin/settings.php:225
+msgid "HPOS"
+msgstr "HPOS"
+
+#: includes/views/admin/settings.php:229
+msgid "PHP"
+msgstr "PHP"
+
+#: includes/views/admin/settings.php:233
+msgid "WordPress"
+msgstr "WordPress"
+
+#: includes/views/admin/settings.php:239
+msgid "Block"
+msgstr "Blok"
+
+#: includes/views/admin/settings.php:242
+msgid "Classic"
+msgstr "Klasik"
+
+#: includes/views/admin/settings.php:245
+msgid "Checkout Type"
+msgstr "Ödeme Türü"
+
+#: includes/views/admin/settings.php:253
+msgid "Block Checkout is active"
+msgstr "Block Checkout etkin"
+
+#: includes/views/admin/settings.php:254
+msgid ""
+"SmartTR Address only works with Classic Payment. To use this plugin, copy "
+"the shortcode below and paste it into the shortcode field on your payment "
+"page."
+msgstr ""
+
+#: includes/views/admin/settings.php:258
+msgid "Copy"
+msgstr "Kopyala"
+
+#: includes/views/admin/settings.php:266
+msgid "Enable Plugin"
+msgstr "Eklentiyi Etkinleştir"
+
+#: includes/views/admin/settings.php:267
+msgid "Enable Turkish address auto-fill feature"
+msgstr "Türkiye adresi otomatik doldurma özelliğini etkinleştir"
+
+#: includes/views/admin/settings.php:283
+msgid "View Checkout Page"
+msgstr "Ödeme Sayfasını Görüntüle"
+
+#: includes/views/admin/settings.php:287
+msgid "WooCommerce Settings"
+msgstr "WooCommerce Ayarları"
+
+#: includes/views/admin/settings.php:292
+msgid "Save"
+msgstr "Kaydet"
+
+#: includes/views/admin/settings.php:330
+msgid "Premium"
+msgstr "Premium"
+
+#: includes/views/admin/settings.php:339
+msgid "Data Version"
+msgstr "Veri Sürümü"
+
+#: includes/views/admin/settings.php:343
+msgid "Last Import"
+msgstr "Son Yükleme"
+
+#: includes/views/admin/settings.php:350
+msgid "Not yet"
+msgstr "Henüz yok"
+
+#: includes/views/admin/settings.php:357
+msgid "Next Update Available"
+msgstr "Sonraki Güncelleme Tarihi"
+
+#: includes/views/admin/settings.php:373
+msgid "Update Addresses"
+msgstr "Adresleri Güncelle"
+
+#: includes/views/admin/settings.php:408
+msgid "Premium Feature"
+msgstr "Premium Özellik"
+
+#: includes/views/admin/settings.php:411
+msgid ""
+"Customize field labels, visibility, and ordering for all WooCommerce address "
+"fields."
+msgstr ""
+
+#: includes/views/admin/settings.php:437
+msgid "SmartTR Address — Premium"
+msgstr "SmartTR Address — Premium"
+
+#: includes/views/admin/settings.php:440
+msgid "Unlock the full Turkish address experience for your WooCommerce store."
+msgstr "WooCommerce mağazanız için eksiksiz Türk adres deneyiminin kilidini açın."
+
+#: includes/views/admin/settings.php:444
+msgid "Neighborhood AJAX dropdown — 70,000+ entries"
+msgstr "Mahalle AJAX açılır menüsü — 70.000+ kayıt"
+
+#: includes/views/admin/settings.php:445
+msgid "Postal code auto-fill on neighborhood selection"
+msgstr "Mahalle seçiminde posta kodu otomatik doldurma"
+
+#: includes/views/admin/settings.php:446
+msgid "Field Editor — labels, visibility, drag-and-drop ordering"
+msgstr "Alan Düzenleyici — etiketler, görünürlük, sürükle-bırak sıralama"
+
+#: includes/views/admin/settings.php:447
+msgid "Custom checkout fields (text, select, file, date…)"
+msgstr "Özel ödeme alanları (metin, seçim, dosya, tarih…)"
+
+#: includes/views/admin/settings.php:448
+msgid "Automatic recurring data updates (weekly / monthly / bi-monthly)"
+msgstr "Otomatik tekrarlayan veri güncellemeleri (haftalık / aylık / iki aylık)"
+
+#: includes/views/admin/settings.php:449
+msgid "Unlimited manual data syncs"
+msgstr "Sınırsız manuel veri senkronizasyonu"
+
+#: includes/views/admin/settings.php:450
+msgid "Priority email support"
+msgstr "Öncelikli e-posta desteği"
+
+#: includes/views/admin/settings.php:455
+msgid "Get Premium"
+msgstr "Premium'a Geç"
+
+#: mu-plugin/cecomsmarad-order-display.php:92
+msgid "View in Media"
+msgstr "Medyada Görüntüle"
+
+#: smarttr-address.php:138
+msgid "Settings"
+msgstr "Ayarlar"
+
+#: smarttr-address.php:144
+msgid "Docs"
+msgstr "Belgeler"
+
+#: smarttr-address.php:191
+msgid "More information about SmartTR Address"
+msgstr "SmartTR Address hakkında daha fazla bilgi"
+
+#: smarttr-address.php:193
+msgid "View details"
+msgstr "Ayrıntıları görüntüle"
+
+#: smarttr-address.php:275
+msgid "WordPress.org Rating:"
+msgstr "WordPress.org Puanı:"
+
+#. translators: %s: number of ratings
+#: smarttr-address.php:292
+#, php-format
+msgid "(%s ratings)"
+msgstr "(%s değerlendirme)"
+
+#: smarttr-address.php:301
+msgid "Read reviews"
+msgstr "Yorumları oku"
+
+#: smarttr-address.php:330
+msgid ""
+"Address data sync is pending. Data is being loaded in the background. If not "
+"completed, you can start it manually from the Data Management tab:"
+msgstr ""
+"Adres verileri senkronizasyonu bekleniyor. Veriler arka planda yükleniyor. "
+"Tamamlanmadıysa, Veri Yönetimi sekmesinden manuel olarak başlatabilirsiniz:"
+
+#~ msgid "Loading..."
+#~ msgstr "Yükleniyor..."
+
+#~ msgid "%1$s %2$s field is required."
+#~ msgstr "%1$s %2$s alanı zorunludur."
+
+#~ msgid "Invalid field key."
+#~ msgstr "Geçersiz alan anahtarı."
+
+#~ msgid ""
+#~ "All field settings will be reset to defaults. Do you want to continue?"
+#~ msgstr ""
+#~ "Tüm alan ayarları varsayılana döndürülecektir. Devam etmek istiyor "
+#~ "musunuz?"
+
+#~ msgid "Reset to Defaults"
+#~ msgstr "Varsayılana Sıfırla"
+
+#~ msgid "All"
+#~ msgstr "Tümü"
+
+#~ msgid "Export date"
+#~ msgstr "Dışa aktarma tarihi"
+
+#~ msgid "Invalid field data."
+#~ msgstr "Geçersiz alan verisi."
+
+#~ msgid "%d field(s) successfully saved."
+#~ msgstr "%d alan başarıyla kaydedildi."
+
+#~ msgid "Add Custom Field"
+#~ msgstr "Özel Alan Ekle"
+
+#~ msgid "Delete Field"
+#~ msgstr "Alanı Sil"
+
+#~ msgid ""
+#~ "This custom field will be permanently deleted. Do you want to continue?"
+#~ msgstr ""
+#~ "Bu özel alan kalıcı olarak silinecektir. Devam etmek istiyor musunuz?"
+
+#~ msgid "Field Key"
+#~ msgstr "Alan Anahtarı"
+
+#~ msgid "Field Label"
+#~ msgstr "Alan Etiketi"
+
+#~ msgid "Field Type"
+#~ msgstr "Alan Türü"
+
+#~ msgid "Address Type"
+#~ msgstr "Adres Türü"
+
+#~ msgid "This key is already in use."
+#~ msgstr "Bu anahtar zaten kullanılıyor."
+
+#~ msgid ""
+#~ "Key may only contain lowercase letters, digits, and underscores (max. 30 "
+#~ "characters)."
+#~ msgstr ""
+#~ "Anahtar yalnızca küçük harf, rakam ve alt çizgi içerebilir (maks. 30 "
+#~ "karakter)."
+
+#~ msgid "Custom field successfully created."
+#~ msgstr "Özel alan başarıyla oluşturuldu."
+
+#~ msgid "Custom field deleted."
+#~ msgstr "Özel alan silindi."
+
+#~ msgid "Custom"
+#~ msgstr "Özel"
+
+#~ msgid "Show on Order Page"
+#~ msgstr "Sipariş Sayfasında Göster"
+
+#~ msgid "Show in Email"
+#~ msgstr "E-postada Göster"
+
+#~ msgid "Create Field"
+#~ msgstr "Alan Oluştur"
+
+#~ msgid "All fields are required."
+#~ msgstr "Tüm alanlar zorunludur."
+
+#~ msgid "Field could not be created. Key is invalid or already exists."
+#~ msgstr "Alan oluşturulamadı. Anahtar geçersiz veya zaten mevcut."
+
+#~ msgid "Field not found."
+#~ msgstr "Alan bulunamadı."
+
+#~ msgid "Buy Premium"
+#~ msgstr "Premium Satın Al"
+
+#~ msgid "Buy"
+#~ msgstr "Satın Al"
+
+#~ msgid "Search fields…"
+#~ msgstr "Alan ara…"
+
+#~ msgid "Filter"
+#~ msgstr "Filtre"
+
+#~ msgid "Expand All"
+#~ msgstr "Tümünü Aç"
+
+#~ msgid "Collapse All"
+#~ msgstr "Tümünü Kapat"
+
+#~ msgid "Save All Fields"
+#~ msgstr "Tüm Alanları Kaydet"
+
+#~ msgid "Unsaved changes"
+#~ msgstr "Kaydedilmemiş değişiklikler"
+
+#~ msgid "Auto-Update"
+#~ msgstr "Otomatik Güncelleme"
+
+#~ msgid "Automatically update address data at the selected interval."
+#~ msgstr "Adres verilerini seçilen aralıkta otomatik olarak güncelleyin."
+
+#~ msgid "Weekly"
+#~ msgstr "Haftalık"
+
+#~ msgid "Monthly (Recomended)"
+#~ msgstr "Aylık (Önerilen)"
+
+#~ msgid "Every 2 Months"
+#~ msgstr "2 Ayda Bir"
+
+#~ msgid "Save Schedule"
+#~ msgstr "Zamanlamayı Kaydet"
+
+#~ msgid "Feature Comparison"
+#~ msgstr "Özellik Karşılaştırması"
+
+#~ msgid "Feature"
+#~ msgstr "Özellik"
+
+#~ msgid "Free"
+#~ msgstr "Ücretsiz"
+
+#~ msgid "Province → District cascade"
+#~ msgstr "İl → İlçe kademesi"
+
+#~ msgid "Neighborhood dropdown &amp; data"
+#~ msgstr "Mahalle açılır menüsü &amp; verileri"
+
+#~ msgid "Neighborhood auto-select"
+#~ msgstr "Mahalle otomatik seçimi"
+
+#~ msgid "Postal code auto-fill"
+#~ msgstr "Posta kodu otomatik doldurma"
+
+#~ msgid "Field editing (label, placeholder, description)"
+#~ msgstr "Alan düzenleme (etiket, placeholder, açıklama)"
+
+#~ msgid "Custom fields (create/delete/edit)"
+#~ msgstr "Özel alanlar (oluştur/sil/düzenle)"
+
+#~ msgid "Required / Clear / Visibility settings"
+#~ msgstr "Zorunlu / Temizle / Görünürlük ayarları"
+
+#~ msgid "Drag-and-drop field ordering"
+#~ msgstr "Sürükle-bırak alan sıralaması"
+
+#~ msgid "Auto-update (weekly / monthly / every 2 months)"
+#~ msgstr "Otomatik güncelleme (haftalık / aylık / 2 ayda bir)"
+
+#~ msgid "Data management (reload)"
+#~ msgstr "Veri yönetimi (yeniden yükle)"
+
+#~ msgid "CSS class editing"
+#~ msgstr "CSS sınıfı düzenleme"
+
+#~ msgid "Billing Fields"
+#~ msgstr "Fatura Alanları"
+
+#~ msgid "Shipping Fields"
+#~ msgstr "Kargo Alanları"
+
+#~ msgid "%d field(s)"
+#~ msgstr "%d alan"
+
+#~ msgid "Drag cards to reorder"
+#~ msgstr "Sıralamak için kartları sürükleyin"
+
+#~ msgid "Drag"
+#~ msgstr "Sürükle"
+
+#~ msgid "Required"
+#~ msgstr "Zorunlu"
+
+#~ msgid "Type"
+#~ msgstr "Tür"
+
+#~ msgid "Label"
+#~ msgstr "Etiket"
+
+#~ msgid "Clear"
+#~ msgstr "Temizle"
+
+#~ msgid "Visibility"
+#~ msgstr "Görünürlük"
+
+#~ msgid "Visible"
+#~ msgstr "Görünür"
+
+#~ msgid "Hidden"
+#~ msgstr "Gizli"
+
+#~ msgid "Removed"
+#~ msgstr "Kaldırıldı"
+
+#~ msgid "Description"
+#~ msgstr "Açıklama"
+
+#~ msgid "Displayed below the field"
+#~ msgstr "Alanın altında görüntülenir"
+
+#~ msgid "CSS Class"
+#~ msgstr "CSS Sınıfı"
+
+#~ msgid "+ Add class"
+#~ msgstr "+ Sınıf ekle"
+
+#~ msgid "Label Class"
+#~ msgstr "Etiket Sınıfı"
+
+#~ msgid "Options"
+#~ msgstr "Seçenekler"
+
+#~ msgid "Allowed Extensions"
+#~ msgstr "İzin Verilen Uzantılar"
+
+#~ msgid "Separate with commas. If left empty, all extensions are allowed."
+#~ msgstr "Virgülle ayırın. Boş bırakılırsa tüm uzantılara izin verilir."
+
+#~ msgid "example_field"
+#~ msgstr "ornek_alan"
+
+#~ msgid "National ID No"
+#~ msgstr "TC Kimlik No"
+
+#~ msgid "Placeholder"
+#~ msgstr "Yer Tutucu"
+
+#~ msgid "jpg,png,pdf"
+#~ msgstr "jpg,png,pdf"
+
+#~ msgid "Free plan allows manual address updates once per month."
+#~ msgstr ""
+#~ "Ücretsiz planda adres verileri ayda bir kez manuel olarak güncellenebilir."
+
+#~ msgid ""
+#~ "Free plan allows manual address updates once per month. Next update "
+#~ "available on: %s"
+#~ msgstr ""
+#~ "Ücretsiz planda adres verileri ayda bir kez manuel olarak "
+#~ "güncellenebilir. Bir sonraki güncelleme: %s"
+
+#~ msgid ""
+#~ "Free plan allows manual address updates once per month. Next update "
+#~ "available on: <strong>%s</strong>"
+#~ msgstr ""
+#~ "Ücretsiz planda adres verileri ayda bir kez manuel olarak "
+#~ "güncellenebilir. Bir sonraki güncelleme: <strong>%s</strong>"
+
+#~ msgid "Manual address data update"
+#~ msgstr "Manuel adres verisi güncelleme"
+
+#~ msgid "Once/month"
+#~ msgstr "Ayda 1 kez"

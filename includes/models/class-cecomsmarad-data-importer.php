@@ -120,7 +120,7 @@ class Cecomsmarad_Data_Importer {
 		// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching, WordPress.DB.PreparedSQL.InterpolatedNotPrepared, PluginCheck.Security.DirectDB.UnescapedDBParameter -- Bulk import: table is truncated before re-seeding; table name validated via allowlist.
 		$wpdb->query( "TRUNCATE TABLE `{$table}`" );
 
-		$values = [];
+		$values = array();
 		foreach ( $data as $code => $name ) {
 			$values[] = (string) $code;
 			$values[] = (string) $name;
@@ -160,7 +160,7 @@ class Cecomsmarad_Data_Importer {
 		// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching, WordPress.DB.PreparedSQL.InterpolatedNotPrepared, PluginCheck.Security.DirectDB.UnescapedDBParameter -- Bulk import: table is truncated before re-seeding; table name validated via allowlist.
 		$wpdb->query( "TRUNCATE TABLE `{$table}`" );
 
-		$values = [];
+		$values = array();
 		foreach ( $data as $province_code => $districts ) {
 			foreach ( (array) $districts as $name ) {
 				$values[] = (string) $province_code;
@@ -228,12 +228,12 @@ class Cecomsmarad_Data_Importer {
 
 		update_option( 'cecomsmarad_last_import', gmdate( 'Y-m-d H:i:s' ), false );
 
-		$counts = [
+		$counts = array(
 			// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- Post-import count snapshot; must reflect just-inserted data.
 			'provinces' => (int) $wpdb->get_var( "SELECT COUNT(*) FROM `{$wpdb->prefix}cecomsmarad_provinces`" ),
 			// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
 			'districts' => (int) $wpdb->get_var( "SELECT COUNT(*) FROM `{$wpdb->prefix}cecomsmarad_districts`" ),
-		];
+		);
 
 		update_option( 'cecomsmarad_record_counts', wp_json_encode( $counts ), false );
 	}

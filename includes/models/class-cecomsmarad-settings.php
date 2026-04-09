@@ -634,7 +634,7 @@ class Cecomsmarad_Settings {
 			$raw_ext = sanitize_text_field( $props['allowed_extensions'] );
 			// Only allow alphanumeric chars, commas, and spaces — no dots or special chars.
 			if ( preg_match( '/^[a-zA-Z0-9,\s]*$/', $raw_ext ) && strlen( $raw_ext ) <= 200 ) {
-				$exts                         = array_filter( array_map( 'trim', explode( ',', strtolower( $raw_ext ) ) ) );
+				$exts                            = array_filter( array_map( 'trim', explode( ',', strtolower( $raw_ext ) ) ) );
 				$sanitized['allowed_extensions'] = implode( ',', $exts );
 			}
 		}

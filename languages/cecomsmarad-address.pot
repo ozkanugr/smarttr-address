@@ -1,657 +1,686 @@
-# Copyright (C) 2026 cecom
-# This file is distributed under the GPL-2.0+.
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR ugurozkan
+# This file is distributed under the same license as the SmartTR Address package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: SmartTRAddress 1.1.0\n"
-"Report-Msgid-Bugs-To: https://cecom.in/smarttr-address-turkish-address\n"
-"POT-Creation-Date: 2026-02-27 12:00:00+0000\n"
+"Project-Id-Version: SmartTR Address 1.3.1\n"
+"Report-Msgid-Bugs-To: support@cecom.in\n"
+"POT-Creation-Date: 2026-04-01 15:52+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: CECOM <support@cecom.in>\n"
+"Language-Team: Turkish <support@cecom.in>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"Content-Transfer-Encoding: 8bit\\n"\n"X-Domain: smarttr-address\\n"
 
-#. Plugin Name of the plugin
-msgid "SmartTR Address"
-msgstr ""
-
-#: includes/class-smarttr-activator.php
-#. translators: %1$s: required PHP version, %2$s: current PHP version
+#. translators: 1: Required PHP version, 2: Current PHP version.
+#: includes/class-cecomsmarad-activator.php:69
+#, php-format
 msgid "SmartTR Address requires PHP %1$s or higher. You are running PHP %2$s."
 msgstr ""
 
-#: includes/class-smarttr-activator.php
-#. translators: %1$s: required WP version, %2$s: current WP version
-msgid "SmartTR Address requires WordPress %1$s or higher. You are running WordPress %2$s."
+#. translators: 1: Required WordPress version, 2: Current WordPress version.
+#: includes/class-cecomsmarad-activator.php:78
+#, php-format
+msgid ""
+"SmartTR Address requires WordPress %1$s or higher. You are running WordPress "
+"%2$s."
 msgstr ""
 
-#: includes/class-smarttr-activator.php
+#: includes/class-cecomsmarad-activator.php:85
 msgid "SmartTR Address requires WooCommerce to be installed and active."
 msgstr ""
 
-#: includes/class-smarttr-activator.php
-#. translators: %1$s: required WC version, %2$s: current WC version
-msgid "SmartTR Address requires WooCommerce %1$s or higher. You are running WooCommerce %2$s."
+#. translators: 1: Required WooCommerce version, 2: Current WooCommerce version.
+#: includes/class-cecomsmarad-activator.php:89
+#, php-format
+msgid ""
+"SmartTR Address requires WooCommerce %1$s or higher. You are running "
+"WooCommerce %2$s."
 msgstr ""
 
-#: includes/class-smarttr-activator.php
+#: includes/class-cecomsmarad-activator.php:100
 msgid "SmartTR Address Activation Error"
 msgstr ""
 
-#: includes/models/class-smarttr-settings.php
-msgid "Province"
+#: includes/class-cecomsmarad-privacy.php:53
+msgid ""
+"This plugin collects and stores Turkish address information (province, "
+"district) entered during the WooCommerce checkout process. This data is "
+"saved in WooCommerce order records and is used solely to process and fulfil "
+"orders."
 msgstr ""
 
-#: includes/models/class-smarttr-settings.php
-msgid "Select province"
+#: includes/class-cecomsmarad-privacy.php:55
+msgid ""
+"All collected address data can be exported or permanently erased via the "
+"WordPress Tools → Export Personal Data and Erase Personal Data screens."
 msgstr ""
 
-#: includes/models/class-smarttr-settings.php
-msgid "District"
+#: includes/class-cecomsmarad-privacy.php:70
+#: includes/class-cecomsmarad-privacy.php:85
+msgid "SmartTR Address Data"
 msgstr ""
 
-#: includes/models/class-smarttr-settings.php
-msgid "Select district"
+#. translators: %s: address type (Billing or Shipping)
+#: includes/class-cecomsmarad-privacy.php:127
+#, php-format
+msgid "%s Province"
 msgstr ""
 
-#: includes/models/class-smarttr-settings.php
-msgid "Neighborhood"
+#. translators: %s: address type (Billing or Shipping)
+#: includes/class-cecomsmarad-privacy.php:134
+#, php-format
+msgid "%s District"
 msgstr ""
 
-#: includes/models/class-smarttr-settings.php
-msgid "Select neighborhood"
+#. translators: %s: WooCommerce order number
+#: includes/class-cecomsmarad-privacy.php:145
+#, php-format
+msgid "SmartTR Address — Order #%s"
 msgstr ""
 
-#: includes/models/class-smarttr-settings.php
-msgid "Postal Code"
+#: includes/controllers/class-cecomsmarad-admin-controller.php:106
+#: includes/controllers/class-cecomsmarad-admin-controller.php:107
+msgid "CECOM"
 msgstr ""
 
-#: includes/controllers/class-smarttr-checkout-controller.php
-#: includes/views/admin/settings.php
-msgid "No results found"
+#: includes/controllers/class-cecomsmarad-admin-controller.php:123
+msgid "SmartTR Address Settings"
 msgstr ""
 
-#: includes/controllers/class-smarttr-order-controller.php
-#. translators: %s: address type label (Billing/Shipping)
-msgid "%s province is required."
+#: includes/controllers/class-cecomsmarad-admin-controller.php:124
+#: includes/views/admin/settings.php:101 smarttr-address.php:192
+msgid "SmartTR Address"
 msgstr ""
 
-#: includes/controllers/class-smarttr-order-controller.php
-#. translators: %s: address type label (Billing/Shipping)
-msgid "%s district is required."
+#: includes/controllers/class-cecomsmarad-admin-controller.php:199
+msgid ""
+"This will delete existing address data and reload it from the remote server. "
+"Do you want to continue?"
 msgstr ""
 
-#: includes/controllers/class-smarttr-order-controller.php
-#. translators: %s: address type label (Billing/Shipping)
-msgid "%s neighborhood is required."
-msgstr ""
-
-#: includes/controllers/class-smarttr-order-controller.php
-msgid "Shipping"
-msgstr ""
-
-#: includes/controllers/class-smarttr-order-controller.php
-msgid "Billing"
-msgstr ""
-
-#: includes/controllers/class-smarttr-admin-controller.php
-msgid "This will delete existing address data and reload it from the remote server. Do you want to continue?"
-msgstr ""
-
-#: includes/controllers/class-smarttr-admin-controller.php
-msgid "All field settings will be reset to defaults. Do you want to continue?"
-msgstr ""
-
-#: includes/controllers/class-smarttr-admin-controller.php
+#: includes/controllers/class-cecomsmarad-admin-controller.php:200
 msgid "Settings saved."
 msgstr ""
 
-#: includes/controllers/class-smarttr-admin-controller.php
-msgid "You do not have permission to access this page."
-msgstr ""
-
-#: includes/controllers/class-smarttr-admin-controller.php
-msgid "Security verification failed."
-msgstr ""
-
-#: includes/controllers/class-smarttr-admin-controller.php
-msgid "General settings saved."
-msgstr ""
-
-#: includes/controllers/class-smarttr-admin-controller.php
-#. translators: %d: number of fields saved
-msgid "%d field(s) successfully saved."
-msgstr ""
-
-#: includes/controllers/class-smarttr-admin-controller.php
-msgid "All fields reset to default values."
-msgstr ""
-
-#: includes/controllers/class-smarttr-admin-controller.php
-msgid "Address data successfully updated."
-msgstr ""
-
-#: includes/controllers/class-smarttr-admin-controller.php
+#: includes/controllers/class-cecomsmarad-admin-controller.php:201
 msgid "Saving…"
 msgstr ""
 
-#: includes/controllers/class-smarttr-admin-controller.php
+#: includes/controllers/class-cecomsmarad-admin-controller.php:202
 msgid "An error occurred. Please try again."
 msgstr ""
 
-#: includes/controllers/class-smarttr-admin-controller.php
+#: includes/controllers/class-cecomsmarad-admin-controller.php:203
+#: includes/models/class-cecomsmarad-remote-sync.php:152
+msgid "Address data successfully updated."
+msgstr ""
+
+#: includes/controllers/class-cecomsmarad-admin-controller.php:204
 msgid "Updating data…"
 msgstr ""
 
-#: includes/controllers/class-smarttr-admin-controller.php
+#: includes/controllers/class-cecomsmarad-admin-controller.php:205
+#: includes/views/admin/settings.php:473
 msgid "Cancel"
 msgstr ""
 
-#: includes/controllers/class-smarttr-admin-controller.php
+#: includes/controllers/class-cecomsmarad-admin-controller.php:206
+#: includes/views/admin/settings.php:474
 msgid "Confirm"
 msgstr ""
 
-#: includes/controllers/class-smarttr-admin-controller.php
+#: includes/controllers/class-cecomsmarad-admin-controller.php:207
 msgid "Reload Data"
 msgstr ""
 
-#: includes/controllers/class-smarttr-admin-controller.php
-msgid "Reset to Defaults"
-msgstr ""
-
-#: includes/controllers/class-smarttr-admin-controller.php
+#: includes/controllers/class-cecomsmarad-admin-controller.php:208
 msgid "You have unsaved changes. Do you want to leave the page?"
 msgstr ""
 
-#: includes/controllers/class-smarttr-admin-controller.php
-msgid "All"
+#: includes/controllers/class-cecomsmarad-admin-controller.php:209
+msgid "Shortcode copied!"
 msgstr ""
 
-#: includes/controllers/class-smarttr-admin-controller.php
-msgid "Billing"
+#: includes/controllers/class-cecomsmarad-admin-controller.php:222
+#: includes/controllers/class-cecomsmarad-admin-controller.php:242
+msgid "You do not have permission to access this page."
 msgstr ""
 
-#: includes/controllers/class-smarttr-admin-controller.php
-msgid "Shipping"
+#: includes/controllers/class-cecomsmarad-admin-controller.php:246
+msgid "Security verification failed."
 msgstr ""
 
-#: includes/controllers/class-smarttr-admin-controller.php
-msgid "Export date"
+#: includes/controllers/class-cecomsmarad-admin-controller.php:274
+#: includes/controllers/class-cecomsmarad-admin-controller.php:437
+msgid "General settings saved."
 msgstr ""
 
-#: includes/controllers/class-smarttr-admin-controller.php
+#: includes/controllers/class-cecomsmarad-admin-controller.php:426
+#: includes/controllers/class-cecomsmarad-admin-controller.php:447
+#: includes/controllers/class-cecomsmarad-admin-controller.php:468
 msgid "Unauthorized access."
 msgstr ""
 
-#: includes/controllers/class-smarttr-admin-controller.php
-msgid "Invalid field data."
+#: includes/controllers/class-cecomsmarad-admin-controller.php:455
+msgid "All fields reset to default values."
 msgstr ""
 
-#: includes/views/admin/settings.php
-msgid "General"
+#. translators: %s: date the next manual sync becomes available
+#. translators: %s: date when next manual sync is available
+#: includes/controllers/class-cecomsmarad-admin-controller.php:487
+#: includes/views/admin/settings.php:381
+#, php-format
+msgid "Address data can be updated once per month. Next update available: %s."
 msgstr ""
 
-#: includes/views/admin/settings.php
-msgid "Field Editor"
+#: includes/controllers/class-cecomsmarad-admin-controller.php:637
+msgid "Quick Feedback"
 msgstr ""
 
-#: includes/views/admin/settings.php
-msgid "Data Management"
+#: includes/controllers/class-cecomsmarad-admin-controller.php:638
+msgid "Close"
 msgstr ""
 
-#: includes/views/admin/settings.php
-msgid "Billing — First Name"
+#: includes/controllers/class-cecomsmarad-admin-controller.php:639
+msgid ""
+"If you have a moment, please share why you are deactivating SmartTR Address:"
 msgstr ""
 
-#: includes/views/admin/settings.php
-msgid "Billing — Last Name"
+#: includes/controllers/class-cecomsmarad-admin-controller.php:640
+msgid "This is a temporary deactivation for testing."
 msgstr ""
 
-#: includes/views/admin/settings.php
-msgid "Billing — Company"
+#: includes/controllers/class-cecomsmarad-admin-controller.php:641
+msgid "The plugin isn't working properly."
 msgstr ""
 
-#: includes/views/admin/settings.php
-msgid "Billing — Country"
+#: includes/controllers/class-cecomsmarad-admin-controller.php:642
+msgid "I found a better alternative plugin."
 msgstr ""
 
-#: includes/views/admin/settings.php
-msgid "Billing — Address 1"
+#: includes/controllers/class-cecomsmarad-admin-controller.php:643
+msgid "It's missing a specific feature."
 msgstr ""
 
-#: includes/views/admin/settings.php
-msgid "Billing — Neighborhood"
+#: includes/controllers/class-cecomsmarad-admin-controller.php:644
+msgid "Other"
 msgstr ""
 
-#: includes/views/admin/settings.php
-msgid "Billing — District"
+#: includes/controllers/class-cecomsmarad-admin-controller.php:645
+msgid "Please tell us more details."
 msgstr ""
 
-#: includes/views/admin/settings.php
-msgid "Billing — Province"
+#: includes/controllers/class-cecomsmarad-admin-controller.php:646
+msgid "Submit & Deactivate"
 msgstr ""
 
-#: includes/views/admin/settings.php
-msgid "Billing — Postal Code"
+#: includes/controllers/class-cecomsmarad-admin-controller.php:647
+msgid "Skip & Deactivate"
 msgstr ""
 
-#: includes/views/admin/settings.php
-msgid "Billing — Email"
+#: includes/controllers/class-cecomsmarad-admin-controller.php:648
+msgid "Sending\\u2026"
 msgstr ""
 
-#: includes/views/admin/settings.php
-msgid "Billing — Phone"
+#: includes/controllers/class-cecomsmarad-checkout-controller.php:385
+#: includes/models/class-cecomsmarad-settings.php:383
+#: includes/models/class-cecomsmarad-settings.php:539
+msgid "Select province"
 msgstr ""
 
-#: includes/views/admin/settings.php
-msgid "Shipping — First Name"
+#: includes/controllers/class-cecomsmarad-checkout-controller.php:386
+#: includes/models/class-cecomsmarad-settings.php:370
+#: includes/models/class-cecomsmarad-settings.php:513
+msgid "Select district"
 msgstr ""
 
-#: includes/views/admin/settings.php
-msgid "Shipping — Last Name"
+#: includes/controllers/class-cecomsmarad-checkout-controller.php:387
+msgid "No results found"
 msgstr ""
 
-#: includes/views/admin/settings.php
-msgid "Shipping — Company"
+#: includes/controllers/class-cecomsmarad-checkout-controller.php:441
+#: includes/models/class-cecomsmarad-settings.php:368
+#: includes/models/class-cecomsmarad-settings.php:511
+#: includes/views/admin/settings.php:321
+msgid "District"
 msgstr ""
 
-#: includes/views/admin/settings.php
-msgid "Shipping — Address 1"
+#: includes/controllers/class-cecomsmarad-checkout-controller.php:442
+#: includes/models/class-cecomsmarad-settings.php:355
+#: includes/models/class-cecomsmarad-settings.php:498
+#: includes/views/admin/settings.php:327
+msgid "Neighborhood"
 msgstr ""
 
-#: includes/views/admin/settings.php
-msgid "Shipping — Neighborhood"
+#: includes/controllers/class-cecomsmarad-checkout-controller.php:502
+#: includes/controllers/class-cecomsmarad-checkout-controller.php:655
+msgid "required"
 msgstr ""
 
-#: includes/views/admin/settings.php
-msgid "Shipping — District"
+#. translators: %s: comma-separated list of allowed file extensions
+#: includes/controllers/class-cecomsmarad-checkout-controller.php:561
+#, php-format
+msgid "Allowed file types: %s"
 msgstr ""
 
-#: includes/views/admin/settings.php
-msgid "Shipping — Province"
+#. translators: %s: address type label (Billing or Shipping).
+#: includes/controllers/class-cecomsmarad-order-controller.php:74
+#, php-format
+msgid "%s province is required."
 msgstr ""
 
-#: includes/views/admin/settings.php
-msgid "Shipping — Postal Code"
+#. translators: %s: address type label.
+#: includes/controllers/class-cecomsmarad-order-controller.php:95
+#, php-format
+msgid "%s province is not valid."
 msgstr ""
 
-#: includes/views/admin/settings.php
-msgid "Documentation"
+#. translators: %s: address type label.
+#: includes/controllers/class-cecomsmarad-order-controller.php:106
+#, php-format
+msgid "%s district is required."
 msgstr ""
 
-#: includes/views/admin/settings.php
-msgid "Version"
+#. translators: %s: address type label.
+#: includes/controllers/class-cecomsmarad-order-controller.php:116
+#, php-format
+msgid "%s neighborhood is required."
 msgstr ""
 
-#: includes/views/admin/settings.php
-msgid "WooCommerce"
+#: includes/controllers/class-cecomsmarad-order-controller.php:248
+msgid "Shipping"
 msgstr ""
 
-#: includes/views/admin/settings.php
-msgid "Not installed"
+#: includes/controllers/class-cecomsmarad-order-controller.php:249
+msgid "Billing"
 msgstr ""
 
-#: includes/views/admin/settings.php
-msgid "Active"
+#: includes/models/class-cecomsmarad-remote-sync.php:81
+msgid "A sync is already in progress. Please try again shortly."
 msgstr ""
 
-#: includes/views/admin/settings.php
-msgid "Inactive"
+#: includes/models/class-cecomsmarad-remote-sync.php:105
+msgid "Source URL is not configured."
 msgstr ""
 
-#: includes/views/admin/settings.php
-msgid "HPOS"
+#. translators: %s: error message
+#: includes/models/class-cecomsmarad-remote-sync.php:233
+#, php-format
+msgid "API connection error: %s"
 msgstr ""
 
-#: includes/views/admin/settings.php
-msgid "PHP"
+#: includes/models/class-cecomsmarad-remote-sync.php:247
+msgid ""
+"Unexpected response from the data server (invalid JSON). Please try again."
 msgstr ""
 
-#: includes/views/admin/settings.php
-msgid "WordPress"
+#. translators: %d: HTTP status code
+#: includes/models/class-cecomsmarad-remote-sync.php:257
+#, php-format
+msgid ""
+"Access to the data API was denied (HTTP %d). Please check your source server "
+"configuration."
 msgstr ""
 
-#: includes/views/admin/settings.php
-msgid "Block"
+#. translators: %d: HTTP status code
+#: includes/models/class-cecomsmarad-remote-sync.php:269
+#, php-format
+msgid "Server error: HTTP %d"
 msgstr ""
 
-#: includes/views/admin/settings.php
-msgid "Classic"
-msgstr ""
-
-#: includes/views/admin/settings.php
-msgid "Checkout Type"
-msgstr ""
-
-#: includes/views/admin/settings.php
-msgid "Enable Plugin"
-msgstr ""
-
-#: includes/views/admin/settings.php
-msgid "Enable Turkish address auto-fill feature"
-msgstr ""
-
-#: includes/views/admin/settings.php
-msgid "View Checkout Page"
-msgstr ""
-
-#: includes/views/admin/settings.php
-msgid "WooCommerce Settings"
-msgstr ""
-
-#: includes/views/admin/settings.php
-msgid "Save"
-msgstr ""
-
-#: includes/views/admin/settings.php
-msgid "Search fields…"
-msgstr ""
-
-#: includes/views/admin/settings.php
-msgid "Filter"
-msgstr ""
-
-#: includes/views/admin/settings.php
-msgid "Expand All"
-msgstr ""
-
-#: includes/views/admin/settings.php
-msgid "Collapse All"
-msgstr ""
-
-#: includes/views/admin/settings.php
-msgid "Unsaved changes"
-msgstr ""
-
-#: includes/views/admin/settings.php
-msgid "Save All Fields"
-msgstr ""
-
-#: includes/views/admin/settings.php
-msgid "Billing Fields"
-msgstr ""
-
-#: includes/views/admin/settings.php
-msgid "Shipping Fields"
-msgstr ""
-
-#: includes/views/admin/settings.php
-#. translators: %d: number of fields
-msgid "%d field(s)"
-msgstr ""
-
-#: includes/views/admin/settings.php
-msgid "Drag cards to reorder"
-msgstr ""
-
-#: includes/views/admin/settings.php
-msgid "Drag"
-msgstr ""
-
-#: includes/views/admin/settings.php
-msgid "Required"
-msgstr ""
-
-#: includes/views/admin/settings.php
-msgid "Type"
-msgstr ""
-
-#: includes/views/admin/settings.php
-msgid "Label"
-msgstr ""
-
-#: includes/views/admin/settings.php
-msgid "Placeholder"
-msgstr ""
-
-#: includes/views/admin/settings.php
-msgid "Clear"
-msgstr ""
-
-#: includes/views/admin/settings.php
-msgid "CSS Class"
-msgstr ""
-
-#: includes/views/admin/settings.php
-msgid "+ Add class"
-msgstr ""
-
-#: includes/views/admin/settings.php
-msgid "Label Class"
-msgstr ""
-
-#: includes/views/admin/settings.php
-msgid "Options"
-msgstr ""
-
-#: includes/views/admin/settings.php
-msgid "Data Version"
-msgstr ""
-
-#: includes/views/admin/settings.php
-msgid "Last Import"
-msgstr ""
-
-#: includes/views/admin/settings.php
-msgid "Not yet"
-msgstr ""
-
-#: includes/views/admin/settings.php
-msgid "DB Prefix"
-msgstr ""
-
-#: includes/views/admin/settings.php
-msgid "Toplam Boyut"
-msgstr ""
-
-#: includes/views/admin/settings.php
-msgid "JSON Kaynak"
-msgstr ""
-
-#: includes/views/admin/settings.php
-msgid "Character Set"
-msgstr ""
-
-#: includes/views/admin/settings.php
-msgid "Tablo Durumu"
-msgstr ""
-
-#: includes/views/admin/settings.php
-msgid "Download Summary"
-msgstr ""
-
-#: includes/models/class-smarttr-settings.php
+#: includes/models/class-cecomsmarad-settings.php:290
+#: includes/models/class-cecomsmarad-settings.php:433
 msgid "First Name"
 msgstr ""
 
-#: includes/models/class-smarttr-settings.php
+#: includes/models/class-cecomsmarad-settings.php:303
+#: includes/models/class-cecomsmarad-settings.php:446
 msgid "Last Name"
 msgstr ""
 
-#: includes/models/class-smarttr-settings.php
-msgid "Şirket Adı"
+#: includes/models/class-cecomsmarad-settings.php:316
+#: includes/models/class-cecomsmarad-settings.php:459
+msgid "Company Name"
 msgstr ""
 
-#: includes/models/class-smarttr-settings.php
+#: includes/models/class-cecomsmarad-settings.php:329
+#: includes/models/class-cecomsmarad-settings.php:472
 msgid "Country / Region"
 msgstr ""
 
-#: includes/models/class-smarttr-settings.php
+#: includes/models/class-cecomsmarad-settings.php:342
+#: includes/models/class-cecomsmarad-settings.php:485
 msgid "Street Address"
 msgstr ""
 
-#: includes/models/class-smarttr-settings.php
+#: includes/models/class-cecomsmarad-settings.php:344
+#: includes/models/class-cecomsmarad-settings.php:487
 msgid "House number and street name"
 msgstr ""
 
-#: includes/models/class-smarttr-settings.php
+#: includes/models/class-cecomsmarad-settings.php:357
+#: includes/models/class-cecomsmarad-settings.php:500
+msgid "Select neighborhood"
+msgstr ""
+
+#: includes/models/class-cecomsmarad-settings.php:381
+#: includes/models/class-cecomsmarad-settings.php:537
+#: includes/views/admin/settings.php:317
+msgid "Province"
+msgstr ""
+
+#: includes/models/class-cecomsmarad-settings.php:394
+#: includes/models/class-cecomsmarad-settings.php:524
+msgid "Postal Code"
+msgstr ""
+
+#: includes/models/class-cecomsmarad-settings.php:407
 msgid "Email Address"
 msgstr ""
 
-#: includes/models/class-smarttr-settings.php
+#: includes/models/class-cecomsmarad-settings.php:420
 msgid "Phone"
 msgstr ""
 
-#: includes/views/admin/settings.php
-msgid "Description"
+#: includes/views/admin/settings.php:18
+msgid "General"
 msgstr ""
 
-#: includes/views/admin/settings.php
-msgid "Displayed below the field"
+#: includes/views/admin/settings.php:22 smarttr-address.php:332
+msgid "Data Management"
 msgstr ""
 
-#. --- Custom Fields Feature ---
-
-#: includes/controllers/class-smarttr-admin-controller.php
-msgid "Add Custom Field"
+#: includes/views/admin/settings.php:26
+msgid "Field Editor"
 msgstr ""
 
-#: includes/controllers/class-smarttr-admin-controller.php
-msgid "Delete Field"
+#: includes/views/admin/settings.php:31 smarttr-address.php:154
+msgid "Upgrade"
 msgstr ""
 
-#: includes/controllers/class-smarttr-admin-controller.php
-msgid "This custom field will be permanently deleted. Do you want to continue?"
+#: includes/views/admin/settings.php:38
+msgid "Billing — First Name"
 msgstr ""
 
-#: includes/controllers/class-smarttr-admin-controller.php
-msgid "Field Key"
+#: includes/views/admin/settings.php:39
+msgid "Billing — Last Name"
 msgstr ""
 
-#: includes/controllers/class-smarttr-admin-controller.php
-msgid "Field Label"
+#: includes/views/admin/settings.php:40
+msgid "Billing — Company"
 msgstr ""
 
-#: includes/controllers/class-smarttr-admin-controller.php
-msgid "Field Type"
+#: includes/views/admin/settings.php:41
+msgid "Billing — Country"
 msgstr ""
 
-#: includes/controllers/class-smarttr-admin-controller.php
-msgid "Address Type"
+#: includes/views/admin/settings.php:42
+msgid "Billing — Address 1"
 msgstr ""
 
-#: includes/controllers/class-smarttr-admin-controller.php
-msgid "This key is already in use."
+#: includes/views/admin/settings.php:43
+msgid "Billing — Neighborhood"
 msgstr ""
 
-#: includes/controllers/class-smarttr-admin-controller.php
-msgid "Key may only contain lowercase letters, digits, and underscores (max. 30 characters)."
+#: includes/views/admin/settings.php:44
+msgid "Billing — District"
 msgstr ""
 
-#: includes/controllers/class-smarttr-admin-controller.php
-msgid "Custom field successfully created."
+#: includes/views/admin/settings.php:45
+msgid "Billing — Province"
 msgstr ""
 
-#: includes/controllers/class-smarttr-admin-controller.php
-msgid "Custom field deleted."
+#: includes/views/admin/settings.php:46
+msgid "Billing — Postal Code"
 msgstr ""
 
-#: includes/controllers/class-smarttr-admin-controller.php
-msgid "Custom"
+#: includes/views/admin/settings.php:47
+msgid "Billing — Email"
 msgstr ""
 
-#: includes/controllers/class-smarttr-admin-controller.php
-msgid "Show on Order Page"
+#: includes/views/admin/settings.php:48
+msgid "Billing — Phone"
 msgstr ""
 
-#: includes/controllers/class-smarttr-admin-controller.php
-msgid "Show in Email"
+#: includes/views/admin/settings.php:49
+msgid "Shipping — First Name"
 msgstr ""
 
-#: includes/controllers/class-smarttr-admin-controller.php
-msgid "Create Field"
+#: includes/views/admin/settings.php:50
+msgid "Shipping — Last Name"
 msgstr ""
 
-#: includes/controllers/class-smarttr-admin-controller.php
-msgid "All fields are required."
+#: includes/views/admin/settings.php:51
+msgid "Shipping — Company"
 msgstr ""
 
-#: includes/controllers/class-smarttr-admin-controller.php
-msgid "Field could not be created. Key is invalid or already exists."
+#: includes/views/admin/settings.php:52
+msgid "Shipping — Country"
 msgstr ""
 
-#: includes/controllers/class-smarttr-admin-controller.php
-msgid "Invalid field key."
+#: includes/views/admin/settings.php:53
+msgid "Shipping — Address 1"
 msgstr ""
 
-#: includes/controllers/class-smarttr-admin-controller.php
-msgid "Field not found."
+#: includes/views/admin/settings.php:54
+msgid "Shipping — Neighborhood"
 msgstr ""
 
-#: includes/views/admin/settings.php
-msgid "ornek_alan"
+#: includes/views/admin/settings.php:55
+msgid "Shipping — District"
 msgstr ""
 
-#: includes/views/admin/settings.php
-msgid "TC Kimlik No"
+#: includes/views/admin/settings.php:56
+msgid "Shipping — Province"
 msgstr ""
 
-#: includes/controllers/class-smarttr-order-controller.php
-#. translators: %1$s: address type label, %2$s: field label
-msgid "%1$s %2$s field is required."
+#: includes/views/admin/settings.php:57
+msgid "Shipping — Postal Code"
 msgstr ""
 
-#: includes/views/admin/settings.php
-msgid "Feature Comparison"
+#: includes/views/admin/settings.php:107
+msgid "Documentation"
 msgstr ""
 
-#: includes/views/admin/settings.php
-msgid "Feature"
+#: includes/views/admin/settings.php:111 includes/views/admin/settings.php:415
+msgid "Upgrade to Premium"
 msgstr ""
 
-#: includes/views/admin/settings.php
-msgid "Ücretsiz"
+#: includes/views/admin/settings.php:201
+msgid "Version"
 msgstr ""
 
-#: includes/views/admin/settings.php
+#: includes/views/admin/settings.php:210
+msgid "Not installed"
+msgstr ""
+
+#: includes/views/admin/settings.php:213
+msgid "WooCommerce"
+msgstr ""
+
+#: includes/views/admin/settings.php:219
+msgid "Active"
+msgstr ""
+
+#: includes/views/admin/settings.php:222
+msgid "Inactive"
+msgstr ""
+
+#: includes/views/admin/settings.php:225
+msgid "HPOS"
+msgstr ""
+
+#: includes/views/admin/settings.php:229
+msgid "PHP"
+msgstr ""
+
+#: includes/views/admin/settings.php:233
+msgid "WordPress"
+msgstr ""
+
+#: includes/views/admin/settings.php:239
+msgid "Block"
+msgstr ""
+
+#: includes/views/admin/settings.php:242
+msgid "Classic"
+msgstr ""
+
+#: includes/views/admin/settings.php:245
+msgid "Checkout Type"
+msgstr ""
+
+#: includes/views/admin/settings.php:253
+msgid "Block Checkout is active"
+msgstr ""
+
+#: includes/views/admin/settings.php:254
+msgid ""
+"SmartTR Address only works with Classic Payment. To use this plugin, copy "
+"the shortcode below and paste it into the shortcode field on your payment "
+"page."
+msgstr ""
+
+#: includes/views/admin/settings.php:258
+msgid "Copy"
+msgstr ""
+
+#: includes/views/admin/settings.php:266
+msgid "Enable Plugin"
+msgstr ""
+
+#: includes/views/admin/settings.php:267
+msgid "Enable Turkish address auto-fill feature"
+msgstr ""
+
+#: includes/views/admin/settings.php:283
+msgid "View Checkout Page"
+msgstr ""
+
+#: includes/views/admin/settings.php:287
+msgid "WooCommerce Settings"
+msgstr ""
+
+#: includes/views/admin/settings.php:292
+msgid "Save"
+msgstr ""
+
+#: includes/views/admin/settings.php:330
 msgid "Premium"
 msgstr ""
 
-#: includes/views/admin/settings.php
-msgid "Province → District cascade"
+#: includes/views/admin/settings.php:339
+msgid "Data Version"
 msgstr ""
 
-#: includes/views/admin/settings.php
-msgid "Neighborhood dropdown &amp; data"
+#: includes/views/admin/settings.php:343
+msgid "Last Import"
 msgstr ""
 
-#: includes/views/admin/settings.php
-msgid "Neighborhood auto-select"
+#: includes/views/admin/settings.php:350
+msgid "Not yet"
 msgstr ""
 
-#: includes/views/admin/settings.php
-msgid "Drag-and-drop field ordering"
+#: includes/views/admin/settings.php:357
+msgid "Next Update Available"
 msgstr ""
 
-#: includes/views/admin/settings.php
-msgid "Postal code auto-fill"
+#: includes/views/admin/settings.php:373
+msgid "Update Addresses"
 msgstr ""
 
-#: includes/views/admin/settings.php
-msgid "Field editing (label, placeholder, description)"
+#: includes/views/admin/settings.php:408
+msgid "Premium Feature"
 msgstr ""
 
-#: includes/views/admin/settings.php
-msgid "Required / Clear / Visibility settings"
+#: includes/views/admin/settings.php:411
+msgid ""
+"Customize field labels, visibility, and ordering for all WooCommerce address "
+"fields."
 msgstr ""
 
-#: includes/views/admin/settings.php
-msgid "CSS class editing"
+#: includes/views/admin/settings.php:437
+msgid "SmartTR Address — Premium"
 msgstr ""
 
-#: includes/views/admin/settings.php
-msgid "Custom fields (create/delete/edit)"
+#: includes/views/admin/settings.php:440
+msgid "Unlock the full Turkish address experience for your WooCommerce store."
 msgstr ""
 
-#: includes/views/admin/settings.php
-msgid "Data management (reload)"
+#: includes/views/admin/settings.php:444
+msgid "Neighborhood AJAX dropdown — 70,000+ entries"
 msgstr ""
 
-#: includes/views/admin/settings.php
-msgid "Reset to defaults"
+#: includes/views/admin/settings.php:445
+msgid "Postal code auto-fill on neighborhood selection"
 msgstr ""
 
-#: includes/controllers/class-smarttr-checkout-controller.php
-msgid "required"
+#: includes/views/admin/settings.php:446
+msgid "Field Editor — labels, visibility, drag-and-drop ordering"
+msgstr ""
+
+#: includes/views/admin/settings.php:447
+msgid "Custom checkout fields (text, select, file, date…)"
+msgstr ""
+
+#: includes/views/admin/settings.php:448
+msgid "Automatic recurring data updates (weekly / monthly / bi-monthly)"
+msgstr ""
+
+#: includes/views/admin/settings.php:449
+msgid "Unlimited manual data syncs"
+msgstr ""
+
+#: includes/views/admin/settings.php:450
+msgid "Priority email support"
+msgstr ""
+
+#: includes/views/admin/settings.php:455
+msgid "Get Premium"
+msgstr ""
+
+#: mu-plugin/cecomsmarad-order-display.php:92
+msgid "View in Media"
+msgstr ""
+
+#: smarttr-address.php:138
+msgid "Settings"
+msgstr ""
+
+#: smarttr-address.php:144
+msgid "Docs"
+msgstr ""
+
+#: smarttr-address.php:191
+msgid "More information about SmartTR Address"
+msgstr ""
+
+#: smarttr-address.php:193
+msgid "View details"
+msgstr ""
+
+#: smarttr-address.php:275
+msgid "WordPress.org Rating:"
+msgstr ""
+
+#. translators: %s: number of ratings
+#: smarttr-address.php:292
+#, php-format
+msgid "(%s ratings)"
+msgstr ""
+
+#: smarttr-address.php:301
+msgid "Read reviews"
+msgstr ""
+
+#: smarttr-address.php:330
+msgid ""
+"Address data sync is pending. Data is being loaded in the background. If not "
+"completed, you can start it manually from the Data Management tab:"
 msgstr ""

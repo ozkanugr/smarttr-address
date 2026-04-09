@@ -118,8 +118,8 @@ class Cecomsmarad_Privacy {
 			foreach ( array( 'billing', 'shipping' ) as $addr_type ) {
 				$prefix = '_' . $addr_type . '_cecomsmarad_';
 
-				$province     = $order->get_meta( $prefix . 'province_name' );
-				$district     = $order->get_meta( $prefix . 'district_name' );
+				$province = $order->get_meta( $prefix . 'province_name' );
+				$district = $order->get_meta( $prefix . 'district_name' );
 
 				if ( $province ) {
 					$order_data[] = array(
@@ -185,8 +185,11 @@ class Cecomsmarad_Privacy {
 			// Erase Turkish address meta.
 			foreach ( array( 'billing', 'shipping' ) as $addr_type ) {
 				$prefix = '_' . $addr_type . '_cecomsmarad_';
-				foreach ( array( 'province_code', 'province_name', 'district_name'
-						) as $suffix ) {
+				foreach ( array(
+					'province_code',
+					'province_name',
+					'district_name',
+				) as $suffix ) {
 					if ( '' !== $order->get_meta( $prefix . $suffix ) ) {
 						$order->delete_meta_data( $prefix . $suffix );
 						$changed       = true;
