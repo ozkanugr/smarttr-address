@@ -3,7 +3,7 @@
  * Plugin Name:       SmartTR Address
  * Plugin URI:        https://cecom.in/smarttr-address-turkish-address
  * Description:       Turkish address auto-fill for WooCommerce checkout — cascading Province & District dropdowns.
- * Version:           1.3.2
+ * Version:           1.4.0
  * Requires at least: 6.4
  * Requires PHP:      8.1
  * Author:            ugurozkan
@@ -23,7 +23,7 @@ defined( 'ABSPATH' ) || exit;
 /**
  * Plugin constants.
  */
-define( 'CECOMSMARAD_VERSION', '1.3.2' );
+define( 'CECOMSMARAD_VERSION', '1.4.0' );
 define( 'CECOMSMARAD_PLUGIN_FILE', __FILE__ );
 define( 'CECOMSMARAD_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'CECOMSMARAD_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
@@ -91,6 +91,7 @@ add_action(
 		$i18n->load_plugin_textdomain();
 
 		new Cecomsmarad_Admin_Controller();
+		new Cecomsmarad_Ecosystem_Controller();
 		new Cecomsmarad_Checkout_Controller();
 		new Cecomsmarad_Order_Controller();
 		Cecomsmarad_Privacy::register_hooks();
@@ -217,6 +218,7 @@ if ( is_admin() ) {
 				$half_star   = ( ( $rating / 20 ) - $full_stars ) >= 0.5 ? 1 : 0;
 				$empty_stars = 5 - $full_stars - $half_star;
 				$stars_html  = '';
+				$review_url  = 'https://wordpress.org/support/plugin/smarttr-address/reviews/';
 				for ( $i = 0; $i < $full_stars; $i++ ) {
 					$stars_html .= '<span class="dashicons dashicons-star-filled" style="color:#ffb900;font-size:16px;width:16px;height:16px;" aria-hidden="true"></span>';
 				}
@@ -227,9 +229,19 @@ if ( is_admin() ) {
 					$stars_html .= '<span class="dashicons dashicons-star-empty" style="color:#ffb900;font-size:16px;width:16px;height:16px;" aria-hidden="true"></span>';
 				}
 
+				$links[] = '<a href="' . esc_url( $review_url . '#new-post' ) . '" target="_blank" rel="noopener noreferrer">'
+					. esc_html__( 'Add Review', 'smarttr-address' ) . '</a>';
+
 				$links[] = wp_kses(
-					$stars_html,
+					'<a href="' . esc_url( $review_url ) . '" target="_blank" rel="noopener noreferrer" style="text-decoration:none;">'
+						. $stars_html . '</a>',
 					array(
+						'a'    => array(
+							'href'   => true,
+							'target' => true,
+							'rel'    => true,
+							'style'  => true,
+						),
 						'span' => array(
 							'class'       => true,
 							'style'       => true,

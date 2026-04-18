@@ -642,7 +642,7 @@ class Cecomsmarad_Admin_Controller {
 				'ajaxUrl'        => admin_url( 'admin-ajax.php' ),
 				'nonce'          => wp_create_nonce( 'cecomsmarad_deactivation_feedback_nonce' ),
 				'pluginBasename' => CECOMSMARAD_PLUGIN_BASENAME,
-				'iconUrl'        => CECOMSMARAD_PLUGIN_URL . 'assets/img/cecomsmarad-address-icon.png',
+				'iconUrl'        => CECOMSMARAD_PLUGIN_URL . 'assets/img/cecomsmarad-logo.svg',
 				'i18n'           => array(
 					'title'               => __( 'Quick Feedback', 'smarttr-address' ),
 					'close'               => __( 'Close', 'smarttr-address' ),

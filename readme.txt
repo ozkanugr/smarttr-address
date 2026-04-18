@@ -1,10 +1,10 @@
 === SmartTR Address ===
 
 Contributors: cecom
-Tags: Checkout Manager, Turkish Addresses, Smart Checkout, Custom Fields, WooCommerce Checkout
+Tags: Checkout Manager, Checkout Address Suggession, Custom Fields, WooCommerce Checkout, Checkout Address Autocomplete
 Requires at least: 6.4
 Tested up to: 6.9
-Stable tag: 1.3.2
+Stable tag: 1.4.0
 Requires PHP: 8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -297,6 +297,20 @@ Güvenlik açıklarını CECOM güvenlik iletişim formu üzerinden bildirebilir
 
 == Changelog ==
 
+= 1.4.0 - Released on 18 April 2026 =
+
+* New: CECOM Ecosystem page — cross-promotional admin page listing all CECOM plugins with install-state badges and purchase links.
+* Fix: Incorrect text domain in free edition settings view corrected.
+* Yeni: CECOM Ekosistem sayfası — tüm CECOM eklentilerini kurulum durumu rozetleri ve satın alma bağlantılarıyla listeleyen çapraz tanıtım yönetici sayfası.
+* Düzeltme: Ücretsiz sürüm ayarlar görünümündeki hatalı metin alanı düzeltildi.
+
+= 1.3.3 - Released on 11 April 2026 =
+
+* Fix: Admin Bootstrap CSS not loading — prefixed all asset handles to prevent collisions with other plugins.
+* Fix: Admin asset paths aligned to use the vendor directory structure for consistent deployment.
+* Düzeltme: Yönetici Bootstrap CSS'in yüklenmemesi — diğer eklentilerle çakışmayı önlemek için tüm varlık tanıtıcıları ön eklendi.
+* Düzeltme: Yönetici varlık yolları, tutarlı dağıtım için vendor dizin yapısına uyumlu hale getirildi.
+
 = 1.3.2 - Released on 10 April 2026 =
 
 * Update: Front-end fixes.
@@ -344,6 +358,14 @@ Güvenlik açıklarını CECOM güvenlik iletişim formu üzerinden bildirebilir
 * Yeni: Erişilebilirlik — ARIA canlı bölgeler, klavye navigasyonu, noscript yedekleme
 
 == Upgrade Notice ==
+
+= 1.4.0 =
+CECOM Ecosystem page added. Minor text domain fix. No upgrade steps required.
+CECOM Ekosistem sayfası eklendi. Küçük metin alanı düzeltmesi. Güncelleme adımı gerekmez.
+
+= 1.3.3 =
+Admin CSS fix — Bootstrap now loads correctly on the settings page. No upgrade steps required.
+Yönetici CSS düzeltmesi — Bootstrap artık ayarlar sayfasında doğru şekilde yükleniyor. Güncelleme adımı gerekmez.
 
 = 1.3.2 =
 Front-end fixes and minor bug fixes. No upgrade steps required.

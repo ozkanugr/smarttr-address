@@ -265,6 +265,13 @@ Evet. Eklenti, WordPress'in gizlilik araçlarına bir kişisel veri dışa aktar
 
 ## Changelog / Sürüm Geçmişi
 
+### 1.3.3 - Released on 11 April 2026
+
+* Fix: Admin Bootstrap CSS not loading — prefixed all asset handles to prevent collisions with other plugins.
+* Fix: Admin asset paths aligned to use the vendor directory structure for consistent deployment.
+* Düzeltme: Yönetici Bootstrap CSS'in yüklenmemesi — diğer eklentilerle çakışmayı önlemek için tüm varlık tanıtıcıları ön eklendi.
+* Düzeltme: Yönetici varlık yolları, tutarlı dağıtım için vendor dizin yapısına uyumlu hale getirildi.
+
 ### 1.3.2 - Released on 10 April 2026
 
 * Update: Front-end fixes.

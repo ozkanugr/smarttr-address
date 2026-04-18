@@ -95,8 +95,8 @@ $enabled = get_option( 'cecomsmarad_enabled', '1' );
 <div class="d-flex align-items-start gap-3">
 
 	<?php /* ── Sidebar ─────────────────────────────────── */ ?>
-	<div class="col-lg-3 offcanvas-lg offcanvas-start flex-shrink-0 bg-white shadow-sm rounded-4 border border-light-subtle"
-		 id="sidebarTabs" tabindex="-1">
+	<div class="sticky-top col-lg-3 offcanvas-lg offcanvas-start flex-shrink-0 bg-white shadow-sm rounded-4 border border-light-subtle"
+		 id="sidebarTabs" tabindex="-1" style="top:32px;z-index:90;">
 		<div class="offcanvas-header border-bottom d-lg-none">
 			<span class="fw-semibold"><?php esc_html_e( 'Navigation', 'smarttr-address' ); ?></span>
 			<button type="button" class="btn-close"
@@ -104,7 +104,7 @@ $enabled = get_option( 'cecomsmarad_enabled', '1' );
 					data-bs-target="#sidebarTabs"
 					aria-label="<?php esc_attr_e( 'Close', 'smarttr-address' ); ?>"></button>
 		</div>
-		<nav class="offcanvas-body p-3 d-flex flex-column gap-1 sticky-top"
+		<nav class="offcanvas-body p-3 d-flex flex-column gap-1"
 			 role="tablist"
 			 style="top:0;overflow-y:auto;max-height:100vh;">
 
@@ -353,7 +353,7 @@ $enabled = get_option( 'cecomsmarad_enabled', '1' );
 										class="btn btn-sm btn-warning rounded-pill d-inline-flex align-items-center gap-1"
 										target="_blank" rel="noopener">
 										<i class="bi bi-stars" aria-hidden="true"></i>
-										<?php esc_html_e( 'Upgrade to Pro', 'smarttr-address-premium' ); ?>
+										<?php esc_html_e( 'Upgrade to Pro', 'smarttr-address' ); ?>
 									</a>
 								</div>
 							</div>
