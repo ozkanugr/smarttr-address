@@ -182,7 +182,7 @@
 
 		var submitBtn     = _overlay.querySelector( '#cecomsmarad-dfm-submit' );
 		submitBtn.disabled    = true;
-		submitBtn.textContent = i18n.sending || 'Sending\u2026';
+		submitBtn.textContent = i18n.sending || 'Sending...';
 
 		var data = new FormData();
 		data.append( 'action',   'cecomsmarad_submit_deactivation_feedback' );

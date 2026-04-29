@@ -232,8 +232,8 @@ msgid "Skip & Deactivate"
 msgstr "Atla ve Devre Dışı Bırak"
 
 #: includes/controllers/class-cecomsmarad-admin-controller.php:648
-msgid "Sending\\u2026"
-msgstr "Gönderiliyor\\u2026"
+msgid "Sending..."
+msgstr "Gönderiliyor..."
 
 #: includes/controllers/class-cecomsmarad-checkout-controller.php:385
 #: includes/models/class-cecomsmarad-settings.php:383

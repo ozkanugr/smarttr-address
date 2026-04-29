@@ -655,7 +655,7 @@ class Cecomsmarad_Admin_Controller {
 					'details_placeholder' => __( 'Please tell us more details.', 'smarttr-address' ),
 					'submit'              => __( 'Submit & Deactivate', 'smarttr-address' ),
 					'skip'                => __( 'Skip & Deactivate', 'smarttr-address' ),
-					'sending'             => __( 'Sending\u2026', 'smarttr-address' ),
+					'sending'             => __( 'Sending...', 'smarttr-address' ),
 				),
 			)
 		);

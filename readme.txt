@@ -4,7 +4,7 @@ Contributors: cecom
 Tags: Checkout Manager, Checkout Address Suggession, Custom Fields, WooCommerce Checkout, Checkout Address Autocomplete
 Requires at least: 6.4
 Tested up to: 6.9
-Stable tag: 1.4.0
+Stable tag: 1.4.1
 Requires PHP: 8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -297,6 +297,13 @@ Güvenlik açıklarını CECOM güvenlik iletişim formu üzerinden bildirebilir
 
 == Changelog ==
 
+= 1.4.1 - Released on 30 April 2026 =
+
+* New: Deactivation feedback dialog — a quick-survey modal now appears on the Plugins page when deactivating the plugin.
+* Fix: Ecosystem page plugin preview images now load from bundled local assets instead of external URLs.
+* Yeni: Devre dışı bırakma geri bildirim diyaloğu — Eklentiler sayfasından eklenti devre dışı bırakılırken hızlı anket modalı gösteriliyor.
+* Düzeltme: Ekosistem sayfası eklenti önizleme görselleri artık harici URL yerine yerel paketlenmiş varlıklardan yükleniyor.
+
 = 1.4.0 - Released on 18 April 2026 =
 
 * New: CECOM Ecosystem page — cross-promotional admin page listing all CECOM plugins with install-state badges and purchase links.
@@ -358,6 +365,10 @@ Güvenlik açıklarını CECOM güvenlik iletişim formu üzerinden bildirebilir
 * Yeni: Erişilebilirlik — ARIA canlı bölgeler, klavye navigasyonu, noscript yedekleme
 
 == Upgrade Notice ==
+
+= 1.4.1 =
+Adds a deactivation feedback dialog and loads Ecosystem page images locally. No upgrade steps required.
+Devre dışı bırakma geri bildirim diyaloğu eklendi ve Ekosistem sayfası görselleri yerel olarak yükleniyor. Güncelleme adımı gerekmez.
 
 = 1.4.0 =
 CECOM Ecosystem page added. Minor text domain fix. No upgrade steps required.

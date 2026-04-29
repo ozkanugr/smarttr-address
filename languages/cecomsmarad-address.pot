@@ -225,7 +225,7 @@ msgid "Skip & Deactivate"
 msgstr ""
 
 #: includes/controllers/class-cecomsmarad-admin-controller.php:648
-msgid "Sending\\u2026"
+msgid "Sending..."
 msgstr ""
 
 #: includes/controllers/class-cecomsmarad-checkout-controller.php:385
