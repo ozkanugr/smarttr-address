@@ -137,6 +137,24 @@ class Cecomsmarad_Settings {
 				// Migration: drop legacy `visible` property.
 				unset( $record['visible'] );
 
+				// Migration: fix inverted cascade priorities saved by earlier releases.
+				// Fires only when the saved value exactly matches the old wrong default,
+				// leaving intentionally customised values untouched.
+				// Note: this runs on every request until the admin re-saves any field in
+				// the Field Editor, which writes corrected values back to the database.
+				// If you deliberately need billing_address_2 at priority 60, save it once
+				// after upgrading and this migration will no longer fire for that field.
+				if ( isset( $record['priority'] ) ) {
+					if ( in_array( $key, array( 'billing_state', 'shipping_state' ), true )
+						&& 80 === (int) $record['priority'] ) {
+						$record['priority'] = 60;
+					}
+					if ( in_array( $key, array( 'billing_address_2', 'shipping_address_2' ), true )
+						&& 60 === (int) $record['priority'] ) {
+						$record['priority'] = 80;
+					}
+				}
+
 				$fields[ $key ] = array_merge( $default_props, $record );
 			} else {
 				$fields[ $key ] = $default_props;
@@ -360,7 +378,7 @@ class Cecomsmarad_Settings {
 				'clear'       => false,
 				'label_class' => '',
 				'options'     => '',
-				'priority'    => 60,
+				'priority'    => 80,
 				'visibility'  => 'visible',
 			),
 			'billing_city'        => array(
@@ -386,7 +404,7 @@ class Cecomsmarad_Settings {
 				'clear'       => false,
 				'label_class' => '',
 				'options'     => '',
-				'priority'    => 80,
+				'priority'    => 60,
 				'visibility'  => 'visible',
 			),
 			'billing_postcode'    => array(
@@ -503,7 +521,7 @@ class Cecomsmarad_Settings {
 				'clear'       => false,
 				'label_class' => '',
 				'options'     => '',
-				'priority'    => 60,
+				'priority'    => 80,
 				'visibility'  => 'visible',
 			),
 			'shipping_city'       => array(
@@ -542,7 +560,7 @@ class Cecomsmarad_Settings {
 				'clear'       => false,
 				'label_class' => '',
 				'options'     => '',
-				'priority'    => 80,
+				'priority'    => 60,
 				'visibility'  => 'visible',
 			),
 		);

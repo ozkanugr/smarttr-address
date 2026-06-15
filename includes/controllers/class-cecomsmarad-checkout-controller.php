@@ -258,10 +258,14 @@ class Cecomsmarad_Checkout_Controller {
 			'postcode' => array( 'cecomsmarad-field', 'cecomsmarad-postcode' ),
 		);
 		foreach ( $cascade_extra as $field => $extra ) {
-			$base                            = ! empty( $locale['TR'][ $field ]['class'] )
+			$raw_base   = ! empty( $locale['TR'][ $field ]['class'] )
 				? (array) $locale['TR'][ $field ]['class']
 				: array( 'form-row-wide' );
-			$locale['TR'][ $field ]['class'] = array_merge( $base, $extra );
+			$clean_base = array_values( array_filter(
+				$raw_base,
+				fn( $c ) => ! in_array( $c, array( 'address-field', 'update_totals_on_change' ), true )
+			) );
+			$locale['TR'][ $field ]['class'] = array_merge( $clean_base, $extra );
 		}
 
 		return $locale;

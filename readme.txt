@@ -3,8 +3,8 @@
 Contributors: cecom
 Tags: Checkout Manager, Checkout Address Suggession, Custom Fields, WooCommerce Checkout, Checkout Address Autocomplete
 Requires at least: 6.4
-Tested up to: 6.9
-Stable tag: 1.4.1
+Tested up to: 7.0
+Stable tag: 1.4.3
 Requires PHP: 8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -297,6 +297,17 @@ Güvenlik açıklarını CECOM güvenlik iletişim formu üzerinden bildirebilir
 
 == Changelog ==
 
+= 1.4.3 - Released on 15 June 2026 =
+
+* Compatibility: Declared compatible with WordPress 7.0.
+* Fix: Corrected field rendering order for the Turkish address cascade — Province now appears before District, District before Postal Code.
+* Fix: WooCommerce checkout no longer triggers a full page refresh when a District or Postal Code is selected while Turkey is the active country.
+* Fix: Existing saved field settings with the old inverted priorities are automatically corrected on first load — no manual settings reset required.
+* Uyumluluk: WordPress 7.0 ile uyumluluk beyan edildi.
+* Düzeltme: Türk adres kademesi için alan görüntüleme sırası düzeltildi — İl artık İlçe'den, İlçe ise Posta Kodu'ndan önce görünüyor.
+* Düzeltme: Türkiye seçiliyken İlçe veya Posta Kodu seçildiğinde WooCommerce ödeme sayfası artık yeniden yüklenmiyor.
+* Düzeltme: Eski ters önceliklere sahip kayıtlı alan ayarları ilk yüklemede otomatik olarak düzeltiliyor — manuel ayar sıfırlaması gerekmiyor.
+
 = 1.4.1 - Released on 30 April 2026 =
 
 * New: Deactivation feedback dialog — a quick-survey modal now appears on the Plugins page when deactivating the plugin.
@@ -365,6 +376,10 @@ Güvenlik açıklarını CECOM güvenlik iletişim formu üzerinden bildirebilir
 * Yeni: Erişilebilirlik — ARIA canlı bölgeler, klavye navigasyonu, noscript yedekleme
 
 == Upgrade Notice ==
+
+= 1.4.3 =
+Contains bug fixes for the Turkish address cascade field order and checkout refresh behaviour. Existing settings are auto-migrated on first load. No manual upgrade steps required.
+Türk adres kademesi alan sırası ve ödeme sayfası yenileme davranışı için hata düzeltmeleri içerir. Mevcut ayarlar ilk yüklemede otomatik olarak güncellenir. Manuel güncelleme adımı gerekmez.
 
 = 1.4.1 =
 Adds a deactivation feedback dialog and loads Ecosystem page images locally. No upgrade steps required.
