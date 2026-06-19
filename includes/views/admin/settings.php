@@ -43,6 +43,8 @@ if ( '' !== $last_manual_sync ) {
 
 $enabled = get_option( 'cecomsmarad_enabled', '1' );
 
+$address_book_enabled = get_option( 'cecomsmarad_address_book_enabled', '1' );
+
 ?>
 
 <div id="cecomsmaradWrap">
@@ -270,6 +272,26 @@ $enabled = get_option( 'cecomsmarad_enabled', '1' );
 								   <?php checked( $enabled, '1' ); ?> />
 							<label class="form-check-label visually-hidden" for="cecomsmaradEnabled">
 								<?php esc_html_e( 'Enable Plugin', 'smarttr-address' ); ?>
+							</label>
+						</div>
+					</div>
+
+					<?php /* ── Address Book toggle ── */ ?>
+					<div class="d-flex align-items-center justify-content-between gap-3 py-3 border-top">
+						<div>
+							<div class="fw-medium"><?php esc_html_e( 'Enable Address Book', 'smarttr-address' ); ?></div>
+							<div class="small text-muted"><?php esc_html_e( 'Let customers save and reuse addresses at checkout and in My Account', 'smarttr-address' ); ?></div>
+						</div>
+						<div class="form-check form-switch">
+							<input class="form-check-input"
+								   type="checkbox"
+								   role="switch"
+								   id="cecomsmaradAddressBookEnabled"
+								   name="cecomsmarad_address_book_enabled"
+								   value="1"
+								   <?php checked( $address_book_enabled, '1' ); ?> />
+							<label class="form-check-label visually-hidden" for="cecomsmaradAddressBookEnabled">
+								<?php esc_html_e( 'Enable Address Book', 'smarttr-address' ); ?>
 							</label>
 						</div>
 					</div>

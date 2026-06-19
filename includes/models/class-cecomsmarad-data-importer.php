@@ -37,6 +37,7 @@ class Cecomsmarad_Data_Importer {
 	private static array $allowed_tables = array(
 		'cecomsmarad_provinces',
 		'cecomsmarad_districts',
+		'cecomsmarad_address_book',
 	);
 
 	/**
@@ -92,6 +93,29 @@ class Cecomsmarad_Data_Importer {
 			PRIMARY KEY  (id),
 			KEY idx_province_code (province_code),
 			KEY idx_province_name (province_code, name)
+		) {$charset_collate};
+
+		CREATE TABLE {$wpdb->prefix}cecomsmarad_address_book (
+			id            BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+			user_id       BIGINT(20) UNSIGNED NOT NULL,
+			nickname      VARCHAR(100)        NOT NULL,
+			address_type  VARCHAR(20)         NOT NULL DEFAULT 'billing',
+			province_code VARCHAR(10)         NOT NULL,
+			province_name VARCHAR(100)        NOT NULL,
+			district_name VARCHAR(100)        NOT NULL,
+			neighborhood  VARCHAR(150)        NOT NULL DEFAULT '',
+			postcode      VARCHAR(20)         NOT NULL DEFAULT '',
+			address_1     VARCHAR(255)        NOT NULL DEFAULT '',
+			first_name    VARCHAR(100)        NOT NULL DEFAULT '',
+			last_name     VARCHAR(100)        NOT NULL DEFAULT '',
+			company       VARCHAR(150)        NOT NULL DEFAULT '',
+			phone         VARCHAR(30)         NOT NULL DEFAULT '',
+			email         VARCHAR(255)        NOT NULL DEFAULT '',
+			country       VARCHAR(10)         NOT NULL DEFAULT '',
+			created_at    DATETIME            NOT NULL DEFAULT CURRENT_TIMESTAMP,
+			PRIMARY KEY  (id),
+			KEY idx_user_id (user_id),
+			KEY idx_user_type (user_id, address_type)
 		) {$charset_collate};";
 
 		require_once ABSPATH . 'wp-admin/includes/upgrade.php';

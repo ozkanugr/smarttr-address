@@ -29,6 +29,7 @@ if ( function_exists( 'as_unschedule_all_actions' ) ) {
  */
 
 $cecomsmarad_tables = array(
+	$wpdb->prefix . 'cecomsmarad_address_book',
 	$wpdb->prefix . 'cecomsmarad_districts',
 	$wpdb->prefix . 'cecomsmarad_provinces',
 );

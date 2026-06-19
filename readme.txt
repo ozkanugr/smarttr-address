@@ -4,7 +4,7 @@ Contributors: cecom
 Tags: Checkout Manager, Checkout Address Suggession, Custom Fields, WooCommerce Checkout, Checkout Address Autocomplete
 Requires at least: 6.4
 Tested up to: 7.0
-Stable tag: 1.4.3
+Stable tag: 1.5.0
 Requires PHP: 8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -23,6 +23,7 @@ The plugin integrates with the **Classic Checkout** (`[woocommerce_checkout]` sh
 = Basic features =
 
 * **Province + District cascade dropdowns** — cascading dropdowns for all 81 Turkish provinces and ~970 districts
+* **Address Book** — logged-in customers can save addresses at checkout and reuse them with one click, and manage them under My Account → Address Book (free tier: up to 2 saved addresses). Can be turned on or off from the General settings tab.
 * **Classic Checkout** — integrates with the WooCommerce shortcode checkout (`[woocommerce_checkout]`)
 * **Background data sync** — address data is fetched from a remote API after activation; no bloated ZIP files bundled in the plugin
 * **GDPR-compliant** — built-in privacy exporter and eraser for all Turkish address data
@@ -42,6 +43,7 @@ Eklenti, **Klasik Ödeme** (`[woocommerce_checkout]` kısayolu) ile entegre çal
 = Temel özellikler =
 
 * **İl + İlçe kademeli açılır menüler** — Türkiye'nin 81 ili ve ~970 ilçesi için kademeli açılır menüler
+* **Adres Defteri** — giriş yapmış müşteriler ödeme sayfasında adreslerini kaydedip tek tıkla yeniden kullanabilir ve Hesabım → Adres Defteri bölümünden yönetebilir (ücretsiz sürüm: en fazla 2 kayıtlı adres). Genel ayarlar sekmesinden açılıp kapatılabilir.
 * **Klasik Ödeme** — WooCommerce kısayol ödeme (`[woocommerce_checkout]`) ile entegre olur
 * **Arka plan veri senkronizasyonu** — Adres verileri aktivasyondan sonra uzak bir API'den alınır; eklentiye şişirilmiş ZIP dosyaları eklenmez
 * **GDPR uyumlu** — Tüm Türk adres verileri için yerleşik gizlilik dışa aktarıcı ve silici
@@ -297,6 +299,13 @@ Güvenlik açıklarını CECOM güvenlik iletişim formu üzerinden bildirebilir
 
 == Changelog ==
 
+= 1.5.0 - Released on 19 June 2026 =
+
+* New: Address Book — logged-in customers can now save their address at checkout and reuse it with one click; saved addresses are also managed under My Account → Address Book (free tier: up to 2 saved addresses).
+* New: Address Book can be enabled or disabled from the General settings tab, alongside the existing Enable Plugin toggle.
+* Yeni: Adres Defteri — giriş yapmış müşteriler artık ödeme sayfasında adreslerini kaydedip tek tıkla yeniden kullanabilir; kayıtlı adresler ayrıca Hesabım → Adres Defteri bölümünden yönetilir (ücretsiz sürüm: en fazla 2 kayıtlı adres).
+* Yeni: Adres Defteri, mevcut Eklentiyi Etkinleştir anahtarının yanında Genel ayarlar sekmesinden etkinleştirilip devre dışı bırakılabilir.
+
 = 1.4.3 - Released on 15 June 2026 =
 
 * Compatibility: Declared compatible with WordPress 7.0.
@@ -376,6 +385,10 @@ Güvenlik açıklarını CECOM güvenlik iletişim formu üzerinden bildirebilir
 * Yeni: Erişilebilirlik — ARIA canlı bölgeler, klavye navigasyonu, noscript yedekleme
 
 == Upgrade Notice ==
+
+= 1.5.0 =
+Adds the new Address Book feature so customers can save and reuse their addresses at checkout and in My Account. No manual upgrade steps required.
+Müşterilerin ödeme sayfasında ve Hesabım bölümünde adreslerini kaydedip yeniden kullanabilmesi için yeni Adres Defteri özelliği eklendi. Manuel güncelleme adımı gerekmez.
 
 = 1.4.3 =
 Contains bug fixes for the Turkish address cascade field order and checkout refresh behaviour. Existing settings are auto-migrated on first load. No manual upgrade steps required.

@@ -684,3 +684,12 @@ msgid ""
 "Address data sync is pending. Data is being loaded in the background. If not "
 "completed, you can start it manually from the Data Management tab:"
 msgstr ""
+
+msgid "State / County"
+msgstr ""
+
+msgid "Address line 2"
+msgstr ""
+
+msgid "Select an option…"
+msgstr ""

@@ -31,6 +31,7 @@ The plugin integrates with the **Classic Checkout** (`[woocommerce_checkout]` sh
 ### Basic features
 
 * **Province + District cascade dropdowns** — cascading dropdowns for all 81 Turkish provinces and ~970 districts
+* **Address Book** — logged-in customers can save addresses at checkout and reuse them with one click, and manage them under My Account → Address Book (free tier: up to 2 saved addresses); can be toggled on/off from the General settings tab
 * **Classic Checkout** — integrates with the WooCommerce shortcode checkout (`[woocommerce_checkout]`)
 * **Background data sync** — address data is fetched from a remote API after activation; no bloated ZIP files bundled in the plugin
 * **GDPR-compliant** — built-in privacy exporter and eraser for all Turkish address data
@@ -50,6 +51,7 @@ Eklenti, **Klasik Ödeme** (`[woocommerce_checkout]` kısayolu) ile entegre çal
 ### Temel özellikler
 
 * **İl + İlçe kademeli açılır menüler** — Türkiye'nin 81 ili ve ~970 ilçesi için kademeli açılır menüler
+* **Adres Defteri** — giriş yapmış müşteriler ödeme sayfasında adreslerini kaydedip tek tıkla yeniden kullanabilir ve Hesabım → Adres Defteri bölümünden yönetebilir (ücretsiz sürüm: en fazla 2 kayıtlı adres); Genel ayarlar sekmesinden açılıp kapatılabilir
 * **Klasik Ödeme** — WooCommerce kısayol ödeme (`[woocommerce_checkout]`) ile entegre olur
 * **Arka plan veri senkronizasyonu** — Adres verileri aktivasyondan sonra uzak bir API'den alınır; eklentiye şişirilmiş ZIP dosyaları eklenmez
 * **GDPR uyumlu** — Tüm Türk adres verileri için yerleşik gizlilik dışa aktarıcı ve silici

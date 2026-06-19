@@ -3,7 +3,7 @@
  * Plugin Name:       SmartTR Address
  * Plugin URI:        https://cecom.in/smarttr-address-turkish-address
  * Description:       Turkish address auto-fill for WooCommerce checkout — cascading Province & District dropdowns.
- * Version:           1.4.3
+ * Version:           1.5.0
  * Requires at least: 6.4
  * Requires PHP:      8.1
  * Author:            ugurozkan
@@ -23,7 +23,7 @@ defined( 'ABSPATH' ) || exit;
 /**
  * Plugin constants.
  */
-define( 'CECOMSMARAD_VERSION', '1.4.3' );
+define( 'CECOMSMARAD_VERSION', '1.5.0' );
 define( 'CECOMSMARAD_PLUGIN_FILE', __FILE__ );
 define( 'CECOMSMARAD_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'CECOMSMARAD_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
@@ -90,10 +90,16 @@ add_action(
 		$i18n = new Cecomsmarad_I18n();
 		$i18n->load_plugin_textdomain();
 
+		if ( get_option( 'cecomsmarad_db_version' ) !== '1.2' ) {
+			Cecomsmarad_Data_Importer::create_tables();
+			update_option( 'cecomsmarad_db_version', '1.2' );
+		}
+
 		new Cecomsmarad_Admin_Controller();
 		new Cecomsmarad_Ecosystem_Controller();
 		new Cecomsmarad_Checkout_Controller();
 		new Cecomsmarad_Order_Controller();
+		new Cecomsmarad_Address_Book_Controller( new Cecomsmarad_Address_Book_Model() );
 		Cecomsmarad_Privacy::register_hooks();
 	}
 );

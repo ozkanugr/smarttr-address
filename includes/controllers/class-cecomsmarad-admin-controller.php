@@ -276,10 +276,12 @@ class Cecomsmarad_Admin_Controller {
 	 */
 	private function handle_save_general(): void {
 		// phpcs:disable WordPress.Security.NonceVerification.Missing -- Nonce verified in handle_form_submission().
-		$enabled = ! empty( $_POST['cecomsmarad_enabled'] ) ? '1' : '0';
+		$enabled              = ! empty( $_POST['cecomsmarad_enabled'] ) ? '1' : '0';
+		$address_book_enabled = ! empty( $_POST['cecomsmarad_address_book_enabled'] ) ? '1' : '0';
 		// phpcs:enable WordPress.Security.NonceVerification.Missing
 
 		update_option( 'cecomsmarad_enabled', $enabled, false );
+		update_option( 'cecomsmarad_address_book_enabled', $address_book_enabled, false );
 
 		$this->add_admin_notice( 'success', __( 'General settings saved.', 'smarttr-address' ) );
 	}
@@ -439,10 +441,12 @@ class Cecomsmarad_Admin_Controller {
 		check_ajax_referer( self::NONCE_ACTION, '_cecomsmarad_nonce' );
 
 		// phpcs:disable WordPress.Security.NonceVerification.Missing -- Nonce verified above.
-		$enabled = ! empty( $_POST['cecomsmarad_enabled'] ) ? '1' : '0';
+		$enabled              = ! empty( $_POST['cecomsmarad_enabled'] ) ? '1' : '0';
+		$address_book_enabled = ! empty( $_POST['cecomsmarad_address_book_enabled'] ) ? '1' : '0';
 		// phpcs:enable WordPress.Security.NonceVerification.Missing
 
 		update_option( 'cecomsmarad_enabled', $enabled, false );
+		update_option( 'cecomsmarad_address_book_enabled', $address_book_enabled, false );
 
 		wp_send_json_success( array( 'message' => __( 'General settings saved.', 'smarttr-address' ) ) );
 	}

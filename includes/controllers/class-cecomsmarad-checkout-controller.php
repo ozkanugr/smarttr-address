@@ -246,6 +246,12 @@ class Cecomsmarad_Checkout_Controller {
 	 * @return array<string, array<string, array<string, mixed>>> Modified locale.
 	 */
 	public function set_field_locale( array $locale ): array {
+		// My Account → Edit Address uses WooCommerce defaults; the plugin must not
+		// inject cascade classes or Field Editor settings there.
+		if ( function_exists( 'is_wc_endpoint_url' ) && is_wc_endpoint_url( 'edit-address' ) ) {
+			return $locale;
+		}
+
 		// Always append cascade classes to TR locale so WC's locale JS
 		// preserves them on every country switch.
 		// When no class has been set, default to form-row-wide so

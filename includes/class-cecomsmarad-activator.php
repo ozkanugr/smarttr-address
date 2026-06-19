@@ -51,6 +51,14 @@ class Cecomsmarad_Activator {
 		self::create_tables();
 		self::schedule_data_sync();
 		Cecomsmarad_Mu_Installer::install();
+
+		// Register the custom My Account endpoint before flushing. During activation
+		// the plugin's `init` hook (which normally calls add_rewrite_endpoint()) has
+		// not run yet, so the endpoint must be registered here for the rewrite rules
+		// to include /my-account/address-book/ — otherwise the URL 404s until the
+		// admin manually re-saves Permalinks.
+		add_rewrite_endpoint( 'address-book', EP_ROOT | EP_PAGES );
+		flush_rewrite_rules();
 	}
 
 	/**

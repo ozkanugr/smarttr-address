@@ -97,6 +97,7 @@
 			var provName  = $( this ).find( 'option:selected' ).text() || '';
 
 			populateSelect( $district, districts, cecomsmaradData.i18n.selectDistrict );
+			$( document ).trigger( 'smarttr:districts:loaded', [ type, $district ] );
 			$postcode.val( '' );
 
 			/* Update ARIA disabled state on downstream fields. */
