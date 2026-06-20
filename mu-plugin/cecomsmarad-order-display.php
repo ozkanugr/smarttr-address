@@ -57,6 +57,9 @@ function cecomsmarad_fallback_display_shipping( WC_Order $order ): void {
  * @param string   $type  'billing' or 'shipping'.
  */
 function cecomsmarad_fallback_display_fields( WC_Order $order, string $type ): void {
+	if ( ! current_user_can( 'edit_shop_orders' ) ) {
+		return;
+	}
 	$snapshot_json = $order->get_meta( '_cecomsmarad_fields_snapshot' );
 	if ( empty( $snapshot_json ) ) {
 		return;

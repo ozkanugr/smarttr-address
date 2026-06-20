@@ -189,7 +189,7 @@ defined( 'ABSPATH' ) || exit;
 			/* translators: 1: count of saved addresses, 2: cap number */
 			esc_html__( '%1$d/%2$d addresses used.', 'smarttr-address' ),
 			(int) $count,
-			2
+			(int) $cap
 		);
 		?>
 		<a href="<?php echo esc_url( $upgrade_url ); ?>" target="_blank" rel="noopener noreferrer">

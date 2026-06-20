@@ -244,6 +244,16 @@ class Cecomsmarad_Admin_Controller {
 	 * @return void
 	 */
 	public function handle_form_submission(): void {
+		// This runs on admin_init, which ALSO fires during admin-ajax.php. The
+		// AJAX path serializes the form (carrying cecomsmarad_action), so without
+		// this guard the non-AJAX PRG handler would intercept the AJAX save,
+		// run update_option, then wp_safe_redirect()+exit — returning a 302 to
+		// the XHR (which expected JSON) and breaking the toast. Let the dedicated
+		// wp_ajax_* handlers serve AJAX requests.
+		if ( wp_doing_ajax() ) {
+			return;
+		}
+
 		if ( ! isset( $_POST[ self::NONCE_FIELD ] ) ) {
 			return;
 		}
@@ -284,6 +294,7 @@ class Cecomsmarad_Admin_Controller {
 		update_option( 'cecomsmarad_address_book_enabled', $address_book_enabled, false );
 
 		$this->add_admin_notice( 'success', __( 'General settings saved.', 'smarttr-address' ) );
+		$this->redirect_with_notice( 'general' );
 	}
 
 	/**
@@ -298,8 +309,9 @@ class Cecomsmarad_Admin_Controller {
 		if ( $result['success'] ) {
 			$this->add_admin_notice( 'success', $result['message'] );
 		} else {
-			$this->add_admin_notice( 'error', $result['message'] );
+			$this->add_admin_notice( 'error', wp_strip_all_tags( $result['message'] ) );
 		}
+		$this->redirect_with_notice( 'data' );
 	}
 
 	/**
@@ -327,6 +339,44 @@ class Cecomsmarad_Admin_Controller {
 			$message,
 			$type
 		);
+	}
+
+	/**
+	 * Persist the queued admin notice to a short-lived transient and redirect (PRG).
+	 *
+	 * Must be called AFTER add_admin_notice() so the settings_errors list is populated.
+	 * The redirect lands back on the settings page (same tab) so a browser refresh
+	 * no longer re-submits the form.
+	 *
+	 * @param string $tab The tab slug to return to after the redirect.
+	 * @return void Calls wp_safe_redirect() + exit — does not return.
+	 */
+	private function redirect_with_notice( string $tab = 'general' ): void {
+		// Capture the in-memory settings_errors and store them for one page load.
+		$errors = get_settings_errors( 'cecomsmarad_messages' );
+		if ( ! empty( $errors ) ) {
+			set_transient(
+				'cecomsmarad_admin_notice_' . get_current_user_id(),
+				$errors,
+				30
+			);
+		}
+
+		$allowed_tabs = self::TABS;
+		if ( ! in_array( $tab, $allowed_tabs, true ) ) {
+			$tab = 'general';
+		}
+
+		wp_safe_redirect(
+			add_query_arg(
+				array(
+					'page' => self::PAGE_SLUG,
+					'tab'  => $tab,
+				),
+				admin_url( 'admin.php' )
+			)
+		);
+		exit;
 	}
 
 	/**
@@ -628,14 +678,14 @@ class Cecomsmarad_Admin_Controller {
 			'cecomsmarad-deactivation-feedback',
 			CECOMSMARAD_PLUGIN_URL . 'assets/css/cecomsmarad-deactivation-feedback.css',
 			array(),
-			(string) filemtime( $css_file )
+			file_exists( $css_file ) ? (string) filemtime( $css_file ) : CECOMSMARAD_VERSION
 		);
 
 		wp_enqueue_script(
 			'cecomsmarad-deactivation-feedback',
 			CECOMSMARAD_PLUGIN_URL . 'assets/js/cecomsmarad-deactivation-feedback.js',
 			array(),
-			(string) filemtime( $js_file ),
+			file_exists( $js_file ) ? (string) filemtime( $js_file ) : CECOMSMARAD_VERSION,
 			true
 		);
 

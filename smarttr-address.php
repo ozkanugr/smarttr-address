@@ -3,7 +3,7 @@
  * Plugin Name:       SmartTR Address
  * Plugin URI:        https://cecom.in/smarttr-address-turkish-address
  * Description:       Turkish address auto-fill for WooCommerce checkout — cascading Province & District dropdowns.
- * Version:           1.5.0
+ * Version:           1.5.1
  * Requires at least: 6.4
  * Requires PHP:      8.1
  * Author:            ugurozkan
@@ -21,13 +21,38 @@
 defined( 'ABSPATH' ) || exit;
 
 /**
+ * Mutual-exclusion guard: if the other edition already bootstrapped, do not redefine constants or load twice.
+ */
+if ( defined( 'CECOMSMARAD_PLUGIN_FILE' ) ) {
+	add_action(
+		'admin_notices',
+		static function () {
+			echo '<div class="notice notice-error"><p>' .
+				esc_html__( 'SmartTR Address: another edition of this plugin is already active. Deactivate one to avoid conflicts.', 'smarttr-address' ) .
+				'</p></div>';
+		}
+	);
+	return;
+}
+
+/**
  * Plugin constants.
  */
-define( 'CECOMSMARAD_VERSION', '1.5.0' );
-define( 'CECOMSMARAD_PLUGIN_FILE', __FILE__ );
-define( 'CECOMSMARAD_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
-define( 'CECOMSMARAD_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
-define( 'CECOMSMARAD_PLUGIN_BASENAME', plugin_basename( __FILE__ ) );
+if ( ! defined( 'CECOMSMARAD_VERSION' ) ) {
+	define( 'CECOMSMARAD_VERSION', '1.5.1' );
+}
+if ( ! defined( 'CECOMSMARAD_PLUGIN_FILE' ) ) {
+	define( 'CECOMSMARAD_PLUGIN_FILE', __FILE__ );
+}
+if ( ! defined( 'CECOMSMARAD_PLUGIN_DIR' ) ) {
+	define( 'CECOMSMARAD_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
+}
+if ( ! defined( 'CECOMSMARAD_PLUGIN_URL' ) ) {
+	define( 'CECOMSMARAD_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
+}
+if ( ! defined( 'CECOMSMARAD_PLUGIN_BASENAME' ) ) {
+	define( 'CECOMSMARAD_PLUGIN_BASENAME', plugin_basename( __FILE__ ) );
+}
 
 /**
  * Base URL of the cecom-address-tr installation that serves address data.
@@ -35,18 +60,10 @@ define( 'CECOMSMARAD_PLUGIN_BASENAME', plugin_basename( __FILE__ ) );
  */
 define( 'CECOMSMARAD_DATA_SOURCE_URL', 'https://cecom.in' );
 
-/**
- * WooCommerce REST API credentials for the cecom-address-tr data source.
- * Override in wp-config.php to use your own credentials:
- *   define( 'CECOMSMARAD_API_CONSUMER_KEY', 'ck_your_key' );
- *   define( 'CECOMSMARAD_API_CONSUMER_SECRET', 'cs_your_secret' );
+/*
+ * Address data is served from CECOMSMARAD_DATA_SOURCE_URL via a public,
+ * unauthenticated, rate-limited REST endpoint. The plugin ships no API secret.
  */
-if ( ! defined( 'CECOMSMARAD_API_CONSUMER_KEY' ) ) {
-	define( 'CECOMSMARAD_API_CONSUMER_KEY', 'ck_1268112fa2c5b64bd00c25cc313d5da805495f73' );
-}
-if ( ! defined( 'CECOMSMARAD_API_CONSUMER_SECRET' ) ) {
-	define( 'CECOMSMARAD_API_CONSUMER_SECRET', 'cs_8050fef913fdcd7e8d8e9972ecc8bc2981849a73' );
-}
 
 /**
  * Autoloader — load Composer when available, always register manual autoloader for plugin classes.

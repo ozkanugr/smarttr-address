@@ -236,6 +236,7 @@
 				action:     'cecomsmarad_address_book_load',
 				nonce:      cfg.nonce,
 				address_id: id,
+				context:    'checkout',
 			},
 			success: function ( response ) {
 				if ( response.success ) {

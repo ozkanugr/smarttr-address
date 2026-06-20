@@ -9,8 +9,8 @@
  *   1. Provinces  — single call, small payload.
  *   2. Districts  — single call, moderate payload.
  *
- * Authentication: WooCommerce REST API keys
- *   Authorization: Basic base64(consumer_key:consumer_secret)
+ * Authentication: none. Address data is public reference data served from a
+ * public, rate-limited endpoint on CECOMSMARAD_DATA_SOURCE_URL — no key is sent.
  *
  * @package CecomsmaradAddress
  */
@@ -65,27 +65,39 @@ class Cecomsmarad_Remote_Sync {
 	 * @return array{success: bool, message: string}
 	 */
 	public static function sync(): array {
-		// ── Advisory lock — prevent concurrent syncs ──────────────────────────
-		// Two PHP processes can enter sync() simultaneously when:
-		// a) spawn_cron() fires the WP-Cron HTTP request at the same time a
-		// server-side cron also runs wp-cron.php, or
-		// b) cecomsmarad_do_address_sync and cecomsmarad_do_auto_update both become
-		// due at the same moment.
-		// Without a lock the provinces/districts tables end up with duplicate rows
-		// because Process B calls TRUNCATE while Process A is still inserting,
-		// then both processes complete their remaining INSERT batches
-		// independently into the same tables.
-		if ( false !== get_transient( self::SYNC_LOCK ) ) {
+		global $wpdb;
+
+		// ── Cross-process advisory lock (reliable on all MySQL/MariaDB) ───────
+		// Two PHP processes can enter sync() at once: spawn_cron() firing the
+		// WP-Cron HTTP request while a server-side cron also runs wp-cron.php, or
+		// cecomsmarad_do_address_sync and cecomsmarad_do_auto_update both due.
+		// Without a lock that holds ACROSS requests, Process B runs TRUNCATE while
+		// Process A is still inserting, then both append their remaining batches
+		// into the same table → DUPLICATE rows.
+		//
+		// wp_cache_add() only locks across requests with a persistent object cache
+		// (Redis/Memcached); most sites have none, so it was a no-op gate there.
+		// MySQL GET_LOCK() is connection-scoped and server-wide, so it serializes
+		// syncs reliably regardless of the object-cache backend.
+		$lock_name = substr( $wpdb->prefix . 'cecomsmarad_sync', 0, 64 );
+		// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
+		$acquired = (int) $wpdb->get_var( $wpdb->prepare( 'SELECT GET_LOCK(%s, %d)', $lock_name, 0 ) );
+
+		if ( 1 !== $acquired ) {
 			return array(
 				'success' => false,
 				'message' => __( 'A sync is already in progress. Please try again shortly.', 'smarttr-address' ),
 			);
 		}
+
+		// Secondary transient marker for admin UI visibility (not the gate).
 		set_transient( self::SYNC_LOCK, '1', self::SYNC_LOCK_TTL );
 
 		try {
 			return self::do_sync();
 		} finally {
+			// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
+			$wpdb->query( $wpdb->prepare( 'SELECT RELEASE_LOCK(%s)', $lock_name ) );
 			delete_transient( self::SYNC_LOCK );
 		}
 	}
@@ -108,34 +120,24 @@ class Cecomsmarad_Remote_Sync {
 
 		$headers = array( 'Accept' => 'application/json' );
 
-		// Append WooCommerce REST API credentials as query parameters.
-		// This is more reliable than the Authorization header, which many
-		// Apache/hosting configurations strip before reaching PHP.
-		$auth_query = http_build_query(
-			array(
-				'consumer_key'    => CECOMSMARAD_API_CONSUMER_KEY,
-				'consumer_secret' => CECOMSMARAD_API_CONSUMER_SECRET,
-			)
-		);
-
 		$base = rtrim( $source_url, '/' ) . '/wp-json/cecom-address-tr/v1/address-data';
 
 		// ── 1. Provinces ─────────────────────────────────────────────────────
-		$result = self::fetch( $base . '/provinces?' . $auth_query, $headers );
+		$result = self::fetch( $base . '/provinces', $headers );
 		if ( ! $result['success'] ) {
 			return $result;
 		}
 		Cecomsmarad_Data_Importer::import_provinces_data( $result['body']['data'] ?? array() );
 
 		// ── 2. Districts ──────────────────────────────────────────────────────
-		$result = self::fetch( $base . '/districts?' . $auth_query, $headers );
+		$result = self::fetch( $base . '/districts', $headers );
 		if ( ! $result['success'] ) {
 			return $result;
 		}
 		Cecomsmarad_Data_Importer::import_districts_data( $result['body']['data'] ?? array() );
 
 		// ── 3. Metadata & version ─────────────────────────────────────────────
-		$version_result = self::fetch( $base . '/version?' . $auth_query, $headers );
+		$version_result = self::fetch( $base . '/version', $headers );
 		if ( $version_result['success'] ) {
 			$version = $version_result['body']['version'] ?? '';
 			update_option( 'cecomsmarad_data_version', $version, false );
@@ -220,8 +222,9 @@ class Cecomsmarad_Remote_Sync {
 		$response = wp_remote_get(
 			$url,
 			array(
-				'timeout' => self::REQUEST_TIMEOUT,
-				'headers' => $headers,
+				'timeout'   => self::REQUEST_TIMEOUT,
+				'sslverify' => true,
+				'headers'   => $headers,
 			)
 		);
 

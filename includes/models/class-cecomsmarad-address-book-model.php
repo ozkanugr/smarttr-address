@@ -77,6 +77,15 @@ class Cecomsmarad_Address_Book_Model {
 	}
 
 	/**
+	 * Return the free-tier address cap.
+	 *
+	 * @return int
+	 */
+	public function get_free_cap(): int {
+		return self::FREE_CAP;
+	}
+
+	/**
 	 * Whether the user can save another address.
 	 *
 	 * Free tier: returns true when the user has fewer than FREE_CAP addresses.

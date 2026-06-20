@@ -91,6 +91,7 @@ class Cecomsmarad_Address_Book_Controller {
 		$addresses   = $this->model->get_addresses( $user_id );
 		$can_save    = $this->model->can_save_more( $user_id );
 		$count       = $this->model->get_count( $user_id );
+		$cap         = $this->model->get_free_cap();
 		$upgrade_url = self::UPGRADE_URL;
 		include CECOMSMARAD_PLUGIN_DIR . 'includes/views/account/address-book.php';
 	}
@@ -222,6 +223,7 @@ class Cecomsmarad_Address_Book_Controller {
 
 		$user_id    = get_current_user_id();
 		$address_id = absint( $_POST['address_id'] ?? 0 ); // phpcs:ignore WordPress.Security.NonceVerification.Missing -- Nonce verified via check_ajax_referer above.
+		$context    = isset( $_POST['context'] ) ? sanitize_key( wp_unslash( $_POST['context'] ) ) : 'account'; // phpcs:ignore WordPress.Security.NonceVerification.Missing
 
 		if ( ! $user_id || ! $address_id ) {
 			wp_send_json_error( array( 'message' => __( 'Invalid request.', 'smarttr-address' ) ) );
@@ -233,7 +235,7 @@ class Cecomsmarad_Address_Book_Controller {
 			wp_send_json_error( array( 'message' => __( 'Address not found.', 'smarttr-address' ) ) );
 		}
 
-		wp_send_json_success( array(
+		$response = array(
 			'province_code' => $address->province_code,
 			'district_name' => $address->district_name,
 			'neighborhood'  => $address->neighborhood,
@@ -245,7 +247,13 @@ class Cecomsmarad_Address_Book_Controller {
 			'phone'         => $address->phone,
 			'email'         => $address->email,
 			'country'       => $address->country ?? '',
-		) );
+		);
+
+		if ( 'checkout' !== $context ) {
+			unset( $response['phone'], $response['email'] );
+		}
+
+		wp_send_json_success( $response );
 	}
 
 	public function ajax_delete(): void {

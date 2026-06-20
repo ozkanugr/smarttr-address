@@ -4,7 +4,7 @@ Contributors: cecom
 Tags: Checkout Manager, Checkout Address Suggession, Custom Fields, WooCommerce Checkout, Checkout Address Autocomplete
 Requires at least: 6.4
 Tested up to: 7.0
-Stable tag: 1.5.0
+Stable tag: 1.5.1
 Requires PHP: 8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -299,6 +299,11 @@ Güvenlik açıklarını CECOM güvenlik iletişim formu üzerinden bildirebilir
 
 == Changelog ==
 
+= 1.5.1 - Released on 20 June 2026 =
+
+* Security: improvements to address data import.
+* Güvenlik: adres verisi içe aktarımında iyileştirmeler.
+
 = 1.5.0 - Released on 19 June 2026 =
 
 * New: Address Book — logged-in customers can now save their address at checkout and reuse it with one click; saved addresses are also managed under My Account → Address Book (free tier: up to 2 saved addresses).
@@ -385,6 +390,10 @@ Güvenlik açıklarını CECOM güvenlik iletişim formu üzerinden bildirebilir
 * Yeni: Erişilebilirlik — ARIA canlı bölgeler, klavye navigasyonu, noscript yedekleme
 
 == Upgrade Notice ==
+
+= 1.5.1 =
+Security improvements to address data import. No manual upgrade steps required.
+Adres verisi içe aktarımında güvenlik iyileştirmeleri. Manuel güncelleme adımı gerekmez.
 
 = 1.5.0 =
 Adds the new Address Book feature so customers can save and reuse their addresses at checkout and in My Account. No manual upgrade steps required.

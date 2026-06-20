@@ -49,8 +49,23 @@ $address_book_enabled = get_option( 'cecomsmarad_address_book_enabled', '1' );
 
 <div id="cecomsmaradWrap">
 
-<?php /* ── Non-JS fallback notices ────────────────────── */ ?>
-<noscript><?php settings_errors( 'cecomsmarad_messages' ); ?></noscript>
+<?php
+/* ── Post-Redirect-Get notices ──────────────────── */
+// Restore any notice persisted across a PRG redirect, then display it.
+$_cecomsmarad_pending = get_transient( 'cecomsmarad_admin_notice_' . get_current_user_id() );
+if ( ! empty( $_cecomsmarad_pending ) ) {
+	delete_transient( 'cecomsmarad_admin_notice_' . get_current_user_id() );
+	foreach ( $_cecomsmarad_pending as $_cecomsmarad_error ) {
+		add_settings_error(
+			$_cecomsmarad_error['setting'],
+			$_cecomsmarad_error['code'],
+			$_cecomsmarad_error['message'],
+			$_cecomsmarad_error['type']
+		);
+	}
+}
+settings_errors( 'cecomsmarad_messages' );
+?>
 
 <?php /* ── Header ──────────────────────────────────────── */ ?>
 <header class="d-flex flex-wrap align-items-center justify-content-between bg-white shadow-sm rounded-4 border border-light-subtle p-3 p-sm-4 mb-3 gap-2">

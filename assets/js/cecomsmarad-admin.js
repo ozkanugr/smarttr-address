@@ -218,8 +218,11 @@
 					showToast( 'danger', errMsg );
 				}
 			} )
-			.fail( function () {
-				showToast( 'danger', cfg.i18n.error );
+			.fail( function ( jqXHR ) {
+				var msg = ( jqXHR && jqXHR.responseJSON && jqXHR.responseJSON.data && jqXHR.responseJSON.data.message )
+					? jqXHR.responseJSON.data.message
+					: cfg.i18n.error;
+				showToast( 'danger', msg );
 			} )
 			.always( function () {
 				$btn.prop( 'disabled', false ).html( originalHtml );

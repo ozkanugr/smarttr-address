@@ -18,7 +18,6 @@ global $wpdb;
  * from wp_options since it stores actions in its own tables.
  */
 if ( function_exists( 'as_unschedule_all_actions' ) ) {
-	as_unschedule_all_actions( 'cecomsmarad_do_auto_update', array(), 'smarttr' );
 	as_unschedule_all_actions( 'cecomsmarad_do_address_sync', array(), '' );
 }
 
@@ -37,24 +36,6 @@ $cecomsmarad_tables = array(
 foreach ( $cecomsmarad_tables as $cecomsmarad_table ) {
 	// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching, WordPress.DB.DirectDatabaseQuery.SchemaChange, WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Uninstall cleanup: dropping plugin-owned custom tables; table names are hardcoded above.
 	$wpdb->query( "DROP TABLE IF EXISTS {$cecomsmarad_table}" );
-}
-
-/*
- * Delete all Media Library attachments uploaded via SmartTR checkout file fields.
- * These are marked with _cecomsmarad_checkout_upload post meta on upload.
- */
-$cecomsmarad_attachment_ids = get_posts(
-	array(
-		'post_type'      => 'attachment',
-		'post_status'    => 'any',
-		'posts_per_page' => -1,
-		'fields'         => 'ids',
-		'meta_key'       => '_cecomsmarad_checkout_upload', // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_key -- Uninstall cleanup: one-time query to find plugin-owned attachments.
-		'meta_value'     => '1', // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_value -- Required to match only SmartTR uploads.
-	)
-);
-foreach ( $cecomsmarad_attachment_ids as $cecomsmarad_att_id ) {
-	wp_delete_attachment( (int) $cecomsmarad_att_id, true );
 }
 
 /*
